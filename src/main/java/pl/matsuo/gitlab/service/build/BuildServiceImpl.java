@@ -68,6 +68,16 @@ public class BuildServiceImpl implements BuildService {
             return builder.execute(pushEvent, properties);
           });
         }
+
+        future.thenCompose(info -> {
+          if (info != null) {
+            BuildInfo buildInfo1 = db.get(idBuild, BuildInfo.class);
+            buildInfo1.getPartialStatuses().put(info.getName(), info);
+            db.put(idBuild, buildInfo1);
+          }
+
+          return null;
+        });
       }
     }
 

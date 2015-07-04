@@ -22,8 +22,10 @@ public class JekyllPartialBuilder extends PartialBuilder {
 
 
   public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties) {
-    CompletableFuture<PartialBuildInfo> future = new CompletableFuture();
     PartialBuildInfo partialBuildInfo = new PartialBuildInfo();
+    partialBuildInfo.setName("jekyll");
+
+    CompletableFuture<PartialBuildInfo> future = new CompletableFuture();
     File projectBase = gitRepositoryService.repository(pushEvent);
 
     String source = properties.getProperty("jekyll.source", "src/site");
@@ -62,6 +64,7 @@ public class JekyllPartialBuilder extends PartialBuilder {
       }
 
       partialBuildInfo.setLog(log);
+      partialBuildInfo.setStatus("ok");
       System.out.println(log);
 
     } catch (Exception e) {
