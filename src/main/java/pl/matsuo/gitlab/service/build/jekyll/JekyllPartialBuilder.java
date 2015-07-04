@@ -26,12 +26,19 @@ public class JekyllPartialBuilder extends PartialBuilder {
     PartialBuildInfo partialBuildInfo = new PartialBuildInfo();
     File projectBase = gitRepositoryService.repository(pushEvent);
 
-    String siteBaseDir = properties.getProperty("jekyll.site", "src/site");
+    String source = properties.getProperty("jekyll.source", "src/site");
+    String destination = properties.getProperty("jekyll.destination", "_site");
+
+    File siteBase = new File(projectBase, destination);
+    if (!siteBase.mkdirs()) {
+      throw new RuntimeException("Cannot create site base directory");
+    }
+    destination = siteBase.getPath();
 
     // fixme: execute build
-    ProcessBuilder pb = new ProcessBuilder("jekyll", "build");
+    ProcessBuilder pb = new ProcessBuilder("jekyll", "build", "--destination", destination);
     pb.environment().put("ci-build", "true");
-    pb.directory(new File(projectBase, siteBaseDir));
+    pb.directory(new File(projectBase, source));
     try {
       Process process = pb.start();
       process.waitFor();

@@ -1,5 +1,6 @@
 package pl.matsuo.gitlab.service.build.jekyll;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,12 @@ import pl.matsuo.gitlab.hook.Repository;
 import pl.matsuo.gitlab.service.build.BuildService;
 import pl.matsuo.gitlab.service.build.BuildServiceImpl;
 import pl.matsuo.gitlab.service.db.MapDbDatabase;
+import pl.matsuo.gitlab.service.git.GitRepositoryService;
 import pl.matsuo.gitlab.service.git.GitRepositoryServiceImpl;
+
+import java.io.File;
+
+import static org.junit.Assert.*;
 
 
 /**
@@ -27,16 +33,22 @@ public class TestJekyllPartialBuilder {
 
   @Autowired
   BuildService buildService;
+  @Autowired
+  GitRepositoryService gitRepositoryService;
 
 
   @Test
   public void testInternalExecute() throws Exception {
     PushEvent pushEvent = new PushEvent();
     pushEvent.setRepository(new Repository());
-    pushEvent.getRepository().setUrl("http://github.com/tunguski/gitlab-java-event-listener.git");
+    pushEvent.getRepository().setUrl("https://github.com/tunguski/gitlab-java-event-listener.git");
     pushEvent.setRef("refs/heads/master");
 
     buildService.pushEvent(pushEvent);
+
+    File repository = gitRepositoryService.repository(pushEvent);
+
+    assertTrue(new File(repository, "_site/index.html").exists());
   }
 }
 
