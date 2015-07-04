@@ -3,7 +3,6 @@ package pl.matsuo.gitlab.hook;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import pl.matsuo.gitlab.hook.hook.PushEvent;
 
 import static org.junit.Assert.*;
 

@@ -1,4 +1,4 @@
-package pl.matsuo.gitlab.hook.hook;
+package pl.matsuo.gitlab.hook;
 
 import java.util.List;
 

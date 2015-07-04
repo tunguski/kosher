@@ -1,4 +1,4 @@
-package pl.matsuo.gitlab.hook.hook;
+package pl.matsuo.gitlab.hook;
 
 /**
  * Created by marek on 04.07.15.
