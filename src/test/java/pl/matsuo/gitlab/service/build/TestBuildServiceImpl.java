@@ -1,5 +1,6 @@
 package pl.matsuo.gitlab.service.build;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -13,7 +14,10 @@ import pl.matsuo.gitlab.service.build.BuildServiceImpl;
 import pl.matsuo.gitlab.service.db.Database;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 
 /**
@@ -27,8 +31,19 @@ public class TestBuildServiceImpl {
   Database database;
   @Mock
   GitRepositoryService gitRepositoryService;
+  @Mock
+  PartialBuilder partialBuilder;
   @InjectMocks
   BuildServiceImpl buildService = new BuildServiceImpl();
+
+
+  @Before
+  public void beforeTest() {
+    reset(partialBuilder);
+
+    buildService.partialBuilder = new ArrayList<>();
+    buildService.partialBuilder.add(partialBuilder);
+  }
 
 
   @Test
@@ -39,6 +54,8 @@ public class TestBuildServiceImpl {
 
     pushEvent.getRepository().setUrl("git@github.com:tunguski/gitlab-java-event-listener.git");
     buildService.pushEvent(pushEvent);
+
+    verify(partialBuilder).execute(any(PushEvent.class));
 
     pushEvent.getRepository().setUrl("http://github.com/tunguski/gitlab-java-event-listener.git");
     buildService.pushEvent(pushEvent);
@@ -57,7 +74,7 @@ public class TestBuildServiceImpl {
     BuildInfo result = new BuildInfo();
     result.setId(idBuild);
 
-    Mockito.when(database.get(idBuild, BuildInfo.class)).thenReturn(result);
+    when(database.get(idBuild, BuildInfo.class)).thenReturn(result);
 
     BuildInfo buildInfo = buildService.buildStatus(idBuild);
 
