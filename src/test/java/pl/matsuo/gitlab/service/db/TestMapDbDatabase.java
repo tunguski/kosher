@@ -1,7 +1,6 @@
 package pl.matsuo.gitlab.service.db;
 
 import org.junit.Test;
-import pl.matsuo.gitlab.service.db.MapDbDatabase;
 
 import static org.junit.Assert.*;
 

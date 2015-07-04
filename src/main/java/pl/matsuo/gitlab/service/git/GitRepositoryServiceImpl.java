@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import pl.matsuo.gitlab.exception.GitException;
 import pl.matsuo.gitlab.hook.PushEvent;
-import pl.matsuo.gitlab.hook.Repository;
-import pl.matsuo.gitlab.util.PushEventUtil;
 
 import java.io.File;
 
@@ -54,6 +52,7 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
       } else {
         git = Git.open(cloneFile);
         git.checkout().setName(refName).setForce(true).call();
+        git.pull().call();
       }
 
       return git;

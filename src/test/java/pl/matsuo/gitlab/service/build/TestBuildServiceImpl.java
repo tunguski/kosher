@@ -5,12 +5,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import pl.matsuo.gitlab.hook.BuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.hook.Repository;
-import pl.matsuo.gitlab.service.build.BuildServiceImpl;
 import pl.matsuo.gitlab.service.db.Database;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 

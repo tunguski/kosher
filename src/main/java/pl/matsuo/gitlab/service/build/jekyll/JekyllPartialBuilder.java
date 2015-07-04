@@ -8,10 +8,8 @@ import pl.matsuo.gitlab.service.build.PartialBuilder;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 
@@ -57,11 +55,13 @@ public class JekyllPartialBuilder extends PartialBuilder {
       }
 
       partialBuildInfo.setLog(log);
+      System.out.println(log);
 
     } catch (Exception e) {
       ByteArrayOutputStream os = new ByteArrayOutputStream();
       e.printStackTrace(new PrintWriter(os));
       partialBuildInfo.setLog(new String(os.toByteArray()));
+      e.printStackTrace();
     }
 
     future.complete(partialBuildInfo);

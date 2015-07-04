@@ -6,18 +6,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import pl.matsuo.gitlab.hook.BuildInfo;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
-import pl.matsuo.gitlab.hook.Repository;
 import pl.matsuo.gitlab.service.db.Database;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.ref.Reference;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicReference;
 
 
 /**

@@ -14,8 +14,8 @@ import pl.matsuo.gitlab.hook.BuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.BuildServiceImpl;
 import pl.matsuo.gitlab.service.db.Database;
-import pl.matsuo.gitlab.service.git.GitRepositoryServiceImpl;
 import pl.matsuo.gitlab.service.db.MapDbDatabase;
+import pl.matsuo.gitlab.service.git.GitRepositoryServiceImpl;
 
 import java.io.File;
 
