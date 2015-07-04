@@ -3,6 +3,8 @@ package pl.matsuo.gitlab.service.build.jekyll;
 import org.junit.Test;
 import pl.matsuo.gitlab.hook.PushEvent;
 
+import java.util.Properties;
+
 import static org.junit.Assert.*;
 
 
@@ -19,7 +21,7 @@ public class TestJekyllPartialBuilder {
   public void testInternalExecute() throws Exception {
     PushEvent pushEvent = new PushEvent();
 
-    jekyllPartialBuilder.execute(pushEvent);
+    jekyllPartialBuilder.execute(pushEvent, new Properties());
   }
 }
 

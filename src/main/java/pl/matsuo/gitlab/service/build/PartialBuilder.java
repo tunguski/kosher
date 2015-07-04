@@ -6,6 +6,7 @@ import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
+import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 
 
@@ -16,19 +17,19 @@ public abstract class PartialBuilder {
 
 
   @Autowired
-  GitRepositoryService gitRepositoryService;
+  protected GitRepositoryService gitRepositoryService;
 
 
   @Async
-  public final CompletableFuture<PartialBuildInfo> execute(PushEvent pushEvent) {
+  public final CompletableFuture<PartialBuildInfo> execute(PushEvent pushEvent, Properties properties) {
     try {
-      return internalExecute(pushEvent);
+      return internalExecute(pushEvent, properties);
     } catch (Exception e) {
       return null;
     }
   }
 
 
-  public abstract CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent);
+  public abstract CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties);
 }
 

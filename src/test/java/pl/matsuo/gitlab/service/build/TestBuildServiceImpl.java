@@ -15,6 +15,7 @@ import pl.matsuo.gitlab.service.db.Database;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
 import java.util.ArrayList;
+import java.util.Properties;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -55,7 +56,7 @@ public class TestBuildServiceImpl {
     pushEvent.getRepository().setUrl("git@github.com:tunguski/gitlab-java-event-listener.git");
     buildService.pushEvent(pushEvent);
 
-    verify(partialBuilder).execute(any(PushEvent.class));
+    verify(partialBuilder).execute(any(PushEvent.class), any(Properties.class));
 
     pushEvent.getRepository().setUrl("http://github.com/tunguski/gitlab-java-event-listener.git");
     buildService.pushEvent(pushEvent);
