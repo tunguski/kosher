@@ -1,7 +1,9 @@
 package pl.matsuo.gitlab.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ import pl.matsuo.gitlab.service.GitRepositoryService;
 import pl.matsuo.gitlab.service.GitRepositoryServiceImpl;
 import pl.matsuo.gitlab.service.MapDbDatabase;
 
+import java.io.File;
+
+import static org.apache.commons.io.FileUtils.*;
 import static org.junit.Assert.*;
 import static pl.matsuo.gitlab.hook.BuildStatus.*;
 
@@ -39,6 +44,8 @@ public class TestGitLabWebHookController {
   Database db;
   @Autowired
   GitLabWebHookController gitLabWebHookController;
+  @Value("${repositoryBase}")
+  String repositoryBase;
 
 
   MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
@@ -47,6 +54,8 @@ public class TestGitLabWebHookController {
 
   @Test
   public void testPushEvent() throws Exception {
+    deleteDirectory(new File(repositoryBase));
+
     PushEvent pushEvent = objectMapper.readValue(
         getClass().getResourceAsStream("/sample_pushEvent.json"), PushEvent.class);
     String idBuild = gitLabWebHookController.pushEvent(pushEvent);
