@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.matsuo.gitlab.hook.BuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
-import pl.matsuo.gitlab.service.BuildService;
+import pl.matsuo.gitlab.service.build.BuildService;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 

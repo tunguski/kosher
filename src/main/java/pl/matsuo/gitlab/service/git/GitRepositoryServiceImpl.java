@@ -1,4 +1,4 @@
-package pl.matsuo.gitlab.service;
+package pl.matsuo.gitlab.service.git;
 
 import org.eclipse.jgit.api.Git;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,4 +1,4 @@
-package pl.matsuo.gitlab.service;
+package pl.matsuo.gitlab.service.db;
 
 import java.util.Collection;
 import java.util.NavigableSet;

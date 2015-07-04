@@ -1,9 +1,6 @@
 package pl.matsuo.gitlab.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +11,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import pl.matsuo.gitlab.conf.TestConfig;
 import pl.matsuo.gitlab.hook.BuildInfo;
-import pl.matsuo.gitlab.hook.BuildStatus;
 import pl.matsuo.gitlab.hook.PushEvent;
-import pl.matsuo.gitlab.service.BuildService;
-import pl.matsuo.gitlab.service.BuildServiceImpl;
-import pl.matsuo.gitlab.service.Database;
-import pl.matsuo.gitlab.service.GitRepositoryService;
-import pl.matsuo.gitlab.service.GitRepositoryServiceImpl;
-import pl.matsuo.gitlab.service.MapDbDatabase;
+import pl.matsuo.gitlab.service.build.BuildServiceImpl;
+import pl.matsuo.gitlab.service.db.Database;
+import pl.matsuo.gitlab.service.git.GitRepositoryServiceImpl;
+import pl.matsuo.gitlab.service.db.MapDbDatabase;
 
 import java.io.File;
 

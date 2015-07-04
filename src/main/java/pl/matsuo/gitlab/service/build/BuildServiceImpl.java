@@ -1,4 +1,4 @@
-package pl.matsuo.gitlab.service;
+package pl.matsuo.gitlab.service.build;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import pl.matsuo.gitlab.hook.BuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.hook.Repository;
+import pl.matsuo.gitlab.service.db.Database;
+import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
 import java.util.List;
 

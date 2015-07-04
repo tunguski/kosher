@@ -1,4 +1,4 @@
-package pl.matsuo.gitlab.service;
+package pl.matsuo.gitlab.service.build;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import pl.matsuo.gitlab.hook.BuildInfo;
