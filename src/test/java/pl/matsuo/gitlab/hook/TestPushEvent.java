@@ -23,6 +23,7 @@ public class TestPushEvent {
         getClass().getResourceAsStream("/sample_pushEvent.json"), PushEvent.class);
 
     assertNotNull(pushEvent);
+    assertEquals("http://example.com/mike/diaspora.git", pushEvent.getRepository().getGit_http_url());
 
     String serialized = objectMapper.writeValueAsString(pushEvent);
 
