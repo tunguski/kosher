@@ -33,7 +33,7 @@ public class JekyllPartialBuilder extends PartialBuilder {
     if (!siteBase.mkdirs()) {
       throw new RuntimeException("Cannot create site base directory");
     }
-    destination = siteBase.getPath();
+    destination = siteBase.getAbsolutePath();
 
     // fixme: execute build
     ProcessBuilder pb = new ProcessBuilder("jekyll", "build", "--destination", destination);

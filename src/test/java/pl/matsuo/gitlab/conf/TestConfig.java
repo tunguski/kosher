@@ -16,7 +16,7 @@ public class TestConfig {
 
 
   @Bean
-  PropertyPlaceholderConfigurer propConfig() {
+  public static PropertyPlaceholderConfigurer propConfig() {
     PropertyPlaceholderConfigurer ppc =  new PropertyPlaceholderConfigurer();
     ppc.setLocation(new ClassPathResource("test.properties"));
     return ppc;
