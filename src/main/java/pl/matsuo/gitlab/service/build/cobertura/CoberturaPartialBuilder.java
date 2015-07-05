@@ -1,4 +1,4 @@
-package pl.matsuo.gitlab.service.build.findbugs;
+package pl.matsuo.gitlab.service.build.cobertura;
 
 import org.springframework.stereotype.Service;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
@@ -13,21 +13,20 @@ import java.util.concurrent.CompletableFuture;
  * Created by marek on 05.07.15.
  */
 @Service
-public class FindBugsPartialBuilder extends CommandExecutingPartialBuilder {
+public class CoberturaPartialBuilder extends CommandExecutingPartialBuilder {
 
 
   @Override
   public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties) {
     return internalExecute(pushEvent, ".", "target",
-        // fixme: compilation shuld be enabled after checkout?
-        destination -> new String[] { "mvn", "compile", "findbugs:findbugs" },
+        destination -> new String[] { "mvn", "cobertura:cobertura" },
         partialBuildInfo -> {});
   }
 
 
   @Override
   public String getName() {
-    return "findbugs";
+    return "cobertura";
   }
 }
 
