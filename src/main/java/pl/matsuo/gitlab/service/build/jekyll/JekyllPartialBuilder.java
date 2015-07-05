@@ -32,8 +32,8 @@ public class JekyllPartialBuilder extends PartialBuilder {
     CompletableFuture<PartialBuildInfo> future = new CompletableFuture();
     File projectBase = gitRepositoryService.repository(pushEvent);
 
-    String source = properties.getProperty("jekyll.source", "src/site");
-    String destination = properties.getProperty("jekyll.destination", "_site");
+    String source = JekyllProperties.source(properties);
+    String destination = JekyllProperties.destination(properties);
 
     File siteBase = new File(projectBase, destination);
     if (!siteBase.mkdirs()) {

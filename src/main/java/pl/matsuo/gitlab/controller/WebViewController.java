@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.HandlerMapping;
+import pl.matsuo.gitlab.service.build.jekyll.JekyllProperties;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
 import javax.servlet.http.HttpServletRequest;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.nio.file.Files;
 import java.util.Properties;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
@@ -25,7 +27,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
  * Created by marek on 04.07.15.
  */
 @Controller
-@RequestMapping("/site")
+@RequestMapping("/{user}/{project}/{branch}")
 public class WebViewController {
 
 
@@ -33,7 +35,7 @@ public class WebViewController {
   GitRepositoryService gitRepositoryService;
 
 
-  @RequestMapping(value = "/{user}/{project}/{branch}/**", method = GET)
+  @RequestMapping(value = "/**", method = GET)
   @ResponseStatus(HttpStatus.OK)
   public @ResponseBody
   String get(@PathVariable("user") String user,
@@ -48,9 +50,14 @@ public class WebViewController {
 
         String restOfTheUrl = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
 
-        String destination = properties.getProperty("jekyll.destination", "_site");
+        String destination = JekyllProperties.destination(properties);
         File file = new File(new File(config.getParentFile(), destination), restOfTheUrl);
         if (file.exists()) {
+          // security - cannot escape from project directory by using ../../..
+          if (!file.getCanonicalPath().startsWith(config.getParentFile().getCanonicalPath())) {
+            return "file not found: " + file.getAbsolutePath();
+          }
+
           return FileUtils.readFileToString(file);
         } else {
           return "file not found: " + file.getAbsolutePath();

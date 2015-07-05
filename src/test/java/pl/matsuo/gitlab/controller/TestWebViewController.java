@@ -37,7 +37,7 @@ public class TestWebViewController extends AbstractControllerRequestTest {
 
     buildService.pushEvent(pushEvent);
 
-    performAndCheckStatus(get("/site/tunguski/gitlab-java-event-listener/master/index.html"), status().isOk(),
+    performAndCheckStatus(get("/tunguski/gitlab-java-event-listener/master/index.html"), status().isOk(),
         html -> System.out.println(html),
         html -> assertTrue(html.contains("<h1>Test!</h1>")));
   }
