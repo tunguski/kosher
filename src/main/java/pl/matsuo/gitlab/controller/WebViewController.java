@@ -1,6 +1,7 @@
 package pl.matsuo.gitlab.controller;
 
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.HandlerMapping;
+import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,8 +29,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 public class WebViewController {
 
 
-  @Value("${repositoryBase}")
-  File repositoryBase;
+  @Autowired
+  GitRepositoryService gitRepositoryService;
 
 
   @RequestMapping(value = "/{user}/{project}/{branch}/**", method = GET)
@@ -38,29 +40,25 @@ public class WebViewController {
              @PathVariable("project") String project,
              @PathVariable("branch") String branch,
              HttpServletRequest request) {
-    try {
-      File projectBase = new File(repositoryBase, user + "/" + project + "/" + branch);
 
-      if (new File(projectBase, ".kosher").exists()) {
+    return gitRepositoryService.getKosher(user, project, branch).map(config -> {
+      try {
         Properties properties = new Properties();
-        properties.load(new FileInputStream(new File(projectBase, ".kosher")));
+        properties.load(new FileInputStream(config));
 
         String restOfTheUrl = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
 
         String destination = properties.getProperty("jekyll.destination", "_site");
-        File file = new File(new File(projectBase, destination), restOfTheUrl);
+        File file = new File(new File(config.getParentFile(), destination), restOfTheUrl);
         if (file.exists()) {
           return FileUtils.readFileToString(file);
         } else {
           return "file not found: " + file.getAbsolutePath();
         }
-
-      } else {
-        return "site not found: " + projectBase.getAbsolutePath();
+      } catch (Exception e) {
+        throw new RuntimeException(e);
       }
-    } catch (Exception e) {
-      throw  new RuntimeException(e);
-    }
+    }).orElseThrow(() -> new RuntimeException("Site not found"));
   }
 }
 

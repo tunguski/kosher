@@ -43,9 +43,7 @@ public class BuildServiceImpl implements BuildService {
     gitRepositoryService.checkout(pushEvent);
 
     if (partialBuilder != null) {
-      File config = new File(gitRepositoryService.repository(pushEvent), ".kosher");
-
-      if (config.exists()) {
+      gitRepositoryService.getKosher(pushEvent).ifPresent(config -> {
         Properties properties = new Properties();
         try {
           properties.load(new FileInputStream(config));
@@ -71,14 +69,14 @@ public class BuildServiceImpl implements BuildService {
 
         future.thenCompose(info -> {
           if (info != null) {
-            BuildInfo buildInfo1 = db.get(idBuild, BuildInfo.class);
-            buildInfo1.getPartialStatuses().put(info.getName(), info);
-            db.put(idBuild, buildInfo1);
+            BuildInfo newInfo = db.get(idBuild, BuildInfo.class);
+            newInfo.getPartialStatuses().put(info.getName(), info);
+            db.put(idBuild, newInfo);
           }
 
           return null;
         });
-      }
+      });
     }
 
     return idBuild;

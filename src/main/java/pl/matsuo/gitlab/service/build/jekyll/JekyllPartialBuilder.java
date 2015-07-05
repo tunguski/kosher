@@ -27,7 +27,7 @@ public class JekyllPartialBuilder extends PartialBuilder {
 
   public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties) {
     PartialBuildInfo partialBuildInfo = new PartialBuildInfo();
-    partialBuildInfo.setName("jekyll");
+    partialBuildInfo.setName(getName());
 
     CompletableFuture<PartialBuildInfo> future = new CompletableFuture();
     File projectBase = gitRepositoryService.repository(pushEvent);
@@ -90,6 +90,12 @@ public class JekyllPartialBuilder extends PartialBuilder {
     future.complete(partialBuildInfo);
 
     return future;
+  }
+
+
+  @Override
+  public String getName() {
+    return "jekyll";
   }
 }
 

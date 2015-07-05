@@ -12,7 +12,9 @@ import pl.matsuo.gitlab.hook.Repository;
 import pl.matsuo.gitlab.service.db.Database;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Properties;
 
 import static org.junit.Assert.*;
@@ -51,10 +53,14 @@ public class TestBuildServiceImpl {
     pushEvent.setRepository(new Repository());
     pushEvent.setRef("refs/heads/master");
 
+    when(gitRepositoryService.getKosher(any(PushEvent.class))).thenReturn(Optional.of(new File(".kosher")));
+
     pushEvent.getRepository().setUrl("git@github.com:tunguski/gitlab-java-event-listener.git");
     buildService.pushEvent(pushEvent);
 
     verify(partialBuilder).execute(any(PushEvent.class), any(Properties.class));
+
+    when(gitRepositoryService.getKosher(any(PushEvent.class))).thenReturn(Optional.of(new File(".kosher")));
 
     pushEvent.getRepository().setUrl("https://github.com/tunguski/gitlab-java-event-listener.git");
     buildService.pushEvent(pushEvent);
@@ -67,6 +73,8 @@ public class TestBuildServiceImpl {
     pushEvent.setRepository(new Repository());
     pushEvent.setRef("refs/heads/master");
     pushEvent.getRepository().setUrl("git@github.com:tunguski/gitlab-java-event-listener.git");
+
+    when(gitRepositoryService.getKosher(any(PushEvent.class))).thenReturn(Optional.of(new File(".kosher")));
 
     String idBuild = buildService.pushEvent(pushEvent);
 

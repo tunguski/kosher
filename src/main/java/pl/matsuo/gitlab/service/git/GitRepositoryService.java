@@ -4,6 +4,7 @@ import org.eclipse.jgit.api.Git;
 import pl.matsuo.gitlab.hook.PushEvent;
 
 import java.io.File;
+import java.util.Optional;
 
 
 /**
@@ -13,6 +14,10 @@ public interface GitRepositoryService {
 
 
   File repository(PushEvent pushEvent);
+
+
+  Optional<File> getKosher(PushEvent pushEvent);
+  Optional<File> getKosher(String userName, String projectName, String refName);
 
 
   Git checkout(PushEvent pushEvent);
