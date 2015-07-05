@@ -10,6 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 
@@ -64,8 +65,11 @@ public class JekyllPartialBuilder extends PartialBuilder {
       }
 
       partialBuildInfo.setLog(log);
-      partialBuildInfo.setStatus("ok");
-      System.out.println(log);
+      if (process.exitValue() == 0) {
+        partialBuildInfo.setStatus("ok");
+      } else {
+        System.out.println(log);
+      }
 
     } catch (Exception e) {
       ByteArrayOutputStream os = new ByteArrayOutputStream();
