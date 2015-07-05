@@ -25,6 +25,7 @@ public abstract class PartialBuilder {
     try {
       return internalExecute(pushEvent, properties);
     } catch (Exception e) {
+      e.printStackTrace();
       return null;
     }
   }

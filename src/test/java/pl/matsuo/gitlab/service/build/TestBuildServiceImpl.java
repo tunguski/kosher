@@ -56,7 +56,7 @@ public class TestBuildServiceImpl {
 
     verify(partialBuilder).execute(any(PushEvent.class), any(Properties.class));
 
-    pushEvent.getRepository().setUrl("http://github.com/tunguski/gitlab-java-event-listener.git");
+    pushEvent.getRepository().setUrl("https://github.com/tunguski/gitlab-java-event-listener.git");
     buildService.pushEvent(pushEvent);
   }
 

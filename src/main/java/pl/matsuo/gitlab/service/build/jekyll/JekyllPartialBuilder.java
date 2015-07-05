@@ -1,5 +1,7 @@
 package pl.matsuo.gitlab.service.build.jekyll;
 
+import org.apache.commons.io.FileUtils;
+import org.eclipse.jgit.util.FileUtil;
 import org.springframework.stereotype.Service;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
@@ -8,6 +10,7 @@ import pl.matsuo.gitlab.service.build.PartialBuilder;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -34,7 +37,13 @@ public class JekyllPartialBuilder extends PartialBuilder {
 
     File siteBase = new File(projectBase, destination);
     if (!siteBase.mkdirs()) {
-      throw new RuntimeException("Cannot create site base directory");
+      try {
+        // FileUtils is better at creating directories than JVM ;)
+        FileUtils.forceMkdir(siteBase);
+      } catch (IOException e) {
+        e.printStackTrace();
+        throw new RuntimeException("Cannot create site base directory: " + siteBase.getAbsolutePath());
+      }
     }
     destination = siteBase.getAbsolutePath();
 
