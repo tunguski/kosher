@@ -15,17 +15,17 @@ import static org.junit.Assert.*;
  * Created by marek on 05.07.15.
  */
 @ContextConfiguration(classes = { CoberturaPartialBuilder.class })
-public class TestCoberturaPartialBuilder extends AbstractPartialBuildTest {
+public abstract class TestCoberturaPartialBuilder extends AbstractPartialBuildTest {
 
 
   @Test
   public void testInternalExecute() throws Exception {
     Fun.Tuple2<String, File> checkout = checkoutProject();
 
-    assertTrue(new File(checkout.b, "target/checkstyle-result.xml").exists());
+    assertTrue(new File(checkout.b, "target/cobertura").exists());
     BuildInfo buildInfo = db.get(checkout.a, BuildInfo.class);
     assertEquals(1, buildInfo.getPartialStatuses().size());
-    assertEquals("ok", buildInfo.getPartialStatuses().get("checkstyle").getStatus());
+    assertEquals("ok", buildInfo.getPartialStatuses().get("cobertura").getStatus());
   }
 }
 
