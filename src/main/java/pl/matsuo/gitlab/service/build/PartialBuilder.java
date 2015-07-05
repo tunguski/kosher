@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
+import pl.matsuo.gitlab.service.db.Database;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
 import java.util.Properties;
@@ -18,6 +19,8 @@ public abstract class PartialBuilder {
 
   @Autowired
   protected GitRepositoryService gitRepositoryService;
+  @Autowired
+  protected Database database;
 
 
   @Async

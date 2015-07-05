@@ -1,4 +1,4 @@
-package pl.matsuo.gitlab.service.build.jekyll;
+package pl.matsuo.gitlab.service.build.pmd;
 
 import org.springframework.stereotype.Service;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
@@ -10,22 +10,23 @@ import java.util.concurrent.CompletableFuture;
 
 
 /**
- * Created by marek on 04.07.15.
+ * Created by marek on 05.07.15.
  */
 @Service
-public class JekyllPartialBuilder extends CommandExecutingPartialBuilder {
+public class PmdPartialBuilder extends CommandExecutingPartialBuilder {
 
 
+  @Override
   public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties) {
-    return internalExecute(pushEvent, JekyllProperties.source(properties), JekyllProperties.destination(properties),
-        destination -> new String[] { "jekyll", "build", "--destination", destination },
+    return internalExecute(pushEvent, ".", "target",
+        destination -> new String[] { "mvn", "pmd:pmd" },
         partialBuildInfo -> {});
   }
 
 
   @Override
   public String getName() {
-    return "jekyll";
+    return "pmd";
   }
 }
 

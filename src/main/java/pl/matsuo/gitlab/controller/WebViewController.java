@@ -2,7 +2,6 @@ package pl.matsuo.gitlab.controller;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +13,8 @@ import pl.matsuo.gitlab.service.build.jekyll.JekyllProperties;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
 import javax.servlet.http.HttpServletRequest;
-
 import java.io.File;
 import java.io.FileInputStream;
-import java.nio.file.Files;
 import java.util.Properties;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
