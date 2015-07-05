@@ -6,12 +6,15 @@ import org.apache.commons.io.IOUtils;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -49,17 +52,33 @@ public abstract class CommandExecutingPartialBuilder extends PartialBuilder {
     pb.directory(new File(projectBase, source));
     try {
       Process process = pb.start();
-      process.waitFor();
 
-      String log = IOUtils.toString(process.getInputStream()) + "\n\n"
-          + IOUtils.toString(process.getErrorStream());
+      BufferedReader out = new BufferedReader(new InputStreamReader(process.getInputStream()));
+      BufferedReader err = new BufferedReader(new InputStreamReader(process.getInputStream()));
+      String log = "";
+
+      while (process.isAlive()) {
+        System.out.println("...");
+        process.waitFor(3, TimeUnit.SECONDS);
+
+        while (out.ready()) {
+          String line = out.readLine();
+          System.out.println("    :: " + line);
+          log = log + "\n" + line;
+        }
+
+        while (err.ready()) {
+          String line = err.readLine();
+          System.out.println("    !! " + line);
+          log = log + "\n" + line;
+        }
+      }
 
       partialBuildInfo.setLog(log);
       partialBuildInfo.setExecutionResult(process.exitValue());
       if (process.exitValue() == 0) {
         partialBuildInfo.setStatus("ok");
       }
-      System.out.println(log);
 
       afterExecution.accept(partialBuildInfo);
     } catch (Exception e) {
