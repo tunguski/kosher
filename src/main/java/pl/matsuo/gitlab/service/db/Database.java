@@ -16,6 +16,9 @@ public interface Database {
   <V> V get(String key, Class<V> clazz);
 
 
+  void delete(String key);
+
+
   NavigableSet<String> keySet();
 
 

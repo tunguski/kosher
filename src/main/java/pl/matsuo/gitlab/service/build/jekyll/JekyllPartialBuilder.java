@@ -19,7 +19,7 @@ public class JekyllPartialBuilder extends CommandExecutingPartialBuilder {
   public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties) {
     return internalExecute(pushEvent, JekyllProperties.source(properties), JekyllProperties.destination(properties),
         destination -> new String[] { "jekyll", "build", "--destination", destination },
-        partialBuildInfo -> {});
+        (partialBuildInfo, generationBase) -> {});
   }
 
 

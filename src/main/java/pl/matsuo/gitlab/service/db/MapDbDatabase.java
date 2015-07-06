@@ -42,6 +42,10 @@ public class MapDbDatabase implements Database {
     }
   }
 
+  public void delete(String key) {
+    db.remove(key);
+  }
+
 
   public NavigableSet<String> keySet() {
     return db.keySet();

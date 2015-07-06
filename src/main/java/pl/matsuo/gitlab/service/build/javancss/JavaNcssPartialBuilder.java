@@ -20,7 +20,7 @@ public class JavaNcssPartialBuilder extends CommandExecutingPartialBuilder {
   public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties) {
     return internalExecute(pushEvent, ".", "target",
         destination -> new String[] { "mvn", "javancss:report" },
-        partialBuildInfo -> {});
+        (partialBuildInfo, generationBase) -> {});
   }
 
 

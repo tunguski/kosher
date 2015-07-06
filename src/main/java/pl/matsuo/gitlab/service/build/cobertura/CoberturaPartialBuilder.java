@@ -1,6 +1,5 @@
 package pl.matsuo.gitlab.service.build.cobertura;
 
-import org.springframework.stereotype.Service;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.CommandExecutingPartialBuilder;
@@ -20,7 +19,7 @@ public class CoberturaPartialBuilder extends CommandExecutingPartialBuilder {
   public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties) {
     return internalExecute(pushEvent, ".", "target",
         destination -> new String[] { "mvn", "cobertura:cobertura", "-DskipTests" },
-        partialBuildInfo -> {});
+        (partialBuildInfo, generationBase) -> {});
   }
 
 
