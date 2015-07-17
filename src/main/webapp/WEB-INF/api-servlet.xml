@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <context:component-scan use-default-filters="false" base-package="pl.matsuo">
+    <context:include-filter type="assignable" expression="pl.matsuo.gitlab.service.build.PartialBuilder"/>
+    <context:include-filter type="assignable" expression="pl.matsuo.gitlab.service.build.BuildService"/>
+    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+    <context:include-filter type="annotation" expression="pl.matsuo.gitlab.annotation.WebConfiguration" />
+  </context:component-scan>
+
+  <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+    <property name="cache" value="false"/>
+    <property name="prefix" value=""/>
+    <property name="suffix" value=".ftl"/>
+  </bean>
+
+  <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+    <!-- chyba nie zadziałało; chodzi o to aby requesty o Jsona miały content-length - wtedy będą wysyłane skompresowane,
+         bez tego są przesyłane jako zwykły tekst -->
+    <property name="updateContentLength" value="true" />
+  </bean>
+</beans>
