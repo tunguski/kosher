@@ -36,6 +36,10 @@ public class MapDbDatabase implements Database {
   public <V> V get(String key, Class<V> clazz) {
     try {
       String serialized = db.get(key);
+      if (serialized == null) {
+        return null;
+      }
+
       return objectMapper.readValue(serialized, clazz);
     } catch (IOException e) {
       throw new RuntimeException(e);

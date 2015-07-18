@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.scheduling.annotation.EnableAsync;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
 import static com.fasterxml.jackson.databind.DeserializationFeature.*;
@@ -16,7 +15,6 @@ import static com.fasterxml.jackson.databind.DeserializationFeature.*;
  * Created by marek on 04.07.15.
  */
 @Configuration
-@EnableAsync
 public class TestConfig {
 
 

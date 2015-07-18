@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import pl.matsuo.gitlab.exception.ResourceNotFoundException;
 import pl.matsuo.gitlab.hook.BuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.BuildService;
@@ -25,14 +27,22 @@ public class GitLabWebHookController {
 
 
   @RequestMapping(method = POST)
-  public String pushEvent(@RequestBody PushEvent pushEvent) {
+  public @ResponseBody
+  String pushEvent(@RequestBody PushEvent pushEvent) {
     return buildService.pushEvent(pushEvent);
   }
 
 
   @RequestMapping(value = "buildStatus/{idBuild}", method = GET)
-  public BuildInfo buildStatus(@PathVariable("idBuild") String idBuild) {
-    return buildService.buildStatus(idBuild);
+  public @ResponseBody
+  BuildInfo buildStatus(@PathVariable("idBuild") String idBuild) {
+    BuildInfo buildInfo = buildService.buildStatus(idBuild);
+
+    if (buildInfo == null) {
+      throw new ResourceNotFoundException();
+    }
+
+    return buildInfo;
   }
 }
 

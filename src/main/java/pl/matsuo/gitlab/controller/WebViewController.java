@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.HandlerMapping;
+import pl.matsuo.gitlab.exception.ResourceNotFoundException;
 import pl.matsuo.gitlab.service.build.jekyll.JekyllProperties;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
@@ -48,7 +49,8 @@ public class WebViewController {
         String restOfTheUrl = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
 
         String destination = JekyllProperties.destination(properties);
-        File file = new File(new File(config.getParentFile(), destination), restOfTheUrl);
+        File file = new File(new File(config.getParentFile(), destination),
+            restOfTheUrl.replaceFirst("/" + user + "/" + project + "/" + branch, ""));
         if (file.exists()) {
           // security - cannot escape from project directory by using ../../..
           if (!file.getCanonicalPath().startsWith(config.getParentFile().getCanonicalPath())) {
@@ -60,9 +62,9 @@ public class WebViewController {
           return "file not found: " + file.getAbsolutePath();
         }
       } catch (Exception e) {
-        throw new RuntimeException(e);
+        throw new ResourceNotFoundException();
       }
-    }).orElseThrow(() -> new RuntimeException("Site not found"));
+    }).orElseThrow(() -> new RuntimeException("x"));
   }
 }
 
