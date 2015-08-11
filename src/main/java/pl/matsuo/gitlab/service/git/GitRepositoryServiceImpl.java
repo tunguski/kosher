@@ -1,6 +1,10 @@
 package pl.matsuo.gitlab.service.git;
 
+import com.jcraft.jsch.Session;
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.transport.JschConfigSessionFactory;
+import org.eclipse.jgit.transport.OpenSshConfig;
+import org.eclipse.jgit.transport.SshSessionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import pl.matsuo.gitlab.exception.GitException;
@@ -21,6 +25,18 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
 
   @Value("${repositoryBase}")
   String repositoryBase;
+  @Value("${gitlabRepositoryBase}")
+  String gitlabRepositoryBase;
+
+
+  public GitRepositoryServiceImpl() {
+    // FIXME:
+    SshSessionFactory.setInstance(new JschConfigSessionFactory() {
+      public void configure(OpenSshConfig.Host hc, Session session) {
+        session.setConfig("StrictHostKeyChecking", "no");
+      }
+    });
+  }
 
 
   protected File getRepositoryFile(String userName, String projectName, String refName) {
@@ -48,12 +64,15 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
 
   @Override
   public Git checkout(PushEvent pushEvent) {
-    return checkout(getUser(pushEvent), getRepository(pushEvent), getRef(pushEvent), pushEvent.getRepository().getUrl());
+    return checkout(getUser(pushEvent), getRepository(pushEvent), getRef(pushEvent),
+        new File(gitlabRepositoryBase,
+            pushEvent.getRepository().getGit_ssh_url().split(":")[1]).getAbsoluteFile().toURI().toString());
   }
 
 
   @Override
   public Git checkout(String userName, String projectName, String refName, String uri) {
+    System.out.println(uri);
     try {
       File cloneFile = getRepositoryFile(userName, projectName, refName);
 
