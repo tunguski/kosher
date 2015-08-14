@@ -11,16 +11,19 @@ RUN  \
 
 RUN	ruby -S gem install jekyll
 
-RUN wget http://ftp.ps.pl/pub/apache/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz
-RUN tar -zxvf apache-maven-3.3.3-bin.tar.gz -C /opt/
-RUN ln -s /opt/apache-maven-3.3.3/bin/mvn /usr/bin/mvn
+RUN wget http://ftp.ps.pl/pub/apache/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz \
+ && tar -zxvf apache-maven-3.3.3-bin.tar.gz -C /opt/ \
+ && ln -s /opt/apache-maven-3.3.3/bin/mvn /usr/bin/mvn
 
-ENV repositoriesBase /repositories/
-ENV gitlabRepositoryBase /gitlabRepository/
+ENV repositoriesBase /home/kosher/data/repositories 
+ENV gitlabRepositoryBase /home/git/data 
 
 # attach volumes
-RUN mkdir ${repositoriesBase}
+RUN mkdir -p ${repositoriesBase}
+RUN mkdir -p ${gitlabRepositoryBase}
 RUN chown jetty:jetty -R ${repositoriesBase}
+RUN chown jetty:jetty -R ${gitlabRepositoryBase}
+RUN groupadd git && usermod -a -G git jetty # && usermod -a -G root jetty
 VOLUME ${repositoriesBase}
 VOLUME ${gitlabRepositoryBase}
 

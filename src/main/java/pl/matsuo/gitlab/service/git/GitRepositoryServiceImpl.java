@@ -11,6 +11,8 @@ import pl.matsuo.gitlab.exception.GitException;
 import pl.matsuo.gitlab.hook.PushEvent;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Optional;
 
 import static pl.matsuo.gitlab.util.PushEventUtil.*;
@@ -27,16 +29,6 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
   String repositoryBase;
   @Value("${gitlabRepositoryBase}")
   String gitlabRepositoryBase;
-
-
-  public GitRepositoryServiceImpl() {
-    // FIXME:
-    SshSessionFactory.setInstance(new JschConfigSessionFactory() {
-      public void configure(OpenSshConfig.Host hc, Session session) {
-        session.setConfig("StrictHostKeyChecking", "no");
-      }
-    });
-  }
 
 
   protected File getRepositoryFile(String userName, String projectName, String refName) {
@@ -64,9 +56,21 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
 
   @Override
   public Git checkout(PushEvent pushEvent) {
+    String path;
+    try {
+      path = new URL(pushEvent.getRepository().getUrl()).getPath();
+    } catch (MalformedURLException e) {
+      try {
+        path = new URL(pushEvent.getRepository().getGit_http_url()).getPath();
+      } catch (MalformedURLException e2) {
+        throw new RuntimeException(e2);
+      }
+    }
+
+    System.out.println(path);
+
     return checkout(getUser(pushEvent), getRepository(pushEvent), getRef(pushEvent),
-        new File(gitlabRepositoryBase,
-            pushEvent.getRepository().getGit_ssh_url().split(":")[1]).getAbsoluteFile().toURI().toString());
+        new File(gitlabRepositoryBase, path).getAbsoluteFile().toString());
   }
 
 
