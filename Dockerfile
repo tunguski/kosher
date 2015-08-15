@@ -15,17 +15,20 @@ RUN wget http://ftp.ps.pl/pub/apache/maven/maven-3/3.3.3/binaries/apache-maven-3
  && tar -zxvf apache-maven-3.3.3-bin.tar.gz -C /opt/ \
  && ln -s /opt/apache-maven-3.3.3/bin/mvn /usr/bin/mvn
 
-ENV repositoriesBase /home/kosher/data/repositories 
-ENV gitlabRepositoryBase /home/git/data 
+ENV repositoriesBase /home/kosher
+ENV gitlabRepositoryBase /home/git
 
 # attach volumes
-RUN mkdir -p ${repositoriesBase}
-RUN mkdir -p ${gitlabRepositoryBase}
+RUN mkdir -p ${repositoriesBase}/data/repositories 
+RUN mkdir -p ${gitlabRepositoryBase}/data 
 RUN chown jetty:jetty -R ${repositoriesBase}
 RUN chown jetty:jetty -R ${gitlabRepositoryBase}
-RUN groupadd git && usermod -a -G git jetty # && usermod -a -G root jetty
-VOLUME ${repositoriesBase}
-VOLUME ${gitlabRepositoryBase}
+RUN groupadd --gid 1000 git && usermod -a -G git jetty # && usermod -a -G root jetty
+#VOLUME ${repositoriesBase}
+#VOLUME ${gitlabRepositoryBase}
+
+#RUN chown jetty:jetty -R ${repositoriesBase}
+#RUN chown jetty:jetty -R ${gitlabRepositoryBase}
 
 COPY target/base-listener-1.0-SNAPSHOT.war /var/lib/jetty/webapps/ROOT.WAR
 

@@ -77,6 +77,26 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
   @Override
   public Git checkout(String userName, String projectName, String refName, String uri) {
     System.out.println(uri);
+
+    File file = new File(uri);
+    if (file.exists()) {
+      String[] list = file.list();
+      for (String s : list) {
+        System.out.println("I see file: " + s);
+      }
+    } else {
+      System.out.println("Repository file does not exist!");
+      while (file != null) {
+        file = file.getParentFile();
+        if (file.exists()) {
+          break;
+        }
+      }
+
+      throw new RuntimeException("Could not find repository. Exists only: " + file);
+    }
+
+
     try {
       File cloneFile = getRepositoryFile(userName, projectName, refName);
 
