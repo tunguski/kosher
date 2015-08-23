@@ -27,8 +27,17 @@ RUN groupadd --gid 1000 git && usermod -a -G git jetty # && usermod -a -G root j
 #VOLUME ${repositoriesBase}
 #VOLUME ${gitlabRepositoryBase}
 
+RUN apt-get install -y apt-utils sudo
+
+COPY src/docker/clone-repository.sh /home/kosher/clone-repository.sh
+
+RUN echo "jetty ALL=(ALL) NOPASSWD:/home/kosher/clone-repository.sh" >> /etc/sudoers
+RUN chmod a+x /home/kosher/clone-repository.sh
+
 #RUN chown jetty:jetty -R ${repositoriesBase}
 #RUN chown jetty:jetty -R ${gitlabRepositoryBase}
+
+
 
 COPY target/base-listener-1.0-SNAPSHOT.war /var/lib/jetty/webapps/ROOT.WAR
 
