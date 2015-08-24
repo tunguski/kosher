@@ -28,7 +28,7 @@ public class BuildServiceImpl implements BuildService {
   @Autowired
   GitRepositoryService gitRepositoryService;
   @Autowired(required = false)
-  List<PartialBuilder> partialBuilder;
+  List<PartialBuilder> partialBuilders;
 
 
   public String pushEvent(@RequestBody PushEvent pushEvent) {
@@ -41,7 +41,7 @@ public class BuildServiceImpl implements BuildService {
 
     gitRepositoryService.checkout(pushEvent);
 
-    if (partialBuilder != null) {
+    if (partialBuilders != null) {
       gitRepositoryService.getKosher(pushEvent).ifPresent(config -> {
         Properties properties = new Properties();
         try {
@@ -54,16 +54,18 @@ public class BuildServiceImpl implements BuildService {
         completableFuture.complete(null);
 
         CompletableFuture<PartialBuildInfo> future = completableFuture;
-        for (PartialBuilder builder : partialBuilder) {
-          future = future.thenCompose(info -> {
-            if (info != null) {
-              BuildInfo buildInfo1 = db.get(idBuild, BuildInfo.class);
-              buildInfo1.getPartialStatuses().put(info.getName(), info);
-              db.put(idBuild, buildInfo1);
-            }
+        for (PartialBuilder builder : partialBuilders) {
+          if (builder.shouldExecute(pushEvent, properties)) {
+            future = future.thenCompose(info -> {
+              if (info != null) {
+                BuildInfo buildInfo1 = db.get(idBuild, BuildInfo.class);
+                buildInfo1.getPartialStatuses().put(info.getName(), info);
+                db.put(idBuild, buildInfo1);
+              }
 
-            return builder.execute(pushEvent, properties);
-          });
+              return builder.execute(pushEvent, properties);
+            });
+          }
         }
 
         future.thenCompose(info -> {

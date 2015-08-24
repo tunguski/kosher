@@ -16,12 +16,28 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
  * Created by marek on 04.07.15.
  */
 @Controller
-@RequestMapping("/{user}/{project}/{branch}")
+@RequestMapping("/s/{user}/{project}/{branch}")
 public class CodeStatisticsController {
 
 
   @Autowired
-  Database database;
+  Database db;
+
+
+  @RequestMapping(value = "general", method = GET)
+  @ResponseStatus(HttpStatus.OK)
+  public @ResponseBody
+  String general(@PathVariable("user") String user,
+                    @PathVariable("project") String project,
+                    @PathVariable("branch") String branch) {
+    String result = "";
+
+    for (String key : db.keySet()) {
+      result = result + key + ": " + db.get(key, String.class) + "\n";
+    }
+
+    return result;
+  }
 
 
   @RequestMapping(value = "checkstyle", method = GET)

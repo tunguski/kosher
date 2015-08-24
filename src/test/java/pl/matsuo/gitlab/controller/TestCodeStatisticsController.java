@@ -7,7 +7,11 @@ import org.springframework.test.context.ContextConfiguration;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.hook.Repository;
 import pl.matsuo.gitlab.service.build.BuildServiceImpl;
+import pl.matsuo.gitlab.service.build.checkstyle.CheckStylePartialBuilder;
+import pl.matsuo.gitlab.service.build.findbugs.FindBugsPartialBuilder;
+import pl.matsuo.gitlab.service.build.javancss.JavaNcssPartialBuilder;
 import pl.matsuo.gitlab.service.build.jekyll.JekyllPartialBuilder;
+import pl.matsuo.gitlab.service.build.pmd.PmdPartialBuilder;
 import pl.matsuo.gitlab.service.db.MapDbDatabase;
 import pl.matsuo.gitlab.service.git.GitRepositoryServiceImpl;
 
@@ -20,7 +24,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Created by marek on 05.07.15.
  */
 @ContextConfiguration(classes = { BuildServiceImpl.class, MapDbDatabase.class, GitRepositoryServiceImpl.class,
-                                  JekyllPartialBuilder.class, CodeStatisticsController.class })
+                                  CheckStylePartialBuilder.class, FindBugsPartialBuilder.class,
+                                  JavaNcssPartialBuilder.class, PmdPartialBuilder.class,
+                                  CodeStatisticsController.class })
 public class TestCodeStatisticsController extends AbstractControllerRequestTest {
 
 
@@ -42,28 +48,28 @@ public class TestCodeStatisticsController extends AbstractControllerRequestTest 
 
   @Test
   public void testCheckstyle() throws Exception {
-    performAndCheckStatus(get("/tunguski/gitlab-java-event-listener/master/checkstyle"), status().isOk(),
+    performAndCheckStatus(get("/s/tunguski/gitlab-java-event-listener/master/checkstyle"), status().isOk(),
         html -> assertTrue(html.contains("checkstyle")));
   }
 
 
   @Test
   public void testFindbugs() throws Exception {
-    performAndCheckStatus(get("/tunguski/gitlab-java-event-listener/master/findbugs"), status().isOk(),
+    performAndCheckStatus(get("/s/tunguski/gitlab-java-event-listener/master/findbugs"), status().isOk(),
         html -> assertTrue(html.contains("findbugs")));
   }
 
 
   @Test
   public void testJavancss() throws Exception {
-    performAndCheckStatus(get("/tunguski/gitlab-java-event-listener/master/javancss"), status().isOk(),
+    performAndCheckStatus(get("/s/tunguski/gitlab-java-event-listener/master/javancss"), status().isOk(),
         html -> assertTrue(html.contains("javancss")));
   }
 
 
   @Test
   public void testPmd() throws Exception {
-    performAndCheckStatus(get("/tunguski/gitlab-java-event-listener/master/pmd"), status().isOk(),
+    performAndCheckStatus(get("/s/tunguski/gitlab-java-event-listener/master/pmd"), status().isOk(),
         html -> assertTrue(html.contains("pmd")));
   }
 }

@@ -5,6 +5,7 @@ import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.CommandExecutingPartialBuilder;
 
+import java.io.File;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 
@@ -27,6 +28,14 @@ public class JavaNcssPartialBuilder extends CommandExecutingPartialBuilder {
   @Override
   public String getName() {
     return "javancss";
+  }
+
+
+  @Override
+  public boolean shouldExecute(PushEvent pushEvent, Properties properties) {
+    boolean exists = new File(gitRepositoryService.repository(pushEvent), "pom.xml").exists();
+    System.out.println(getName() + " partial builder should execute: " + exists);
+    return exists;
   }
 }
 

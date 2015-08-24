@@ -42,8 +42,8 @@ public class TestBuildServiceImpl {
   public void beforeTest() {
     reset(partialBuilder);
 
-    buildService.partialBuilder = new ArrayList<>();
-    buildService.partialBuilder.add(partialBuilder);
+    buildService.partialBuilders = new ArrayList<>();
+    buildService.partialBuilders.add(partialBuilder);
   }
 
 

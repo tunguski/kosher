@@ -5,6 +5,7 @@ import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.CommandExecutingPartialBuilder;
 
+import java.io.File;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 
@@ -26,6 +27,12 @@ public class JekyllPartialBuilder extends CommandExecutingPartialBuilder {
   @Override
   public String getName() {
     return "jekyll";
+  }
+
+
+  @Override
+  public boolean shouldExecute(PushEvent pushEvent, Properties properties) {
+    return true;
   }
 }
 

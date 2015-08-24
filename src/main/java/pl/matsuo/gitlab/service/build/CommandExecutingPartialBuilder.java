@@ -45,7 +45,7 @@ public abstract class CommandExecutingPartialBuilder extends PartialBuilder {
     File generationBase = new File(projectBase, destination);
     if (!generationBase.mkdirs()) {
       try {
-        // FileUtils is better at creating directories than JVM ;)
+        // FileUtils is better at creating directories than JRE
         FileUtils.forceMkdir(generationBase);
       } catch (IOException e) {
         e.printStackTrace();

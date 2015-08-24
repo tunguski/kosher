@@ -36,6 +36,10 @@ public abstract class PartialBuilder {
 
   public abstract CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties);
 
+
   public abstract String getName();
+
+
+  public abstract boolean shouldExecute(PushEvent pushEvent, Properties properties);
 }
 

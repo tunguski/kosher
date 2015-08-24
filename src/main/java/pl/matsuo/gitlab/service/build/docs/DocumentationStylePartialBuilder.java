@@ -32,5 +32,11 @@ public class DocumentationStylePartialBuilder extends PartialBuilder {
   public String getName() {
     return "documentation";
   }
+
+
+  @Override
+  public boolean shouldExecute(PushEvent pushEvent, Properties properties) {
+    return true;
+  }
 }
 
