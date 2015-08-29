@@ -1,6 +1,5 @@
 package pl.matsuo.gitlab.controller;
 
-import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,12 +13,9 @@ import pl.matsuo.gitlab.service.build.BuildServiceImpl;
 import pl.matsuo.gitlab.service.build.checkstyle.CheckStylePartialBuilder;
 import pl.matsuo.gitlab.service.build.findbugs.FindBugsPartialBuilder;
 import pl.matsuo.gitlab.service.build.javancss.JavaNcssPartialBuilder;
-import pl.matsuo.gitlab.service.build.jekyll.JekyllPartialBuilder;
 import pl.matsuo.gitlab.service.build.pmd.PmdPartialBuilder;
 import pl.matsuo.gitlab.service.db.MapDbDatabase;
 import pl.matsuo.gitlab.service.git.GitRepositoryServiceImpl;
-
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -60,9 +56,10 @@ public class TestCodeStatisticsController extends AbstractControllerRequestTest 
   public void testBuildResult() throws Exception {
     performAndCheckStatus(get("/s/tunguski/gitlab-java-event-listener/master"), status().isOk(),
         ref -> {
-          System.out.println("/s/tunguski/gitlab-java-event-listener/master: " + ref.replaceAll("\"", ""));
-          performAndCheckStatus(get("/s/" + ref.replaceAll("\"", "")), status().isOk(), html -> {
-            System.out.println(ref.replaceAll("\"", "") + ": " + html);
+          String cleanRef = ref.replaceAll("[\\\\\"]+", "");
+          System.out.println("/s/tunguski/gitlab-java-event-listener/master: " + cleanRef);
+          performAndCheckStatus(get("/s/" + cleanRef), status().isOk(), html -> {
+            System.out.println(cleanRef + ": " + html);
 
             BuildInfo buildInfo = objectMapper.readValue(html, BuildInfo.class);
 

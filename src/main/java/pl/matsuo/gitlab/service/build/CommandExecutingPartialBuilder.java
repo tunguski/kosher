@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.db.Database;
-import pl.matsuo.gitlab.util.PushEventUtil;
 import pl.matsuo.gitlab.util.TriFunction;
 
 import java.io.BufferedReader;

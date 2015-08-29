@@ -18,8 +18,6 @@ import pl.matsuo.gitlab.AbstractSampleProjectTest;
 import pl.matsuo.gitlab.conf.TestConfig;
 import pl.matsuo.gitlab.util.ThrowingConsumer;
 
-import java.util.function.Consumer;
-
 import static org.springframework.http.MediaType.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;

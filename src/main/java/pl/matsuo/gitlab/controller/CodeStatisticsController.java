@@ -7,14 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.data.ProjectInfo;
 import pl.matsuo.gitlab.data.UserInfo;
-import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.service.db.Database;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
-import static pl.matsuo.gitlab.util.PushEventUtil.subPath;
+import static pl.matsuo.gitlab.util.PushEventUtil.*;
 
 
 /**

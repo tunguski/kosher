@@ -1,18 +1,12 @@
 package pl.matsuo.gitlab.service.git;
 
-import com.jcraft.jsch.Session;
 import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.transport.JschConfigSessionFactory;
-import org.eclipse.jgit.transport.OpenSshConfig;
-import org.eclipse.jgit.transport.SshSessionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import pl.matsuo.gitlab.exception.GitException;
 import pl.matsuo.gitlab.hook.PushEvent;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;

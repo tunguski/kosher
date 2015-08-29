@@ -2,7 +2,6 @@ package pl.matsuo.gitlab.service.build;
 
 import org.mapdb.Fun;
 import pl.matsuo.gitlab.data.BuildInfo;
-import pl.matsuo.gitlab.util.PushEventUtil;
 
 import java.io.File;
 
