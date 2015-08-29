@@ -3,7 +3,7 @@ package pl.matsuo.gitlab.service.build.cobertura;
 import org.junit.Test;
 import org.mapdb.Fun;
 import org.springframework.test.context.ContextConfiguration;
-import pl.matsuo.gitlab.hook.BuildInfo;
+import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.service.build.AbstractPartialBuildTest;
 
 import java.io.File;

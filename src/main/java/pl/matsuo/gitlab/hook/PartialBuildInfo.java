@@ -10,9 +10,6 @@ public class PartialBuildInfo {
   String name;
   String status = "Pending";
   Integer executionResult;
-  String log;
-  // database id of object containing custom builder result data
-  String idReport;
 
 
   public String getName() {
@@ -27,23 +24,11 @@ public class PartialBuildInfo {
   public void setStatus(String status) {
     this.status = status;
   }
-  public String getLog() {
-    return log;
-  }
-  public void setLog(String log) {
-    this.log = log;
-  }
   public Integer getExecutionResult() {
     return executionResult;
   }
   public void setExecutionResult(Integer executionResult) {
     this.executionResult = executionResult;
-  }
-  public String getIdReport() {
-    return idReport;
-  }
-  public void setIdReport(String idReport) {
-    this.idReport = idReport;
   }
 }
 

@@ -1,9 +1,13 @@
 package pl.matsuo.gitlab.controller;
 
+import com.fasterxml.jackson.databind.MappingIterator;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.context.ContextConfiguration;
+import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.hook.Repository;
 import pl.matsuo.gitlab.service.build.BuildServiceImpl;
@@ -14,6 +18,8 @@ import pl.matsuo.gitlab.service.build.jekyll.JekyllPartialBuilder;
 import pl.matsuo.gitlab.service.build.pmd.PmdPartialBuilder;
 import pl.matsuo.gitlab.service.db.MapDbDatabase;
 import pl.matsuo.gitlab.service.git.GitRepositoryServiceImpl;
+
+import java.io.IOException;
 
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -33,12 +39,16 @@ public class TestCodeStatisticsController extends AbstractControllerRequestTest 
   @Autowired
   BuildServiceImpl buildService;
 
+  MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+  ObjectMapper objectMapper = converter.getObjectMapper();
+
 
   @Before
   public void before() {
     PushEvent pushEvent = new PushEvent();
     pushEvent.setRepository(new Repository());
     pushEvent.setRef("refs/heads/master");
+    pushEvent.setAfter("78af4d73667e3ef4bbb06e82270e0015a1f251ea");
     pushEvent.getRepository().setUrl("https://github.com/tunguski/gitlab-java-event-listener.git");
     pushEvent.getRepository().setGit_ssh_url("git@github.com:tunguski/gitlab-java-event-listener.git");
 
@@ -47,30 +57,21 @@ public class TestCodeStatisticsController extends AbstractControllerRequestTest 
 
 
   @Test
-  public void testCheckstyle() throws Exception {
-    performAndCheckStatus(get("/s/tunguski/gitlab-java-event-listener/master/checkstyle"), status().isOk(),
-        html -> assertTrue(html.contains("checkstyle")));
-  }
+  public void testBuildResult() throws Exception {
+    performAndCheckStatus(get("/s/tunguski/gitlab-java-event-listener/master"), status().isOk(),
+        ref -> {
+          System.out.println("/s/tunguski/gitlab-java-event-listener/master: " + ref.replaceAll("\"", ""));
+          performAndCheckStatus(get("/s/" + ref.replaceAll("\"", "")), status().isOk(), html -> {
+            System.out.println(ref.replaceAll("\"", "") + ": " + html);
 
+            BuildInfo buildInfo = objectMapper.readValue(html, BuildInfo.class);
 
-  @Test
-  public void testFindbugs() throws Exception {
-    performAndCheckStatus(get("/s/tunguski/gitlab-java-event-listener/master/findbugs"), status().isOk(),
-        html -> assertTrue(html.contains("findbugs")));
-  }
-
-
-  @Test
-  public void testJavancss() throws Exception {
-    performAndCheckStatus(get("/s/tunguski/gitlab-java-event-listener/master/javancss"), status().isOk(),
-        html -> assertTrue(html.contains("javancss")));
-  }
-
-
-  @Test
-  public void testPmd() throws Exception {
-    performAndCheckStatus(get("/s/tunguski/gitlab-java-event-listener/master/pmd"), status().isOk(),
-        html -> assertTrue(html.contains("pmd")));
+            assertTrue(buildInfo.getPartialStatuses().containsKey("checkstyle"));
+            assertTrue(buildInfo.getPartialStatuses().containsKey("pmd"));
+            assertTrue(buildInfo.getPartialStatuses().containsKey("javancss"));
+            assertTrue(buildInfo.getPartialStatuses().containsKey("findbugs"));
+          });
+        });
   }
 }
 

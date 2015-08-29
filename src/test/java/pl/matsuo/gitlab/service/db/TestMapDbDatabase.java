@@ -17,7 +17,7 @@ public class TestMapDbDatabase {
   @Test
   public void testPutAndGet() throws Exception {
     database.put("test", "value");
-    assertEquals("value", database.get("test", String.class));
+    assertEquals("\"value\"", database.get("test", String.class));
   }
 
 

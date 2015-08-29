@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import pl.matsuo.gitlab.hook.BuildInfo;
+import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.hook.Repository;
 import pl.matsuo.gitlab.service.db.Database;
@@ -54,6 +54,7 @@ public class TestBuildServiceImpl {
     PushEvent pushEvent = new PushEvent();
     pushEvent.setRepository(new Repository());
     pushEvent.setRef("refs/heads/master");
+    pushEvent.setAfter("78af4d73667e3ef4bbb06e82270e0015a1f251ea");
 
     when(gitRepositoryService.getKosher(any(PushEvent.class))).thenReturn(Optional.of(File.createTempFile(".kosher", "")));
 
@@ -74,6 +75,7 @@ public class TestBuildServiceImpl {
     PushEvent pushEvent = new PushEvent();
     pushEvent.setRepository(new Repository());
     pushEvent.setRef("refs/heads/master");
+    pushEvent.setAfter("78af4d73667e3ef4bbb06e82270e0015a1f251ea");
     pushEvent.getRepository().setUrl("git@github.com:tunguski/gitlab-java-event-listener.git");
 
     when(gitRepositoryService.getKosher(any(PushEvent.class))).thenReturn(Optional.of(File.createTempFile(".kosher", "")));

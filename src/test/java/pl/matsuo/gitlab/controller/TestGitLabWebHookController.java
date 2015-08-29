@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import pl.matsuo.gitlab.conf.TestConfig;
-import pl.matsuo.gitlab.hook.BuildInfo;
+import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.BuildServiceImpl;
 import pl.matsuo.gitlab.service.db.Database;
@@ -21,7 +21,7 @@ import java.io.File;
 
 import static org.apache.commons.io.FileUtils.*;
 import static org.junit.Assert.*;
-import static pl.matsuo.gitlab.hook.BuildStatus.*;
+import static pl.matsuo.gitlab.data.BuildStatus.*;
 
 
 /**

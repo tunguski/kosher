@@ -1,9 +1,10 @@
-package pl.matsuo.gitlab.hook;
+package pl.matsuo.gitlab.data;
+
+import pl.matsuo.gitlab.hook.PartialBuildInfo;
+import pl.matsuo.gitlab.hook.PushEvent;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static pl.matsuo.gitlab.hook.BuildStatus.*;
 
 
 /**
@@ -13,7 +14,7 @@ public class BuildInfo {
 
 
   String id;
-  BuildStatus status = Pending;
+  BuildStatus status = BuildStatus.Pending;
   Map<String, PartialBuildInfo> partialStatuses = new HashMap<String, PartialBuildInfo>();
   PushEvent pushEvent;
 

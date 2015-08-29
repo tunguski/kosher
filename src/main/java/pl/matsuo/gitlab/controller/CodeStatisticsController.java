@@ -7,16 +7,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import pl.matsuo.gitlab.data.BuildInfo;
+import pl.matsuo.gitlab.data.ProjectInfo;
+import pl.matsuo.gitlab.data.UserInfo;
+import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.service.db.Database;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
+import static pl.matsuo.gitlab.util.PushEventUtil.subPath;
 
 
 /**
  * Created by marek on 04.07.15.
  */
 @Controller
-@RequestMapping("/s/{user}/{project}/{branch}")
+@RequestMapping("/s")
 public class CodeStatisticsController {
 
 
@@ -24,59 +29,57 @@ public class CodeStatisticsController {
   Database db;
 
 
-  @RequestMapping(value = "general", method = GET)
+  @RequestMapping(value = "/", method = GET)
   @ResponseStatus(HttpStatus.OK)
   public @ResponseBody
-  String general(@PathVariable("user") String user,
-                    @PathVariable("project") String project,
-                    @PathVariable("branch") String branch) {
+  String all() {
     String result = "";
 
     for (String key : db.keySet()) {
-      result = result + key + ": " + db.get(key, String.class) + "\n";
+      result += key + ": " + db.get(key, String.class) + "\n\n";
     }
 
     return result;
   }
 
 
-  @RequestMapping(value = "checkstyle", method = GET)
+  @RequestMapping(value = "/{user}", method = GET)
   @ResponseStatus(HttpStatus.OK)
   public @ResponseBody
-  String checkstyle(@PathVariable("user") String user,
-                    @PathVariable("project") String project,
-                    @PathVariable("branch") String branch) {
-    return "checkstyle";
+  UserInfo user(@PathVariable("user") String user) {
+    return db.get(user, UserInfo.class);
   }
 
 
-  @RequestMapping(value = "findbugs", method = GET)
+  @RequestMapping(value = "/{user}/{project}", method = GET)
   @ResponseStatus(HttpStatus.OK)
   public @ResponseBody
-  String findbugs(@PathVariable("user") String user,
-             @PathVariable("project") String project,
-             @PathVariable("branch") String branch) {
-    return "findbugs";
+  ProjectInfo project(@PathVariable("user") String user,
+                 @PathVariable("project") String project) {
+    return db.get(subPath(user, project), ProjectInfo.class);
   }
 
 
-  @RequestMapping(value = "javancss", method = GET)
+  @RequestMapping(value = "/{user}/{project}/{branch}", method = GET)
   @ResponseStatus(HttpStatus.OK)
   public @ResponseBody
-  String javancss(@PathVariable("user") String user,
-             @PathVariable("project") String project,
-             @PathVariable("branch") String branch) {
-    return "javancss";
+  String branch(@PathVariable("user") String user,
+                   @PathVariable("project") String project,
+                   @PathVariable("branch") String branch) {
+    return db.get(subPath(user, project, branch), String.class);
   }
 
 
-  @RequestMapping(value = "pmd", method = GET)
+  @RequestMapping(value = "/{user}/{project}/{branch}/{commit}/{element}/{part}", method = GET)
   @ResponseStatus(HttpStatus.OK)
   public @ResponseBody
-  String pmd(@PathVariable("user") String user,
-             @PathVariable("project") String project,
-             @PathVariable("branch") String branch) {
-    return "pmd";
+  String partialInfo(@PathVariable("user") String user,
+                   @PathVariable("project") String project,
+                   @PathVariable("branch") String branch,
+                   @PathVariable("commit") String commit,
+                   @PathVariable("element") String element,
+                     @PathVariable("part") String part) {
+    return db.get(subPath(user, project, branch, commit, element, part), String.class);
   }
 }
 

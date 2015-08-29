@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.NavigableSet;
 import java.util.concurrent.ConcurrentNavigableMap;
+import java.util.function.Function;
 
 /**
  * Created by marek on 04.07.15.
@@ -38,6 +39,8 @@ public class MapDbDatabase implements Database {
       String serialized = db.get(key);
       if (serialized == null) {
         return null;
+      } else if (clazz.equals(String.class)) {
+        return (V) serialized;
       }
 
       return objectMapper.readValue(serialized, clazz);
@@ -45,6 +48,19 @@ public class MapDbDatabase implements Database {
       throw new RuntimeException(e);
     }
   }
+
+
+  @Override
+  public <V> V update(String key, Class<V> clazz, Function<V, V> exec) {
+    V result = exec.apply(get(key, clazz));
+
+    if (result != null) {
+      put(key, result);
+    }
+
+    return result;
+  }
+
 
   public void delete(String key) {
     db.remove(key);
@@ -68,6 +84,11 @@ public class MapDbDatabase implements Database {
 
   public boolean isEmpty() {
     return db.isEmpty();
+  }
+
+  @Override
+  public boolean containsKey(String key) {
+    return db.containsKey(key);
   }
 }
 

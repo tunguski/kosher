@@ -1,11 +1,13 @@
 package pl.matsuo.gitlab.service.build;
 
 import org.mapdb.Fun;
-import pl.matsuo.gitlab.hook.BuildInfo;
+import pl.matsuo.gitlab.data.BuildInfo;
+import pl.matsuo.gitlab.util.PushEventUtil;
 
 import java.io.File;
 
 import static org.junit.Assert.*;
+import static pl.matsuo.gitlab.util.PushEventUtil.*;
 
 
 /**
@@ -24,7 +26,7 @@ public abstract class AbstractSingleReportBuilderTest extends AbstractPartialBui
     assertEquals(1, buildInfo.getPartialStatuses().size());
     assertEquals("ok", buildInfo.getPartialStatuses().get(builderName).getStatus());
 
-    assertNotNull(db.get(buildInfo.getPartialStatuses().get(builderName).getIdReport(), String.class));
+    assertNotNull(db.get(commit(buildInfo.getPushEvent(), builderName, "file"), String.class));
   }
 }
 

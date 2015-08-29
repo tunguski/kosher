@@ -2,6 +2,7 @@ package pl.matsuo.gitlab.service.db;
 
 import java.util.Collection;
 import java.util.NavigableSet;
+import java.util.function.Function;
 
 
 /**
@@ -14,6 +15,9 @@ public interface Database {
 
 
   <V> V get(String key, Class<V> clazz);
+
+
+  <V> V update(String key, Class<V> clazz, Function<V, V> exec);
 
 
   void delete(String key);
@@ -29,5 +33,7 @@ public interface Database {
 
 
   boolean isEmpty();
+
+  boolean containsKey(String key);
 }
 

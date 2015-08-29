@@ -64,7 +64,7 @@ public class WebViewController {
       } catch (Exception e) {
         throw new ResourceNotFoundException();
       }
-    }).orElseThrow(() -> new RuntimeException("x"));
+    }).orElseThrow(() -> new RuntimeException("No .kosher file found"));
   }
 }
 

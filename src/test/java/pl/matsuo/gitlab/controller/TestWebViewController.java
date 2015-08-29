@@ -32,6 +32,7 @@ public class TestWebViewController extends AbstractControllerRequestTest {
     PushEvent pushEvent = new PushEvent();
     pushEvent.setRepository(new Repository());
     pushEvent.setRef("refs/heads/master");
+    pushEvent.setAfter("78af4d73667e3ef4bbb06e82270e0015a1f251ea");
     pushEvent.getRepository().setUrl("https://github.com/tunguski/gitlab-java-event-listener.git");
     pushEvent.getRepository().setGit_ssh_url("git@github.com:tunguski/gitlab-java-event-listener.git");
 

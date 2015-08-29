@@ -6,6 +6,8 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
+import pl.matsuo.gitlab.service.db.Database;
+import pl.matsuo.gitlab.util.PushEventUtil;
 import pl.matsuo.gitlab.util.TriFunction;
 
 import java.io.BufferedReader;
@@ -21,6 +23,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 import static org.apache.commons.io.FileUtils.*;
+import static pl.matsuo.gitlab.util.PushEventUtil.*;
 
 
 /**
@@ -31,6 +34,8 @@ public abstract class CommandExecutingPartialBuilder extends PartialBuilder {
 
   @Autowired
   ObjectMapper objectMapper;
+  @Autowired
+  Database db;
 
 
   public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, String source, String destination,
@@ -55,7 +60,8 @@ public abstract class CommandExecutingPartialBuilder extends PartialBuilder {
 
     // fixme: execute build
     String[] command = executionCommands.apply(generationBase.getAbsolutePath());
-    System.out.println("Executing command: " + Arrays.toString(command) + " in directory: " + new File(projectBase, source).getAbsolutePath());
+    System.out.println("Executing command: " + Arrays.toString(command) + " in directory: "
+        + new File(projectBase, source).getAbsolutePath());
     ProcessBuilder pb = new ProcessBuilder(command);
     pb.environment().put("ci-build", "true");
     pb.directory(new File(projectBase, source));
@@ -83,18 +89,23 @@ public abstract class CommandExecutingPartialBuilder extends PartialBuilder {
         }
       }
 
-      partialBuildInfo.setLog(log);
+      db.put(commit(pushEvent, getName(), "log"), log);
       partialBuildInfo.setExecutionResult(process.exitValue());
 
       afterExecution.accept(partialBuildInfo, generationBase);
 
       if (process.exitValue() == 0) {
         partialBuildInfo.setStatus("ok");
+      } else {
+        partialBuildInfo.setStatus("error");
       }
     } catch (Exception e) {
       ByteArrayOutputStream os = new ByteArrayOutputStream();
       e.printStackTrace(new PrintWriter(os));
-      partialBuildInfo.setLog(new String(os.toByteArray()));
+      db.put(commit(pushEvent, getName(), "log"), new String(os.toByteArray()));
+
+      partialBuildInfo.setStatus("error");
+
       e.printStackTrace();
     }
 
@@ -104,7 +115,8 @@ public abstract class CommandExecutingPartialBuilder extends PartialBuilder {
   }
 
 
-  public BiConsumer<PartialBuildInfo, File> executeWithReport(String reportName,
+  public BiConsumer<PartialBuildInfo, File> executeWithReport(PushEvent pushEvent,
+                                                              String reportName,
                                                               TriFunction<PartialBuildInfo, File, String, ?> exec) {
     return (partialBuildInfo, generationBase) -> {
       File reportFile = new File(generationBase, reportName);
@@ -112,13 +124,7 @@ public abstract class CommandExecutingPartialBuilder extends PartialBuilder {
         try {
           String reportBody = readFileToString(reportFile);
 
-          if (partialBuildInfo.getIdReport() != null) {
-            database.delete(partialBuildInfo.getIdReport());
-          }
-
-          String idReport = getName() + "_report_" + System.currentTimeMillis();
-
-          partialBuildInfo.setIdReport(idReport);
+          String idReport = commit(pushEvent, getName(), "file");
 
           Object report = exec.apply(partialBuildInfo, generationBase, reportBody);
           database.put(idReport, objectMapper.writeValueAsString(report));

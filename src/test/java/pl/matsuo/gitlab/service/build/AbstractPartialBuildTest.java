@@ -42,6 +42,7 @@ public abstract class AbstractPartialBuildTest extends AbstractSampleProjectTest
     pushEvent.getRepository().setGit_http_url("http://github.com/tunguski/gitlab-java-event-listener.git");
     pushEvent.getRepository().setGit_ssh_url("git@github.com:tunguski/gitlab-java-event-listener.git");
     pushEvent.setRef("refs/heads/master");
+    pushEvent.setAfter("78af4d73667e3ef4bbb06e82270e0015a1f251ea");
 
     String idBuild = buildService.pushEvent(pushEvent);
     File repository = gitRepositoryService.repository(pushEvent);

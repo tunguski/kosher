@@ -1,4 +1,4 @@
-package pl.matsuo.gitlab.hook;
+package pl.matsuo.gitlab.data;
 
 
 /**

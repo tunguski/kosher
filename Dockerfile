@@ -83,7 +83,7 @@ RUN chown jetty:jetty -R /home/jetty/.m2/repository
 RUN groupadd --gid 1000 git && usermod -a -G git jetty # && usermod -a -G root jetty
 #VOLUME ${repositoriesBase}
 #VOLUME ${gitlabRepositoryBase}
-#VOLUME /home/jetty/.m2
+VOLUME /home/jetty/.m2
 
 COPY src/docker/clone-repository.sh /home/kosher/clone-repository.sh
 

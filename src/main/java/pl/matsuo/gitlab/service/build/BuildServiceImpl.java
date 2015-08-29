@@ -3,17 +3,22 @@ package pl.matsuo.gitlab.service.build;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-import pl.matsuo.gitlab.hook.BuildInfo;
+import pl.matsuo.gitlab.data.BuildInfo;
+import pl.matsuo.gitlab.data.ProjectInfo;
+import pl.matsuo.gitlab.data.UserInfo;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.db.Database;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
+import pl.matsuo.gitlab.util.PushEventUtil;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
+
+import static pl.matsuo.gitlab.util.PushEventUtil.*;
 
 
 /**
@@ -32,7 +37,29 @@ public class BuildServiceImpl implements BuildService {
 
 
   public String pushEvent(@RequestBody PushEvent pushEvent) {
-    String idBuild = "build_" + System.currentTimeMillis();
+    String user = getUser(pushEvent);
+    String project = getRepository(pushEvent);
+    String branch = getRef(pushEvent);
+
+    // add userInfo if not exist, add project to userInfo
+    db.update(user, UserInfo.class, userInfo -> {
+      if (userInfo == null) {
+        userInfo = new UserInfo();
+      }
+      userInfo.getProjects().add(project);
+      return userInfo;
+    });
+
+    // add projectInfo if not exist, add branch to projectInfo
+    db.update(subPath(user, project), ProjectInfo.class, projectInfo -> {
+      if (projectInfo == null) {
+        projectInfo = new ProjectInfo();
+      }
+      projectInfo.getBranches().add(branch);
+      return projectInfo;
+    });
+
+    String idBuild = commit(pushEvent);
 
     BuildInfo buildInfo = new BuildInfo();
     buildInfo.setId(idBuild);
@@ -50,10 +77,10 @@ public class BuildServiceImpl implements BuildService {
           throw new RuntimeException(e);
         }
 
-        CompletableFuture<PartialBuildInfo> completableFuture = new CompletableFuture<>();
-        completableFuture.complete(null);
+        CompletableFuture<PartialBuildInfo> future = new CompletableFuture<>();
+        future.complete(null);
 
-        CompletableFuture<PartialBuildInfo> future = completableFuture;
+        // add all partial builders in async queue
         for (PartialBuilder builder : partialBuilders) {
           if (builder.shouldExecute(pushEvent, properties)) {
             future = future.thenCompose(info -> {
@@ -68,11 +95,17 @@ public class BuildServiceImpl implements BuildService {
           }
         }
 
+        // after all partial builders finished, add data to database
         future.thenCompose(info -> {
           if (info != null) {
             BuildInfo newInfo = db.get(idBuild, BuildInfo.class);
             newInfo.getPartialStatuses().put(info.getName(), info);
             db.put(idBuild, newInfo);
+
+            // reference for branch to commit
+            db.put(subPath(pushEvent), idBuild);
+
+            System.out.println("Build finished: " + idBuild);
           }
 
           return null;

@@ -21,7 +21,7 @@ public class PmdPartialBuilder extends CommandExecutingPartialBuilder {
   public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties) {
     return internalExecute(pushEvent, ".", "target",
         destination -> new String[] { "mvn", "pmd:pmd" },
-        executeWithReport("pmd.xml", (partialBuildInfo, generationBase, reportBody) -> {
+        executeWithReport(pushEvent, "pmd.xml", (partialBuildInfo, generationBase, reportBody) -> {
           // fixme: parse report and calculate all quality values
 
           return reportBody;

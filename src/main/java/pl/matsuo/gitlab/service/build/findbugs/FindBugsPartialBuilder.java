@@ -22,7 +22,7 @@ public class FindBugsPartialBuilder extends CommandExecutingPartialBuilder {
     return internalExecute(pushEvent, ".", "target",
         // fixme: compilation shuld be enabled after checkout?
         destination -> new String[] { "mvn", "compile", "findbugs:findbugs" },
-        executeWithReport("findbugsXml.xml", (partialBuildInfo, generationBase, reportBody) -> {
+        executeWithReport(pushEvent, "findbugsXml.xml", (partialBuildInfo, generationBase, reportBody) -> {
           // fixme: parse report and calculate all quality values
 
           return reportBody;

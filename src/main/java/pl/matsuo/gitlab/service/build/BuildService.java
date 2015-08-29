@@ -1,7 +1,7 @@
 package pl.matsuo.gitlab.service.build;
 
 import org.springframework.web.bind.annotation.RequestBody;
-import pl.matsuo.gitlab.hook.BuildInfo;
+import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 
 /**
