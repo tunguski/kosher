@@ -25,12 +25,6 @@ public class CoberturaPartialBuilder extends CommandExecutingPartialBuilder {
 
 
   @Override
-  public String getName() {
-    return "cobertura";
-  }
-
-
-  @Override
   public boolean shouldExecute(PushEvent pushEvent, Properties properties) {
     boolean exists = new File(gitRepositoryService.repository(pushEvent), "pom.xml").exists();
     System.out.println(getName() + " partial builder should execute: " + exists);

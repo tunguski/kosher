@@ -26,12 +26,6 @@ public class JavaNcssPartialBuilder extends CommandExecutingPartialBuilder {
 
 
   @Override
-  public String getName() {
-    return "javancss";
-  }
-
-
-  @Override
   public boolean shouldExecute(PushEvent pushEvent, Properties properties) {
     boolean exists = new File(gitRepositoryService.repository(pushEvent), "pom.xml").exists();
     System.out.println(getName() + " partial builder should execute: " + exists);

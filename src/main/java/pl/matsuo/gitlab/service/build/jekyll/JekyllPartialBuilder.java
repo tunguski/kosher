@@ -24,12 +24,6 @@ public class JekyllPartialBuilder extends CommandExecutingPartialBuilder {
 
 
   @Override
-  public String getName() {
-    return "jekyll";
-  }
-
-
-  @Override
   public boolean shouldExecute(PushEvent pushEvent, Properties properties) {
     return true;
   }

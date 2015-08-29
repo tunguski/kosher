@@ -37,7 +37,10 @@ public abstract class PartialBuilder {
   public abstract CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties);
 
 
-  public abstract String getName();
+  public final String getName() {
+    return getClass().getSimpleName().substring(0,
+        getClass().getSimpleName().length() - "PartialBuilder".length()).toLowerCase();
+  }
 
 
   public abstract boolean shouldExecute(PushEvent pushEvent, Properties properties);

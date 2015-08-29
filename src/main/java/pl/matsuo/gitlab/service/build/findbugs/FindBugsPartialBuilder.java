@@ -31,12 +31,6 @@ public class FindBugsPartialBuilder extends CommandExecutingPartialBuilder {
 
 
   @Override
-  public String getName() {
-    return "findbugs";
-  }
-
-
-  @Override
   public boolean shouldExecute(PushEvent pushEvent, Properties properties) {
     boolean exists = new File(gitRepositoryService.repository(pushEvent), "pom.xml").exists();
     System.out.println(getName() + " partial builder should execute: " + exists);
