@@ -79,7 +79,7 @@ RUN mkdir -p ${gitlabRepositoryBase}/data
 RUN mkdir -p /home/jetty/.m2/repository
 RUN chown jetty:jetty -R ${repositoriesBase}
 RUN chown jetty:jetty -R ${gitlabRepositoryBase}
-RUN chown jetty:jetty -R /home/jetty/.m2/repository
+RUN chown jetty:jetty -R /home/jetty
 RUN groupadd --gid 1000 git && usermod -a -G git jetty # && usermod -a -G root jetty
 #VOLUME ${repositoriesBase}
 #VOLUME ${gitlabRepositoryBase}

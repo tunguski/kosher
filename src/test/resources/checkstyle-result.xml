@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.1.1">
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/annotation/WebConfiguration.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/git/GitRepositoryServiceImpl.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="15" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - pl.matsuo.gitlab.util.PushEventUtil.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="25" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="26" column="10" severity="error" message="Variable &apos;repositoryBase&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="27" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="28" column="10" severity="error" message="Variable &apos;gitlabRepositoryBase&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="31" severity="error" message="Line is longer than 80 characters (found 89)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="31" column="3" severity="error" message="Method &apos;getRepositoryFile&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="31" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="31" column="36" severity="error" message="Parameter userName should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="31" column="53" severity="error" message="Parameter projectName should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="31" column="73" severity="error" message="Parameter refName should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="32" severity="error" message="Line is longer than 80 characters (found 82)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="36" column="3" severity="error" message="Method &apos;getKosher&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="36" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="36" column="35" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="37" severity="error" message="Line is longer than 80 characters (found 86)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="41" severity="error" message="Line is longer than 80 characters (found 88)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="41" column="3" severity="error" message="Method &apos;getKosher&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="41" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="41" column="35" severity="error" message="Parameter userName should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="41" column="52" severity="error" message="Parameter projectName should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="41" column="72" severity="error" message="Parameter refName should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="42" severity="error" message="Line is longer than 80 characters (found 100)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="43" severity="error" message="Line is longer than 80 characters (found 93)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="44" column="26" severity="error" message="Avoid inline conditionals." source="com.puppycrawl.tools.checkstyle.checks.coding.AvoidInlineConditionalsCheck"/>
+<error line="48" column="3" severity="error" message="Method &apos;repository&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="49" column="26" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="50" severity="error" message="Line is longer than 80 characters (found 94)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="54" column="3" severity="error" message="Method &apos;checkout&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="55" column="23" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="69" severity="error" message="Line is longer than 80 characters (found 84)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="74" column="3" severity="error" message="Method &apos;checkout&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="75" severity="error" message="Line is longer than 80 characters (found 88)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="75" column="23" severity="error" message="Parameter userName should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="75" column="40" severity="error" message="Parameter projectName should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="75" column="60" severity="error" message="Parameter refName should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="75" column="76" severity="error" message="Parameter uri should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="95" severity="error" message="Line is longer than 80 characters (found 85)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="99" severity="error" message="Line is longer than 80 characters (found 100)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="108" severity="error" message="Line is longer than 80 characters (found 91)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/git/GitRepositoryService.java">
+<error line="16" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="19" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="20" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="23" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="26" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/CommandExecutingPartialBuilder.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="24" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - org.apache.commons.io.FileUtils.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="25" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - pl.matsuo.gitlab.util.PushEventUtil.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="34" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="35" column="16" severity="error" message="Variable &apos;objectMapper&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="36" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="37" column="12" severity="error" message="Variable &apos;db&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="40" severity="error" message="Line is longer than 80 characters (found 116)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="40" column="3" severity="error" message="Method &apos;internalExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="40" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="40" column="62" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="40" column="83" severity="error" message="Parameter source should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="40" column="98" severity="error" message="Parameter destination should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="41" severity="error" message="Line is longer than 80 characters (found 106)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="41" column="62" severity="error" message="Parameter executionCommands should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="42" severity="error" message="Line is longer than 80 characters (found 113)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="42" column="62" severity="error" message="Parameter afterExecution should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="56" severity="error" message="Line is longer than 80 characters (found 109)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="61" severity="error" message="Line is longer than 80 characters (found 81)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="62" severity="error" message="Line is longer than 80 characters (found 91)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="70" severity="error" message="Line is longer than 80 characters (found 95)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="71" severity="error" message="Line is longer than 80 characters (found 95)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="76" column="25" severity="error" message="&apos;3&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="117" severity="error" message="Line is longer than 80 characters (found 82)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="117" column="3" severity="error" message="Method &apos;executeWithReport&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="117" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="117" column="63" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="118" column="63" severity="error" message="Parameter reportName should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="119" severity="error" message="Line is longer than 80 characters (found 116)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="119" column="63" severity="error" message="Parameter exec should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="128" severity="error" message="Line is longer than 80 characters (found 83)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/BuildServiceImpl.java">
+<error line="23" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - java.util.Collections.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="24" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - pl.matsuo.gitlab.util.PushEventUtil.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="34" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="35" column="12" severity="error" message="Variable &apos;db&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="36" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="37" column="24" severity="error" message="Variable &apos;gitRepositoryService&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="38" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="39" column="24" severity="error" message="Variable &apos;partialBuilders&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="40" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="41" column="16" severity="error" message="Variable &apos;taskExecutor&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="44" column="3" severity="error" message="Method &apos;init&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="44" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="53" column="3" severity="error" message="Method &apos;pushEvent&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="53" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="53" column="27" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="80" column="5" severity="error" message="Avoid nested blocks." source="com.puppycrawl.tools.checkstyle.checks.blocks.AvoidNestedBlocksCheck"/>
+<error line="99" severity="error" message="Line is longer than 80 characters (found 81)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="144" column="3" severity="error" message="Method &apos;buildStatus&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="144" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="144" column="32" severity="error" message="Parameter idBuild should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/checkstyle/CheckStylePartialBuilder.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="20" column="3" severity="error" message="Method &apos;internalExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="21" severity="error" message="Line is longer than 80 characters (found 106)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="21" column="62" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="21" column="83" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="23" column="38" severity="error" message="&apos;{&apos; is followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"/>
+<error line="24" severity="error" message="Line is longer than 80 characters (found 113)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="31" column="3" severity="error" message="Method &apos;shouldExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="32" column="32" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="32" column="53" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="33" severity="error" message="Line is longer than 80 characters (found 94)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="34" severity="error" message="Line is longer than 80 characters (found 81)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/javancss/JavaNcssPartialBuilder.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="20" column="3" severity="error" message="Method &apos;internalExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="21" severity="error" message="Line is longer than 80 characters (found 106)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="21" column="62" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="21" column="83" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="23" column="38" severity="error" message="&apos;{&apos; is followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"/>
+<error line="24" column="48" severity="error" message="&apos;{&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="24" column="48" severity="error" message="&apos;}&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="28" column="3" severity="error" message="Method &apos;shouldExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="29" column="32" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="29" column="53" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="30" severity="error" message="Line is longer than 80 characters (found 94)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="31" severity="error" message="Line is longer than 80 characters (found 81)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/PartialBuilder.java">
+<error line="20" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="21" column="34" severity="error" message="Variable &apos;gitRepositoryService&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="22" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="23" column="22" severity="error" message="Variable &apos;database&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="26" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="27" severity="error" message="Line is longer than 80 characters (found 104)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="27" column="60" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="27" column="81" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="37" severity="error" message="Line is longer than 80 characters (found 114)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="37" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="40" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="42" severity="error" message="Line is longer than 80 characters (found 87)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="46" severity="error" message="Line is longer than 80 characters (found 84)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="46" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/cobertura/CoberturaPartialBuilder.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="19" column="3" severity="error" message="Method &apos;internalExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="20" severity="error" message="Line is longer than 80 characters (found 106)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="20" column="62" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="20" column="83" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="22" severity="error" message="Line is longer than 80 characters (found 84)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="22" column="38" severity="error" message="&apos;{&apos; is followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"/>
+<error line="23" column="48" severity="error" message="&apos;{&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="23" column="48" severity="error" message="&apos;}&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="27" column="3" severity="error" message="Method &apos;shouldExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="28" column="32" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="28" column="53" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="29" severity="error" message="Line is longer than 80 characters (found 94)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="30" severity="error" message="Line is longer than 80 characters (found 81)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/findbugs/FindBugsPartialBuilder.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="20" column="3" severity="error" message="Method &apos;internalExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="21" severity="error" message="Line is longer than 80 characters (found 106)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="21" column="62" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="21" column="83" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="24" column="38" severity="error" message="&apos;{&apos; is followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"/>
+<error line="25" severity="error" message="Line is longer than 80 characters (found 107)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="33" column="3" severity="error" message="Method &apos;shouldExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="34" column="32" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="34" column="53" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="35" severity="error" message="Line is longer than 80 characters (found 94)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="36" severity="error" message="Line is longer than 80 characters (found 81)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/docs/DocumentationStylePartialBuilder.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="19" column="3" severity="error" message="Method &apos;internalExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="20" severity="error" message="Line is longer than 80 characters (found 106)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="20" column="62" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="20" column="83" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="31" column="3" severity="error" message="Method &apos;shouldExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="32" column="32" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="32" column="53" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/jekyll/JekyllGenerateTemplateService.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="12" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/jekyll/JekyllGenerateTemplateServiceImpl.java">
+<error line="11" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - pl.matsuo.gitlab.file.FilePath.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="12" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - pl.matsuo.gitlab.util.PushEventUtil.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="19" severity="error" message="Line is longer than 80 characters (found 89)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="22" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="23" column="29" severity="error" message="Variable &apos;yamlFileConverterProvider&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="24" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="25" column="12" severity="error" message="Variable &apos;db&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="28" column="3" severity="error" message="Method &apos;generateTemplate&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="29" severity="error" message="Line is longer than 80 characters (found 82)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="29" column="32" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="29" column="53" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="42" severity="error" message="Line is longer than 80 characters (found 117)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="47" severity="error" message="Line is longer than 80 characters (found 82)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="51" severity="error" message="Line is longer than 80 characters (found 93)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="57" severity="error" message="Line is longer than 80 characters (found 117)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="58" severity="error" message="Line is longer than 80 characters (found 108)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="60" severity="error" message="Line is longer than 80 characters (found 120)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/jekyll/JekyllPartialBuilder.java">
+<error line="23" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="24" column="39" severity="error" message="Variable &apos;jekyllGenerateTemplateServices&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="27" severity="error" message="Line is longer than 80 characters (found 106)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="27" column="3" severity="error" message="Method &apos;internalExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="27" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="27" column="62" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="27" column="83" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="31" severity="error" message="Line is longer than 80 characters (found 117)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="34" severity="error" message="Line is longer than 80 characters (found 96)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="35" severity="error" message="Line is longer than 80 characters (found 88)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="35" column="38" severity="error" message="&apos;{&apos; is followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"/>
+<error line="36" column="48" severity="error" message="&apos;{&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="36" column="48" severity="error" message="&apos;}&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="40" column="3" severity="error" message="Method &apos;shouldExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="41" column="32" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="41" column="53" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/jekyll/model/projects/Projects.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="12" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="12" column="17" severity="error" message="Variable &apos;projects&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="15" column="3" severity="error" message="Method &apos;getProjects&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="15" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="18" column="3" severity="error" message="Method &apos;setProjects&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="18" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="18" column="27" severity="error" message="Parameter projects should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="18" column="41" severity="error" message="&apos;projects&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/jekyll/model/projects/Project.java">
+<error line="10" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="10" column="10" severity="error" message="Variable &apos;name&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="13" column="3" severity="error" message="Method &apos;getName&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="13" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="16" column="3" severity="error" message="Method &apos;setName&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="16" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="16" column="23" severity="error" message="Parameter name should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="16" column="30" severity="error" message="&apos;name&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/jekyll/JekyllProperties.java">
+<error line="15" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="18" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="18" column="27" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="18" column="38" severity="error" message="&apos;properties&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="23" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="23" column="27" severity="error" message="Parameter file should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="29" column="3" severity="error" message="Method &apos;source&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="29" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="34" column="3" severity="error" message="Method &apos;destination&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="34" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="39" column="3" severity="error" message="Method &apos;generateTemplate&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="39" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="40" severity="error" message="Line is longer than 80 characters (found 89)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/BuildService.java">
+<error line="12" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="14" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/build/pmd/PmdPartialBuilder.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="20" column="3" severity="error" message="Method &apos;internalExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="21" severity="error" message="Line is longer than 80 characters (found 106)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="21" column="62" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="21" column="83" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="23" column="38" severity="error" message="&apos;{&apos; is followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck"/>
+<error line="24" severity="error" message="Line is longer than 80 characters (found 99)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="32" column="3" severity="error" message="Method &apos;shouldExecute&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="33" column="32" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="33" column="53" severity="error" message="Parameter properties should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="34" severity="error" message="Line is longer than 80 characters (found 94)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="35" severity="error" message="Line is longer than 80 characters (found 81)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/db/Database.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="14" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="17" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="20" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="23" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="26" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="29" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="32" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="35" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="37" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/service/db/MapDbDatabase.java">
+<error line="21" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="21" column="16" severity="error" message="Variable &apos;objectMapper&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="22" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="22" column="42" severity="error" message="Variable &apos;db&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="25" column="3" severity="error" message="Method &apos;put&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="25" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="25" column="25" severity="error" message="Parameter key should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="25" column="37" severity="error" message="Parameter value should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="35" column="3" severity="error" message="Method &apos;get&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="35" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="35" column="20" severity="error" message="Parameter key should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="35" column="32" severity="error" message="Parameter clazz should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="51" column="3" severity="error" message="Method &apos;update&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="52" column="23" severity="error" message="Parameter key should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="52" column="35" severity="error" message="Parameter clazz should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="52" column="51" severity="error" message="Parameter exec should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="63" column="3" severity="error" message="Method &apos;delete&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="63" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="63" column="22" severity="error" message="Parameter key should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="68" column="3" severity="error" message="Method &apos;keySet&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="68" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="73" column="3" severity="error" message="Method &apos;values&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="73" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="78" column="3" severity="error" message="Method &apos;size&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="78" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="83" column="3" severity="error" message="Method &apos;isEmpty&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="83" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="87" column="3" severity="error" message="Method &apos;containsKey&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="88" column="30" severity="error" message="Parameter key should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/util/TriFunction.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="6" severity="error" message="Type Javadoc comment is missing an @param &lt;A&gt; tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<error line="6" severity="error" message="Type Javadoc comment is missing an @param &lt;B&gt; tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<error line="6" severity="error" message="Type Javadoc comment is missing an @param &lt;C&gt; tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<error line="6" severity="error" message="Type Javadoc comment is missing an @param &lt;R&gt; tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<error line="7" column="32" severity="error" message="&apos;,&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="7" column="34" severity="error" message="&apos;,&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="7" column="36" severity="error" message="&apos;,&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="8" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/util/TriConsumer.java">
+<error line="6" severity="error" message="Type Javadoc comment is missing an @param &lt;A&gt; tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<error line="6" severity="error" message="Type Javadoc comment is missing an @param &lt;B&gt; tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<error line="6" severity="error" message="Type Javadoc comment is missing an @param &lt;C&gt; tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<error line="7" column="32" severity="error" message="&apos;,&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="7" column="34" severity="error" message="&apos;,&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="8" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/util/ThrowingConsumer.java">
+<error line="25" column="27" severity="error" message="Expected @throws tag for &apos;Exception&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/util/PushEventUtil.java">
+<error line="10" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - java.util.Arrays.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="15" column="1" severity="error" message="Utility classes should not have a public or default constructor." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+<error line="18" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="18" column="32" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="31" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="31" column="38" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="44" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="44" column="31" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="50" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="50" column="32" severity="error" message="Parameter parts should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="55" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="55" column="32" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="55" column="53" severity="error" message="Parameter parts should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="56" severity="error" message="Line is longer than 80 characters (found 115)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="63" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="63" column="31" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="63" column="52" severity="error" message="Parameter parts should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="65" severity="error" message="Line is longer than 80 characters (found 100)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="65" column="96" severity="error" message="&apos;7&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/exception/GitException.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="10" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="14" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="14" column="23" severity="error" message="Parameter message should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="19" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="19" column="23" severity="error" message="Parameter message should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="19" column="39" severity="error" message="Parameter cause should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="24" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="24" column="23" severity="error" message="Parameter cause should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="29" severity="error" message="Line is longer than 80 characters (found 111)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="29" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="29" column="23" severity="error" message="Parameter message should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="29" column="39" severity="error" message="Parameter cause should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="29" column="56" severity="error" message="Parameter enableSuppression should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="29" column="83" severity="error" message="Parameter writableStackTrace should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/exception/ResourceNotFoundException.java">
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/data/UserInfo.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="13" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="13" column="15" severity="error" message="Variable &apos;projects&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="16" column="3" severity="error" message="Method &apos;getProjects&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="16" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="19" column="3" severity="error" message="Method &apos;setProjects&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="19" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="19" column="27" severity="error" message="Parameter projects should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="19" column="39" severity="error" message="&apos;projects&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/data/BuildStatus.java">
+<error line="9" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="10" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="11" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/data/BuildInfo.java">
+<error line="16" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="16" column="10" severity="error" message="Variable &apos;id&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="17" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="17" column="15" severity="error" message="Variable &apos;status&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="18" severity="error" message="Line is longer than 80 characters (found 90)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="18" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="18" column="33" severity="error" message="Variable &apos;partialStatuses&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="19" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="19" column="13" severity="error" message="Variable &apos;pushEvent&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="22" column="3" severity="error" message="Method &apos;getId&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="22" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="25" column="3" severity="error" message="Method &apos;setId&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="25" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="25" column="21" severity="error" message="Parameter id should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="25" column="28" severity="error" message="&apos;id&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="28" column="3" severity="error" message="Method &apos;getStatus&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="28" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="31" column="3" severity="error" message="Method &apos;setStatus&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="31" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="31" column="25" severity="error" message="Parameter status should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="31" column="37" severity="error" message="&apos;status&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="34" column="3" severity="error" message="Method &apos;getPartialStatuses&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="34" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="37" column="3" severity="error" message="Method &apos;getPushEvent&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="37" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="40" column="3" severity="error" message="Method &apos;setPushEvent&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="40" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="40" column="28" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="40" column="38" severity="error" message="&apos;pushEvent&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/data/ProjectInfo.java">
+<error line="13" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="13" column="15" severity="error" message="Variable &apos;branches&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="16" column="3" severity="error" message="Method &apos;getBranches&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="16" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="19" column="3" severity="error" message="Method &apos;setBranches&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="19" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="19" column="27" severity="error" message="Parameter projects should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/controller/CodeStatisticsController.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="16" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - org.springframework.web.bind.annotation.RequestMethod.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="17" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - pl.matsuo.gitlab.util.PushEventUtil.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="28" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="29" column="12" severity="error" message="Variable &apos;db&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="32" column="3" severity="error" message="Method &apos;all&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="32" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="34" column="10" severity="error" message="&apos;@ResponseBody&apos; annotation modifier does not preceed non-annotation modifiers." source="com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck"/>
+<error line="46" column="3" severity="error" message="Method &apos;user&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="46" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="48" column="10" severity="error" message="&apos;@ResponseBody&apos; annotation modifier does not preceed non-annotation modifiers." source="com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck"/>
+<error line="49" column="17" severity="error" message="Parameter user should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="54" column="3" severity="error" message="Method &apos;project&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="54" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="56" column="10" severity="error" message="&apos;@ResponseBody&apos; annotation modifier does not preceed non-annotation modifiers." source="com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck"/>
+<error line="57" column="23" severity="error" message="Parameter user should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="58" column="18" severity="error" message="Parameter project should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="63" column="3" severity="error" message="Method &apos;branch&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="63" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="65" column="10" severity="error" message="&apos;@ResponseBody&apos; annotation modifier does not preceed non-annotation modifiers." source="com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck"/>
+<error line="66" column="17" severity="error" message="Parameter user should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="67" column="20" severity="error" message="Parameter project should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="68" column="20" severity="error" message="Parameter branch should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="74" column="3" severity="error" message="Method &apos;commit&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="74" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="76" column="10" severity="error" message="&apos;@ResponseBody&apos; annotation modifier does not preceed non-annotation modifiers." source="com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck"/>
+<error line="77" column="20" severity="error" message="Parameter user should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="78" column="20" severity="error" message="Parameter project should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="79" column="20" severity="error" message="Parameter branch should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="80" column="20" severity="error" message="Parameter commit should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="85" severity="error" message="Line is longer than 80 characters (found 88)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="85" column="3" severity="error" message="Method &apos;element&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="85" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="87" column="10" severity="error" message="&apos;@ResponseBody&apos; annotation modifier does not preceed non-annotation modifiers." source="com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck"/>
+<error line="88" column="28" severity="error" message="Parameter user should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="89" column="28" severity="error" message="Parameter project should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="90" column="28" severity="error" message="Parameter branch should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="91" column="28" severity="error" message="Parameter commit should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="92" column="28" severity="error" message="Parameter element should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="93" severity="error" message="Line is longer than 80 characters (found 82)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/controller/WebViewController.java">
+<error line="21" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - org.springframework.web.bind.annotation.RequestMethod.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="32" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="33" column="24" severity="error" message="Variable &apos;gitRepositoryService&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="36" column="3" severity="error" message="Method &apos;get&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="36" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="38" column="10" severity="error" message="&apos;@ResponseBody&apos; annotation modifier does not preceed non-annotation modifiers." source="com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck"/>
+<error line="39" column="14" severity="error" message="Parameter user should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="40" column="14" severity="error" message="Parameter project should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="41" column="14" severity="error" message="Parameter branch should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="42" column="14" severity="error" message="Parameter request should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="48" severity="error" message="Line is longer than 80 characters (found 114)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="52" severity="error" message="Line is longer than 80 characters (found 86)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="55" severity="error" message="Line is longer than 80 characters (found 95)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="72" column="3" severity="error" message="Method &apos;getPageTemplate&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="72" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="72" column="36" severity="error" message="Parameter user should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="72" column="49" severity="error" message="Parameter project should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="72" column="65" severity="error" message="Parameter branch should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="73" severity="error" message="Line is longer than 80 characters (found 83)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="73" column="36" severity="error" message="Parameter request should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="79" severity="error" message="Line is longer than 80 characters (found 95)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="83" severity="error" message="Line is longer than 80 characters (found 119)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="90" column="8" severity="error" message="&apos;;&apos; is preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/controller/GitLabWebHookController.java">
+<error line="14" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - org.springframework.web.bind.annotation.RequestMethod.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="25" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="26" column="16" severity="error" message="Variable &apos;buildService&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="29" column="3" severity="error" message="Method &apos;pushEvent&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="29" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="30" column="10" severity="error" message="&apos;@ResponseBody&apos; annotation modifier does not preceed non-annotation modifiers." source="com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck"/>
+<error line="31" column="20" severity="error" message="Parameter pushEvent should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="36" column="3" severity="error" message="Method &apos;buildStatus&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="36" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="37" column="10" severity="error" message="&apos;@ResponseBody&apos; annotation modifier does not preceed non-annotation modifiers." source="com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck"/>
+<error line="38" column="25" severity="error" message="Parameter idBuild should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/file/FileConverterProviderUtil.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="6" column="1" severity="error" message="Utility classes should not have a public or default constructor." source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+<error line="9" severity="error" message="Line is longer than 80 characters (found 115)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="9" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="9" column="63" severity="error" message="Parameter acceptedClass should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="9" column="87" severity="error" message="Parameter converter should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="12" column="45" severity="error" message="Parameter clazz should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/file/FilePath.java">
+<error line="10" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - org.apache.commons.io.FileUtils.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="11" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - pl.matsuo.gitlab.file.FileConverterProviderUtil.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="17" severity="error" message="Class FilePath should be declared as final." source="com.puppycrawl.tools.checkstyle.checks.design.FinalClassCheck"/>
+<error line="20" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="21" severity="error" message="Line is longer than 80 characters (found 109)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="21" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="21" column="25" severity="error" message="Variable &apos;fileConverterProvider&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="24" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="24" column="20" severity="error" message="Parameter path should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="29" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="29" column="20" severity="error" message="Parameter file should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="29" column="25" severity="error" message="&apos;file&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="34" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="34" column="31" severity="error" message="Parameter path should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="39" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="39" column="31" severity="error" message="Parameter file should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="44" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="44" column="31" severity="error" message="Parameter file should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="44" column="42" severity="error" message="Parameter path should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="52" severity="error" message="Expected an @return tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="52" column="24" severity="error" message="Parameter execute should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="52" column="43" severity="error" message="Expected @param tag for &apos;execute&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="63" severity="error" message="Expected an @return tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="63" column="29" severity="error" message="Parameter fileConverterProvider should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="63" column="51" severity="error" message="&apos;fileConverterProvider&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="63" column="51" severity="error" message="Expected @param tag for &apos;fileConverterProvider&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="71" severity="error" message="Line is longer than 80 characters (found 91)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="73" severity="error" message="Expected an @return tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="73" column="24" severity="error" message="Parameter subPath should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="73" column="31" severity="error" message="Expected @param tag for &apos;subPath&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="73" column="40" severity="error" message="Parameter execute should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="73" column="59" severity="error" message="Expected @param tag for &apos;execute&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="81" severity="error" message="Expected an @return tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="81" column="27" severity="error" message="Parameter files should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="81" column="38" severity="error" message="Expected @param tag for &apos;files&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="99" severity="error" message="Expected an @return tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="99" column="27" severity="error" message="Parameter execute should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="99" column="46" severity="error" message="Expected @param tag for &apos;execute&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="110" severity="error" message="Expected an @return tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="110" column="27" severity="error" message="Parameter subPath should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="110" column="34" severity="error" message="Expected @param tag for &apos;subPath&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="110" column="43" severity="error" message="Parameter execute should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="110" column="62" severity="error" message="Expected @param tag for &apos;execute&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="115" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="115" column="27" severity="error" message="Parameter execute should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="127" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="127" column="31" severity="error" message="Parameter clazz should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="127" column="47" severity="error" message="Parameter execute should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="130" severity="error" message="Line is longer than 80 characters (found 98)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="139" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="139" column="29" severity="error" message="Parameter body should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="149" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="149" column="26" severity="error" message="Parameter body should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="159" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="159" column="28" severity="error" message="Parameter body should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/file/StringFileConverter.java">
+<error line="15" column="3" severity="error" message="Method &apos;convert&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="16" column="25" severity="error" message="Parameter stream should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="25" column="3" severity="error" message="Method &apos;convert&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="26" column="25" severity="error" message="Parameter text should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/file/FileConverterProvider.java">
+<error line="10" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/file/YamlFileConverterProvider.java">
+<error line="19" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="19" column="16" severity="error" message="Variable &apos;mapper&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="22" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="22" column="24" severity="error" message="Parameter text should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="22" column="37" severity="error" message="Parameter clazz should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="31" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="31" column="24" severity="error" message="Parameter stream should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="31" column="44" severity="error" message="Parameter clazz should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="47" column="24" severity="error" message="Parameter stream should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="53" column="24" severity="error" message="Parameter text should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/file/FileConverter.java">
+<error line="10" severity="error" message="Type Javadoc comment is missing an @param &lt;E&gt; tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<error line="13" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="16" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/conf/AppConfig.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="22" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="31" column="3" severity="error" message="Method &apos;getAsyncExecutor&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="34" column="30" severity="error" message="&apos;7&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="35" column="29" severity="error" message="&apos;42&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="36" column="31" severity="error" message="&apos;11&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
+<error line="43" column="3" severity="error" message="Method &apos;getAsyncUncaughtExceptionHandler&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/conf/MvcConfig.java">
+<error line="7" severity="error" message="Line is longer than 80 characters (found 83)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="9" severity="error" message="Line is longer than 80 characters (found 84)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="14" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - com.fasterxml.jackson.annotation.JsonInclude.Include.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="15" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - com.fasterxml.jackson.databind.DeserializationFeature.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="18" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<error line="23" column="3" severity="error" message="Method &apos;configureMessageConverters&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="24" severity="error" message="Line is longer than 80 characters (found 84)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="24" column="42" severity="error" message="Parameter converters should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="30" column="3" severity="error" message="Method &apos;objectMapper&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="30" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="31" severity="error" message="Line is longer than 80 characters (found 83)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="31" column="36" severity="error" message="Parameter converter should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="36" column="3" severity="error" message="Method &apos;converter&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="36" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="38" severity="error" message="Line is longer than 80 characters (found 94)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="48" column="3" severity="error" message="Method &apos;multipartResolver&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="48" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/hook/Repository.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+<error line="10" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="10" column="10" severity="error" message="Variable &apos;name&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="11" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="11" column="10" severity="error" message="Variable &apos;url&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="12" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="12" column="10" severity="error" message="Variable &apos;description&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="13" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="13" column="10" severity="error" message="Variable &apos;homepage&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="14" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="14" column="10" severity="error" message="Name &apos;git_http_url&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="14" column="10" severity="error" message="Variable &apos;git_http_url&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="15" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="15" column="10" severity="error" message="Name &apos;git_ssh_url&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="15" column="10" severity="error" message="Variable &apos;git_ssh_url&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="16" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="16" column="11" severity="error" message="Name &apos;visibility_level&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="16" column="11" severity="error" message="Variable &apos;visibility_level&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="19" column="3" severity="error" message="Method &apos;getName&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="19" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="22" column="3" severity="error" message="Method &apos;setName&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="22" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="22" column="23" severity="error" message="Parameter name should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="22" column="30" severity="error" message="&apos;name&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="25" column="3" severity="error" message="Method &apos;getUrl&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="25" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="28" column="3" severity="error" message="Method &apos;setUrl&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="28" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="28" column="22" severity="error" message="Parameter url should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="28" column="29" severity="error" message="&apos;url&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="31" column="3" severity="error" message="Method &apos;getDescription&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="31" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="34" column="3" severity="error" message="Method &apos;setDescription&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="34" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="34" column="30" severity="error" message="Parameter description should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="34" column="37" severity="error" message="&apos;description&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="37" column="3" severity="error" message="Method &apos;getHomepage&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="37" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="40" column="3" severity="error" message="Method &apos;setHomepage&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="40" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="40" column="27" severity="error" message="Parameter homepage should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="40" column="34" severity="error" message="&apos;homepage&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="43" column="3" severity="error" message="Method &apos;getGit_http_url&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="43" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="43" column="17" severity="error" message="Name &apos;getGit_http_url&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="46" column="3" severity="error" message="Method &apos;setGit_http_url&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="46" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="46" column="15" severity="error" message="Name &apos;setGit_http_url&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="46" column="31" severity="error" message="Parameter git_http_url should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="46" column="38" severity="error" message="&apos;git_http_url&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="46" column="38" severity="error" message="Name &apos;git_http_url&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck"/>
+<error line="49" column="3" severity="error" message="Method &apos;getGit_ssh_url&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="49" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="49" column="17" severity="error" message="Name &apos;getGit_ssh_url&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="52" column="3" severity="error" message="Method &apos;setGit_ssh_url&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="52" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="52" column="15" severity="error" message="Name &apos;setGit_ssh_url&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="52" column="30" severity="error" message="Parameter git_ssh_url should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="52" column="37" severity="error" message="&apos;git_ssh_url&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="52" column="37" severity="error" message="Name &apos;git_ssh_url&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck"/>
+<error line="55" column="3" severity="error" message="Method &apos;getVisibility_level&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="55" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="55" column="18" severity="error" message="Name &apos;getVisibility_level&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="58" column="3" severity="error" message="Method &apos;setVisibility_level&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="58" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="58" column="15" severity="error" message="Name &apos;setVisibility_level&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="58" column="35" severity="error" message="Parameter visibility_level should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="58" column="43" severity="error" message="&apos;visibility_level&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="58" column="43" severity="error" message="Name &apos;visibility_level&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/hook/PushEvent.java">
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/hook/CommentOnMergeRequestEvent.java">
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/hook/AbstractEvent.java">
+<error line="11" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="11" column="10" severity="error" message="Name &apos;object_kind&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="11" column="10" severity="error" message="Variable &apos;object_kind&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="12" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="12" column="10" severity="error" message="Variable &apos;before&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="13" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="13" column="10" severity="error" message="Variable &apos;after&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="14" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="14" column="10" severity="error" message="Variable &apos;ref&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="15" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="15" column="11" severity="error" message="Name &apos;user_id&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="15" column="11" severity="error" message="Variable &apos;user_id&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="16" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="16" column="10" severity="error" message="Name &apos;user_name&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="16" column="10" severity="error" message="Variable &apos;user_name&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="17" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="17" column="10" severity="error" message="Name &apos;user_email&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="17" column="10" severity="error" message="Variable &apos;user_email&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="18" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="18" column="11" severity="error" message="Name &apos;project_id&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="18" column="11" severity="error" message="Variable &apos;project_id&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="19" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="19" column="14" severity="error" message="Variable &apos;repository&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="20" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="20" column="16" severity="error" message="Variable &apos;commits&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="21" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="21" column="11" severity="error" message="Name &apos;total_commits_count&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="21" column="11" severity="error" message="Variable &apos;total_commits_count&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="24" column="3" severity="error" message="Method &apos;getObject_kind&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="24" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="24" column="17" severity="error" message="Name &apos;getObject_kind&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="27" column="3" severity="error" message="Method &apos;setObject_kind&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="27" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="27" column="15" severity="error" message="Name &apos;setObject_kind&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="27" column="30" severity="error" message="Parameter object_kind should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="27" column="37" severity="error" message="&apos;object_kind&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="27" column="37" severity="error" message="Name &apos;object_kind&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck"/>
+<error line="30" column="3" severity="error" message="Method &apos;getBefore&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="30" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="33" column="3" severity="error" message="Method &apos;setBefore&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="33" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="33" column="25" severity="error" message="Parameter before should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="33" column="32" severity="error" message="&apos;before&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="36" column="3" severity="error" message="Method &apos;getAfter&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="36" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="39" column="3" severity="error" message="Method &apos;setAfter&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="39" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="39" column="24" severity="error" message="Parameter after should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="39" column="31" severity="error" message="&apos;after&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="42" column="3" severity="error" message="Method &apos;getRef&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="42" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="45" column="3" severity="error" message="Method &apos;setRef&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="45" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="45" column="22" severity="error" message="Parameter ref should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="45" column="29" severity="error" message="&apos;ref&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="48" column="3" severity="error" message="Method &apos;getUser_id&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="48" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="48" column="18" severity="error" message="Name &apos;getUser_id&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="51" column="3" severity="error" message="Method &apos;setUser_id&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="51" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="51" column="15" severity="error" message="Name &apos;setUser_id&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="51" column="26" severity="error" message="Parameter user_id should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="51" column="34" severity="error" message="&apos;user_id&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="51" column="34" severity="error" message="Name &apos;user_id&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck"/>
+<error line="54" column="3" severity="error" message="Method &apos;getUser_name&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="54" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="54" column="17" severity="error" message="Name &apos;getUser_name&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="57" column="3" severity="error" message="Method &apos;setUser_name&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="57" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="57" column="15" severity="error" message="Name &apos;setUser_name&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="57" column="28" severity="error" message="Parameter user_name should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="57" column="35" severity="error" message="&apos;user_name&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="57" column="35" severity="error" message="Name &apos;user_name&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck"/>
+<error line="60" column="3" severity="error" message="Method &apos;getUser_email&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="60" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="60" column="17" severity="error" message="Name &apos;getUser_email&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="63" column="3" severity="error" message="Method &apos;setUser_email&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="63" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="63" column="15" severity="error" message="Name &apos;setUser_email&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="63" column="29" severity="error" message="Parameter user_email should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="63" column="36" severity="error" message="&apos;user_email&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="63" column="36" severity="error" message="Name &apos;user_email&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck"/>
+<error line="66" column="3" severity="error" message="Method &apos;getProject_id&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="66" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="66" column="18" severity="error" message="Name &apos;getProject_id&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="69" column="3" severity="error" message="Method &apos;setProject_id&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="69" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="69" column="15" severity="error" message="Name &apos;setProject_id&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="69" column="29" severity="error" message="Parameter project_id should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="69" column="37" severity="error" message="&apos;project_id&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="69" column="37" severity="error" message="Name &apos;project_id&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck"/>
+<error line="72" column="3" severity="error" message="Method &apos;getRepository&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="72" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="75" column="3" severity="error" message="Method &apos;setRepository&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="75" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="75" column="29" severity="error" message="Parameter repository should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="75" column="40" severity="error" message="&apos;repository&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="78" column="3" severity="error" message="Method &apos;getCommits&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="78" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="81" column="3" severity="error" message="Method &apos;setCommits&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="81" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="81" column="26" severity="error" message="Parameter commits should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="81" column="39" severity="error" message="&apos;commits&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="84" column="3" severity="error" message="Method &apos;getTotal_commits_count&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="84" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="84" column="18" severity="error" message="Name &apos;getTotal_commits_count&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="87" column="3" severity="error" message="Method &apos;setTotal_commits_count&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="87" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="87" column="15" severity="error" message="Name &apos;setTotal_commits_count&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="87" column="38" severity="error" message="Parameter total_commits_count should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="87" column="46" severity="error" message="&apos;total_commits_count&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="87" column="46" severity="error" message="Name &apos;total_commits_count&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/hook/IssueEvent.java">
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/hook/CommentOnCodeSnippetEvent.java">
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/hook/PartialBuildInfo.java">
+<error line="10" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="10" column="10" severity="error" message="Variable &apos;name&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="11" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="11" column="10" severity="error" message="Variable &apos;status&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="12" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="12" column="11" severity="error" message="Variable &apos;executionResult&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="15" column="3" severity="error" message="Method &apos;getName&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="15" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="18" column="3" severity="error" message="Method &apos;setName&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="18" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="18" column="23" severity="error" message="Parameter name should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="18" column="30" severity="error" message="&apos;name&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="21" column="3" severity="error" message="Method &apos;getStatus&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="21" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="24" column="3" severity="error" message="Method &apos;setStatus&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="24" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="24" column="25" severity="error" message="Parameter status should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="24" column="32" severity="error" message="&apos;status&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="27" column="3" severity="error" message="Method &apos;getExecutionResult&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="27" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="30" column="3" severity="error" message="Method &apos;setExecutionResult&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="30" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="30" column="34" severity="error" message="Parameter executionResult should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="30" column="42" severity="error" message="&apos;executionResult&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/hook/TagEvent.java">
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/hook/Author.java">
+<error line="9" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="9" column="10" severity="error" message="Variable &apos;name&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="10" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="10" column="10" severity="error" message="Variable &apos;email&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="13" column="3" severity="error" message="Method &apos;getName&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="13" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="16" column="3" severity="error" message="Method &apos;setName&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="16" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="16" column="23" severity="error" message="Parameter name should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="16" column="30" severity="error" message="&apos;name&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="19" column="3" severity="error" message="Method &apos;getEmail&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="19" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="22" column="3" severity="error" message="Method &apos;setEmail&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="22" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="22" column="24" severity="error" message="Parameter email should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="22" column="31" severity="error" message="&apos;email&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/hook/CommentOnIssueEvent.java">
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/hook/Commit.java">
+<error line="12" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="12" column="10" severity="error" message="Variable &apos;id&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="13" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="13" column="10" severity="error" message="Variable &apos;message&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="14" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="14" column="8" severity="error" message="Variable &apos;timestamp&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="15" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="15" column="10" severity="error" message="Variable &apos;url&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="16" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="16" column="10" severity="error" message="Variable &apos;author&apos; must be private and have accessor methods." source="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
+<error line="19" column="3" severity="error" message="Method &apos;getId&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="19" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="22" column="3" severity="error" message="Method &apos;setId&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="22" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="22" column="21" severity="error" message="Parameter id should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="22" column="28" severity="error" message="&apos;id&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="25" column="3" severity="error" message="Method &apos;getMessage&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="25" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="28" column="3" severity="error" message="Method &apos;setMessage&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="28" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="28" column="26" severity="error" message="Parameter message should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="28" column="33" severity="error" message="&apos;message&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="31" column="3" severity="error" message="Method &apos;getTimestamp&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="31" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="34" column="3" severity="error" message="Method &apos;setTimestamp&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="34" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="34" column="28" severity="error" message="Parameter timestamp should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="34" column="33" severity="error" message="&apos;timestamp&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="37" column="3" severity="error" message="Method &apos;getUrl&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="37" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="40" column="3" severity="error" message="Method &apos;setUrl&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="40" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="40" column="22" severity="error" message="Parameter url should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="40" column="29" severity="error" message="&apos;url&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="43" column="3" severity="error" message="Method &apos;getAuthor&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="43" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="46" column="3" severity="error" message="Method &apos;setAuthor&apos; is not designed for extension - needs to be abstract, final or empty." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
+<error line="46" column="3" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="46" column="25" severity="error" message="Parameter author should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="46" column="32" severity="error" message="&apos;author&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/java/pl/matsuo/gitlab/hook/MergeRequestEvent.java">
+</file>
+<file name="/home/marek/w/idea/base-listener/src/main/resources/app.properties">
+</file>
+</checkstyle>

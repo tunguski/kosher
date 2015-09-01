@@ -1,6 +1,7 @@
 package pl.matsuo.gitlab.controller;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,7 @@ import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.io.FileInputStream;
-import java.util.Properties;
+import java.io.IOException;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
@@ -43,28 +43,51 @@ public class WebViewController {
 
     return gitRepositoryService.getKosher(user, project, branch).map(config -> {
       try {
-        Properties properties = new Properties();
-        properties.load(new FileInputStream(config));
+        JekyllProperties properties = new JekyllProperties(config);
 
         String restOfTheUrl = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
 
-        String destination = JekyllProperties.destination(properties);
+        String destination = properties.destination();
         File file = new File(new File(config.getParentFile(), destination),
             restOfTheUrl.replaceFirst("/" + user + "/" + project + "/" + branch, ""));
         if (file.exists()) {
           // security - cannot escape from project directory by using ../../..
           if (!file.getCanonicalPath().startsWith(config.getParentFile().getCanonicalPath())) {
-            return "file not found: " + file.getAbsolutePath();
+            System.out.println("file not found: " + file.getAbsolutePath());
+            return getPageTemplate(user, project, branch, request);
           }
 
           return FileUtils.readFileToString(file);
         } else {
-          return "file not found: " + file.getAbsolutePath();
+          System.out.println("file not found: " + file.getAbsolutePath());
+          return getPageTemplate(user, project, branch, request);
         }
       } catch (Exception e) {
         throw new ResourceNotFoundException();
       }
     }).orElseThrow(() -> new RuntimeException("No .kosher file found"));
+  }
+
+
+  protected String getPageTemplate(String user, String project, String branch,
+                                   HttpServletRequest request) throws IOException {
+    String url = request.getRequestURL().toString();
+    if (url.endsWith(".js") || url.endsWith(".css")) {
+      throw new ResourceNotFoundException();
+    }
+
+    String template = IOUtils.toString(getClass().getResourceAsStream("/templates/page.html"));
+
+    // todo: base href must contain absolute url - extract from request
+    String basePath = url.substring(0,
+        url.indexOf(String.join("/", user, project, branch)) + String.join("/", user, project, branch).length()) + "/";
+
+    return template
+        .replaceAll("#user_name#", user)
+        .replaceAll("#project_name#", project)
+        .replaceAll("#page_title#", user + " - " + project + " - " + branch)
+        .replaceAll("#base_href#", basePath)
+        ;
   }
 }
 

@@ -1,6 +1,5 @@
 package pl.matsuo.gitlab.service.build;
 
-import org.junit.Assert;
 import org.junit.Test;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;

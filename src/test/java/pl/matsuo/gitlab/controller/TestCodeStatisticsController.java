@@ -53,7 +53,7 @@ public class TestCodeStatisticsController extends AbstractControllerRequestTest 
 
 
   @Test
-  public void testBuildResult() throws Exception {
+  public void testCommit() throws Exception {
     performAndCheckStatus(get("/s/tunguski/gitlab-java-event-listener/master"), status().isOk(),
         ref -> {
           String cleanRef = ref.replaceAll("[\\\\\"]+", "");

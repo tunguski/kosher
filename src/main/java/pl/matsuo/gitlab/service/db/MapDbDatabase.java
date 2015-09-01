@@ -3,7 +3,6 @@ package pl.matsuo.gitlab.service.db;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.mapdb.DBMaker;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -19,8 +18,7 @@ import java.util.function.Function;
 public class MapDbDatabase implements Database {
 
 
-  MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-  ObjectMapper objectMapper = converter.getObjectMapper();
+  ObjectMapper objectMapper = new ObjectMapper();
   ConcurrentNavigableMap<String, String> db = DBMaker.newTempTreeMap();
 
 

@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.data.ProjectInfo;
 import pl.matsuo.gitlab.data.UserInfo;
+import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.service.db.Database;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
@@ -64,20 +66,32 @@ public class CodeStatisticsController {
   String branch(@PathVariable("user") String user,
                    @PathVariable("project") String project,
                    @PathVariable("branch") String branch) {
+    // returns commit reference
     return db.get(subPath(user, project, branch), String.class);
   }
 
 
-  @RequestMapping(value = "/{user}/{project}/{branch}/{commit}/{element}/{part}", method = GET)
+  @RequestMapping(value = "/{user}/{project}/{branch}/{commit}", method = GET)
   @ResponseStatus(HttpStatus.OK)
   public @ResponseBody
-  String partialInfo(@PathVariable("user") String user,
+  BuildInfo commit(@PathVariable("user") String user,
                    @PathVariable("project") String project,
                    @PathVariable("branch") String branch,
-                   @PathVariable("commit") String commit,
-                   @PathVariable("element") String element,
-                     @PathVariable("part") String part) {
-    return db.get(subPath(user, project, branch, commit, element, part), String.class);
+                   @PathVariable("commit") String commit) {
+    return db.get(subPath(user, project, commit), BuildInfo.class);
+  }
+
+
+  @RequestMapping(value = "/{user}/{project}/{branch}/{commit}/{element}", method = GET)
+  @ResponseStatus(HttpStatus.OK)
+  public @ResponseBody
+  PartialBuildInfo element(@PathVariable("user") String user,
+                           @PathVariable("project") String project,
+                           @PathVariable("branch") String branch,
+                           @PathVariable("commit") String commit,
+                           @PathVariable("element") String element) {
+    BuildInfo buildInfo = db.get(subPath(user, project, commit), BuildInfo.class);
+    return buildInfo.getPartialStatuses().get(element);
   }
 }
 

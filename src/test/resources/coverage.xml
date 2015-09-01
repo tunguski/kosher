@@ -1,0 +1,2144 @@
+<?xml version="1.0"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+
+<coverage line-rate="0.5816554809843401" branch-rate="0.5375" lines-covered="260" lines-valid="447" branches-covered="43" branches-valid="80" complexity="1.3823529411764706" version="2.1.1" timestamp="1441141531293">
+	<sources>
+		<source>/home/marek/w/idea/base-listener/src/main/java</source>
+		<source>--source</source>
+		<source>/home/marek/w/idea/base-listener/target/generated-sources/annotations</source>
+	</sources>
+	<packages>
+		<package name="pl.matsuo.gitlab.annotation" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.annotation.WebConfiguration" filename="pl/matsuo/gitlab/annotation/WebConfiguration.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.conf" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.conf.AppConfig" filename="pl/matsuo/gitlab/conf/AppConfig.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="getAsyncExecutor" signature="()Ljava/util/concurrent/Executor;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="17" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getAsyncExecutor" signature="()Lorg/springframework/core/task/TaskExecutor;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="33" hits="0" branch="false"/>
+								<line number="34" hits="0" branch="false"/>
+								<line number="35" hits="0" branch="false"/>
+								<line number="36" hits="0" branch="false"/>
+								<line number="37" hits="0" branch="false"/>
+								<line number="38" hits="0" branch="false"/>
+								<line number="39" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="propConfig" signature="()Lorg/springframework/beans/factory/config/PropertyPlaceholderConfigurer;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="24" hits="0" branch="false"/>
+								<line number="25" hits="0" branch="false"/>
+								<line number="26" hits="0" branch="false"/>
+								<line number="27" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="17" hits="0" branch="false"/>
+						<line number="24" hits="0" branch="false"/>
+						<line number="25" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+						<line number="27" hits="0" branch="false"/>
+						<line number="33" hits="0" branch="false"/>
+						<line number="34" hits="0" branch="false"/>
+						<line number="35" hits="0" branch="false"/>
+						<line number="36" hits="0" branch="false"/>
+						<line number="37" hits="0" branch="false"/>
+						<line number="38" hits="0" branch="false"/>
+						<line number="39" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.conf.MvcConfig" filename="pl/matsuo/gitlab/conf/MvcConfig.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="configureMessageConverters" signature="(Ljava/util/List;)V" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="25" hits="0" branch="false"/>
+								<line number="26" hits="0" branch="false"/>
+								<line number="27" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="converter" signature="()Lorg/springframework/http/converter/json/MappingJackson2HttpMessageConverter;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="38" hits="0" branch="false"/>
+								<line number="39" hits="0" branch="false"/>
+								<line number="41" hits="0" branch="false"/>
+								<line number="42" hits="0" branch="false"/>
+								<line number="44" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="multipartResolver" signature="()Lorg/springframework/web/multipart/commons/CommonsMultipartResolver;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="50" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="objectMapper" signature="(Lorg/springframework/http/converter/json/MappingJackson2HttpMessageConverter;)Lcom/fasterxml/jackson/databind/ObjectMapper;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="32" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="25" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+						<line number="27" hits="0" branch="false"/>
+						<line number="32" hits="0" branch="false"/>
+						<line number="38" hits="0" branch="false"/>
+						<line number="39" hits="0" branch="false"/>
+						<line number="41" hits="0" branch="false"/>
+						<line number="42" hits="0" branch="false"/>
+						<line number="44" hits="0" branch="false"/>
+						<line number="50" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.controller" line-rate="0.627906976744186" branch-rate="0.5" complexity="1.375">
+			<classes>
+				<class name="pl.matsuo.gitlab.controller.CodeStatisticsController" filename="pl/matsuo/gitlab/controller/CodeStatisticsController.java" line-rate="0.09090909090909091" branch-rate="0.0" complexity="1.1666666666666667">
+					<methods>
+						<method name="all" signature="()Ljava/lang/String;" line-rate="0.0" branch-rate="0.0" complexity="0">
+							<lines>
+								<line number="36" hits="0" branch="false"/>
+								<line number="38" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="39" hits="0" branch="false"/>
+								<line number="40" hits="0" branch="false"/>
+								<line number="42" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="branch" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="70" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="commit" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lpl/matsuo/gitlab/data/BuildInfo;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="81" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="element" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lpl/matsuo/gitlab/hook/PartialBuildInfo;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="93" hits="0" branch="false"/>
+								<line number="94" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="project" signature="(Ljava/lang/String;Ljava/lang/String;)Lpl/matsuo/gitlab/data/ProjectInfo;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="59" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="user" signature="(Ljava/lang/String;)Lpl/matsuo/gitlab/data/UserInfo;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="50" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="36" hits="0" branch="false"/>
+						<line number="38" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="39" hits="0" branch="false"/>
+						<line number="40" hits="0" branch="false"/>
+						<line number="42" hits="0" branch="false"/>
+						<line number="50" hits="0" branch="false"/>
+						<line number="59" hits="0" branch="false"/>
+						<line number="70" hits="2" branch="false"/>
+						<line number="81" hits="0" branch="false"/>
+						<line number="93" hits="0" branch="false"/>
+						<line number="94" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.controller.GitLabWebHookController" filename="pl/matsuo/gitlab/controller/GitLabWebHookController.java" line-rate="0.8" branch-rate="0.5" complexity="2.0">
+					<methods>
+						<method name="buildStatus" signature="(Ljava/lang/String;)Lpl/matsuo/gitlab/data/BuildInfo;" line-rate="0.75" branch-rate="0.5" complexity="0">
+							<lines>
+								<line number="39" hits="1" branch="false"/>
+								<line number="41" hits="1" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="42" hits="0" branch="false"/>
+								<line number="45" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="pushEvent" signature="(Lpl/matsuo/gitlab/hook/PushEvent;)Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="32" hits="2" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="32" hits="2" branch="false"/>
+						<line number="39" hits="1" branch="false"/>
+						<line number="41" hits="1" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="42" hits="0" branch="false"/>
+						<line number="45" hits="1" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.controller.WebViewController" filename="pl/matsuo/gitlab/controller/WebViewController.java" line-rate="0.8148148148148148" branch-rate="0.625" complexity="0.0">
+					<methods>
+						<method name="get" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljavax/servlet/http/HttpServletRequest;)Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="44" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="getPageTemplate" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljavax/servlet/http/HttpServletRequest;)Ljava/lang/String;" line-rate="0.9090909090909091" branch-rate="0.5" complexity="0">
+							<lines>
+								<line number="74" hits="2" branch="false"/>
+								<line number="75" hits="2" branch="true" condition-coverage="50% (2/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="76" hits="0" branch="false"/>
+								<line number="79" hits="2" branch="false"/>
+								<line number="82" hits="4" branch="false"/>
+								<line number="83" hits="2" branch="false"/>
+								<line number="85" hits="2" branch="false"/>
+								<line number="86" hits="2" branch="false"/>
+								<line number="87" hits="2" branch="false"/>
+								<line number="88" hits="2" branch="false"/>
+								<line number="89" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$get$8" signature="(Ljavax/servlet/http/HttpServletRequest;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)Ljava/lang/String;" line-rate="0.7142857142857143" branch-rate="0.75" complexity="0">
+							<lines>
+								<line number="46" hits="2" branch="false"/>
+								<line number="48" hits="2" branch="false"/>
+								<line number="50" hits="2" branch="false"/>
+								<line number="51" hits="2" branch="false"/>
+								<line number="52" hits="2" branch="false"/>
+								<line number="53" hits="2" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="55" hits="1" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="56" hits="0" branch="false"/>
+								<line number="57" hits="0" branch="false"/>
+								<line number="60" hits="1" branch="false"/>
+								<line number="62" hits="1" branch="false"/>
+								<line number="63" hits="1" branch="false"/>
+								<line number="65" hits="0" branch="false"/>
+								<line number="66" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$get$9" signature="()Ljava/lang/RuntimeException;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="68" hits="2" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="44" hits="2" branch="false"/>
+						<line number="46" hits="2" branch="false"/>
+						<line number="48" hits="2" branch="false"/>
+						<line number="50" hits="2" branch="false"/>
+						<line number="51" hits="2" branch="false"/>
+						<line number="52" hits="2" branch="false"/>
+						<line number="53" hits="2" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="55" hits="1" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="56" hits="0" branch="false"/>
+						<line number="57" hits="0" branch="false"/>
+						<line number="60" hits="1" branch="false"/>
+						<line number="62" hits="1" branch="false"/>
+						<line number="63" hits="1" branch="false"/>
+						<line number="65" hits="0" branch="false"/>
+						<line number="66" hits="0" branch="false"/>
+						<line number="68" hits="2" branch="false"/>
+						<line number="74" hits="2" branch="false"/>
+						<line number="75" hits="2" branch="true" condition-coverage="50% (2/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="76" hits="0" branch="false"/>
+						<line number="79" hits="2" branch="false"/>
+						<line number="82" hits="4" branch="false"/>
+						<line number="83" hits="2" branch="false"/>
+						<line number="85" hits="2" branch="false"/>
+						<line number="86" hits="2" branch="false"/>
+						<line number="87" hits="2" branch="false"/>
+						<line number="88" hits="2" branch="false"/>
+						<line number="89" hits="2" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.data" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.data.BuildInfo" filename="pl/matsuo/gitlab/data/BuildInfo.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="13" hits="32" branch="false"/>
+								<line number="17" hits="32" branch="false"/>
+								<line number="18" hits="32" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="13" hits="32" branch="false"/>
+						<line number="17" hits="32" branch="false"/>
+						<line number="18" hits="32" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.data.BuildStatus" filename="pl/matsuo/gitlab/data/BuildStatus.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="7" hits="2" branch="false"/>
+								<line number="9" hits="1" branch="false"/>
+								<line number="10" hits="1" branch="false"/>
+								<line number="11" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="valueOf" signature="(Ljava/lang/String;)Lpl/matsuo/gitlab/data/BuildStatus;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+							</lines>
+						</method>
+						<method name="values" signature="()[Lpl/matsuo/gitlab/data/BuildStatus;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="7" hits="2" branch="false"/>
+						<line number="9" hits="1" branch="false"/>
+						<line number="10" hits="1" branch="false"/>
+						<line number="11" hits="1" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.data.ProjectInfo" filename="pl/matsuo/gitlab/data/ProjectInfo.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="10" hits="10" branch="false"/>
+								<line number="13" hits="10" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="10" hits="10" branch="false"/>
+						<line number="13" hits="10" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.data.UserInfo" filename="pl/matsuo/gitlab/data/UserInfo.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="10" hits="10" branch="false"/>
+								<line number="13" hits="10" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="10" hits="10" branch="false"/>
+						<line number="13" hits="10" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.exception" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.exception.GitException" filename="pl/matsuo/gitlab/exception/GitException.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.exception.ResourceNotFoundException" filename="pl/matsuo/gitlab/exception/ResourceNotFoundException.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.file" line-rate="0.09859154929577464" branch-rate="0.0" complexity="2.2142857142857144">
+			<classes>
+				<class name="pl.matsuo.gitlab.file.FileConverter" filename="pl/matsuo/gitlab/file/FileConverter.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.file.FileConverterProvider" filename="pl/matsuo/gitlab/file/FileConverterProvider.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.file.FileConverterProviderUtil" filename="pl/matsuo/gitlab/file/FileConverterProviderUtil.java" line-rate="0.0" branch-rate="1.0" complexity="2.5">
+					<methods>
+						<method name="singleClassProvider" signature="(Ljava/lang/Class;Lpl/matsuo/gitlab/file/FileConverter;)Lpl/matsuo/gitlab/file/FileConverterProvider;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="10" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="10" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.file.FileConverterProviderUtil$1" filename="pl/matsuo/gitlab/file/FileConverterProviderUtil.java" line-rate="0.0" branch-rate="0.0" complexity="2.5">
+					<methods>
+						<method name="converter" signature="(Ljava/lang/Class;)Lpl/matsuo/gitlab/file/FileConverter;" line-rate="0.0" branch-rate="0.0" complexity="0">
+							<lines>
+								<line number="13" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="14" hits="0" branch="false"/>
+								<line number="16" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="13" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="14" hits="0" branch="false"/>
+						<line number="16" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.file.FilePath" filename="pl/matsuo/gitlab/file/FilePath.java" line-rate="0.0" branch-rate="0.0" complexity="2.375">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/io/File;)V" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="21" hits="0" branch="false"/>
+								<line number="29" hits="0" branch="false"/>
+								<line number="30" hits="0" branch="false"/>
+								<line number="31" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;)V" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="24" hits="0" branch="false"/>
+								<line number="25" hits="0" branch="false"/>
+								<line number="26" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="append" signature="(Ljava/lang/String;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="151" hits="0" branch="false"/>
+								<line number="152" hits="0" branch="false"/>
+								<line number="153" hits="0" branch="false"/>
+								<line number="154" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="appendln" signature="(Ljava/lang/String;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="161" hits="0" branch="false"/>
+								<line number="162" hits="0" branch="false"/>
+								<line number="163" hits="0" branch="false"/>
+								<line number="164" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="configure" signature="(Lpl/matsuo/gitlab/file/FileConverterProvider;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="64" hits="0" branch="false"/>
+								<line number="65" hits="0" branch="false"/>
+								<line number="66" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="content" signature="(Ljava/lang/Class;Ljava/util/function/Consumer;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="0.0" complexity="0">
+							<lines>
+								<line number="128" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="130" hits="0" branch="false"/>
+								<line number="131" hits="0" branch="false"/>
+								<line number="132" hits="0" branch="false"/>
+								<line number="133" hits="0" branch="false"/>
+								<line number="135" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="content" signature="(Ljava/util/function/Consumer;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="0.0" complexity="0">
+							<lines>
+								<line number="116" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="118" hits="0" branch="false"/>
+								<line number="119" hits="0" branch="false"/>
+								<line number="120" hits="0" branch="false"/>
+								<line number="121" hits="0" branch="false"/>
+								<line number="123" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="file" signature="(Ljava/io/File;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="40" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="file" signature="(Ljava/io/File;[Ljava/lang/String;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="45" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="file" signature="([Ljava/lang/String;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="35" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="overwrite" signature="(Ljava/lang/String;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="141" hits="0" branch="false"/>
+								<line number="142" hits="0" branch="false"/>
+								<line number="143" hits="0" branch="false"/>
+								<line number="144" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="with" signature="(Ljava/lang/String;Ljava/util/function/Consumer;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="74" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="with" signature="(Ljava/util/function/Consumer;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="0.0" complexity="0">
+							<lines>
+								<line number="53" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="54" hits="0" branch="false"/>
+								<line number="56" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="without" signature="(Ljava/lang/String;Ljava/util/function/Consumer;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="111" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="without" signature="(Ljava/util/function/Consumer;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="0.0" complexity="0">
+							<lines>
+								<line number="100" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="101" hits="0" branch="false"/>
+								<line number="103" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="without" signature="([Ljava/lang/String;)Lpl/matsuo/gitlab/file/FilePath;" line-rate="0.0" branch-rate="0.0" complexity="0">
+							<lines>
+								<line number="82" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="83" hits="0" branch="false"/>
+								<line number="86" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="87" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="88" hits="0" branch="false"/>
+								<line number="92" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="21" hits="0" branch="false"/>
+						<line number="24" hits="0" branch="false"/>
+						<line number="25" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+						<line number="29" hits="0" branch="false"/>
+						<line number="30" hits="0" branch="false"/>
+						<line number="31" hits="0" branch="false"/>
+						<line number="35" hits="0" branch="false"/>
+						<line number="40" hits="0" branch="false"/>
+						<line number="45" hits="0" branch="false"/>
+						<line number="53" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="54" hits="0" branch="false"/>
+						<line number="56" hits="0" branch="false"/>
+						<line number="64" hits="0" branch="false"/>
+						<line number="65" hits="0" branch="false"/>
+						<line number="66" hits="0" branch="false"/>
+						<line number="74" hits="0" branch="false"/>
+						<line number="82" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="83" hits="0" branch="false"/>
+						<line number="86" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="87" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="88" hits="0" branch="false"/>
+						<line number="92" hits="0" branch="false"/>
+						<line number="100" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="101" hits="0" branch="false"/>
+						<line number="103" hits="0" branch="false"/>
+						<line number="111" hits="0" branch="false"/>
+						<line number="116" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="118" hits="0" branch="false"/>
+						<line number="119" hits="0" branch="false"/>
+						<line number="120" hits="0" branch="false"/>
+						<line number="121" hits="0" branch="false"/>
+						<line number="123" hits="0" branch="false"/>
+						<line number="128" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="130" hits="0" branch="false"/>
+						<line number="131" hits="0" branch="false"/>
+						<line number="132" hits="0" branch="false"/>
+						<line number="133" hits="0" branch="false"/>
+						<line number="135" hits="0" branch="false"/>
+						<line number="141" hits="0" branch="false"/>
+						<line number="142" hits="0" branch="false"/>
+						<line number="143" hits="0" branch="false"/>
+						<line number="144" hits="0" branch="false"/>
+						<line number="151" hits="0" branch="false"/>
+						<line number="152" hits="0" branch="false"/>
+						<line number="153" hits="0" branch="false"/>
+						<line number="154" hits="0" branch="false"/>
+						<line number="161" hits="0" branch="false"/>
+						<line number="162" hits="0" branch="false"/>
+						<line number="163" hits="0" branch="false"/>
+						<line number="164" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.file.StringFileConverter" filename="pl/matsuo/gitlab/file/StringFileConverter.java" line-rate="0.0" branch-rate="1.0" complexity="2.5">
+					<methods>
+						<method name="convert" signature="(Ljava/io/InputStream;)Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="12" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="convert" signature="(Ljava/io/InputStream;)Ljava/lang/String;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="18" hits="0" branch="false"/>
+								<line number="19" hits="0" branch="false"/>
+								<line number="20" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="convert" signature="(Ljava/lang/String;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+							</lines>
+						</method>
+						<method name="convert" signature="(Ljava/lang/String;)Ljava/lang/String;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="27" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="12" hits="0" branch="false"/>
+						<line number="18" hits="0" branch="false"/>
+						<line number="19" hits="0" branch="false"/>
+						<line number="20" hits="0" branch="false"/>
+						<line number="27" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.file.YamlFileConverterProvider" filename="pl/matsuo/gitlab/file/YamlFileConverterProvider.java" line-rate="0.5555555555555556" branch-rate="1.0" complexity="2.2">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="16" hits="4" branch="false"/>
+								<line number="19" hits="4" branch="false"/>
+							</lines>
+						</method>
+						<method name="converter" signature="(Ljava/lang/Class;)Lpl/matsuo/gitlab/file/FileConverter;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="43" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="read" signature="(Ljava/io/InputStream;Ljava/lang/Class;)Ljava/lang/Object;" line-rate="0.3333333333333333" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="33" hits="2" branch="false"/>
+								<line number="34" hits="0" branch="false"/>
+								<line number="35" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="read" signature="(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;" line-rate="0.3333333333333333" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="24" hits="2" branch="false"/>
+								<line number="25" hits="0" branch="false"/>
+								<line number="26" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="16" hits="4" branch="false"/>
+						<line number="19" hits="4" branch="false"/>
+						<line number="24" hits="2" branch="false"/>
+						<line number="25" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+						<line number="33" hits="2" branch="false"/>
+						<line number="34" hits="0" branch="false"/>
+						<line number="35" hits="0" branch="false"/>
+						<line number="43" hits="1" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.file.YamlFileConverterProvider$1" filename="pl/matsuo/gitlab/file/YamlFileConverterProvider.java" line-rate="1.0" branch-rate="1.0" complexity="2.2">
+					<methods>
+						<method name="convert" signature="(Ljava/io/InputStream;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="48" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="convert" signature="(Ljava/lang/String;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="54" hits="1" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="48" hits="1" branch="false"/>
+						<line number="54" hits="1" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.hook" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.hook.AbstractEvent" filename="pl/matsuo/gitlab/hook/AbstractEvent.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.hook.Author" filename="pl/matsuo/gitlab/hook/Author.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.hook.CommentOnCodeSnippetEvent" filename="pl/matsuo/gitlab/hook/CommentOnCodeSnippetEvent.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.hook.CommentOnIssueEvent" filename="pl/matsuo/gitlab/hook/CommentOnIssueEvent.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.hook.CommentOnMergeRequestEvent" filename="pl/matsuo/gitlab/hook/CommentOnMergeRequestEvent.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.hook.Commit" filename="pl/matsuo/gitlab/hook/Commit.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.hook.IssueEvent" filename="pl/matsuo/gitlab/hook/IssueEvent.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.hook.MergeRequestEvent" filename="pl/matsuo/gitlab/hook/MergeRequestEvent.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.hook.PartialBuildInfo" filename="pl/matsuo/gitlab/hook/PartialBuildInfo.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="7" hits="25" branch="false"/>
+								<line number="11" hits="25" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="7" hits="25" branch="false"/>
+						<line number="11" hits="25" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.hook.PushEvent" filename="pl/matsuo/gitlab/hook/PushEvent.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.hook.Repository" filename="pl/matsuo/gitlab/hook/Repository.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.hook.TagEvent" filename="pl/matsuo/gitlab/hook/TagEvent.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.service.build" line-rate="0.8211382113821138" branch-rate="0.8333333333333334" complexity="1.3333333333333333">
+			<classes>
+				<class name="pl.matsuo.gitlab.service.build.BuildService" filename="pl/matsuo/gitlab/service/build/BuildService.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.service.build.BuildServiceImpl" filename="pl/matsuo/gitlab/service/build/BuildServiceImpl.java" line-rate="0.9464285714285714" branch-rate="0.8333333333333334" complexity="0.0">
+					<methods>
+						<method name="buildStatus" signature="(Ljava/lang/String;)Lpl/matsuo/gitlab/data/BuildInfo;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="145" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="init" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="47" hits="9" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="48" hits="8" branch="false"/>
+								<line number="50" hits="9" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$null$19" signature="(Ljava/lang/String;Lpl/matsuo/gitlab/service/build/PartialBuilder;Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;Lpl/matsuo/gitlab/hook/PartialBuildInfo;)Ljava/util/concurrent/CompletionStage;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="106" hits="14" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="107" hits="3" branch="false"/>
+								<line number="108" hits="3" branch="false"/>
+								<line number="109" hits="3" branch="false"/>
+								<line number="112" hits="14" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$null$20" signature="(Ljava/lang/String;Lpl/matsuo/gitlab/hook/PartialBuildInfo;)Ljava/util/concurrent/CompletionStage;" line-rate="1.0" branch-rate="0.5" complexity="0">
+							<lines>
+								<line number="119" hits="8" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="120" hits="8" branch="false"/>
+								<line number="121" hits="8" branch="false"/>
+								<line number="122" hits="8" branch="false"/>
+								<line number="124" hits="8" branch="false"/>
+								<line number="127" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$null$21" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/lang/String;Ljava/io/File;)V" line-rate="0.8461538461538461" branch-rate="0.75" complexity="0">
+							<lines>
+								<line number="92" hits="11" branch="false"/>
+								<line number="94" hits="11" branch="false"/>
+								<line number="95" hits="0" branch="false"/>
+								<line number="96" hits="0" branch="false"/>
+								<line number="97" hits="11" branch="false"/>
+								<line number="99" hits="11" branch="false"/>
+								<line number="100" hits="11" branch="false"/>
+								<line number="103" hits="11" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="104" hits="14" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="105" hits="14" branch="false"/>
+								<line number="115" hits="14" branch="false"/>
+								<line number="118" hits="11" branch="false"/>
+								<line number="129" hits="11" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$pushEvent$17" signature="(Ljava/lang/String;Lpl/matsuo/gitlab/data/UserInfo;)Lpl/matsuo/gitlab/data/UserInfo;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="60" hits="10" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="61" hits="9" branch="false"/>
+								<line number="63" hits="10" branch="false"/>
+								<line number="64" hits="10" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$pushEvent$18" signature="(Ljava/lang/String;Lpl/matsuo/gitlab/data/ProjectInfo;)Lpl/matsuo/gitlab/data/ProjectInfo;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="69" hits="10" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="70" hits="9" branch="false"/>
+								<line number="72" hits="10" branch="false"/>
+								<line number="73" hits="10" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$pushEvent$22" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/lang/String;)V" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="88" hits="13" branch="false"/>
+								<line number="90" hits="13" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="91" hits="11" branch="false"/>
+								<line number="131" hits="13" branch="false"/>
+							</lines>
+						</method>
+						<method name="pushEvent" signature="(Lpl/matsuo/gitlab/hook/PushEvent;)Ljava/lang/String;" line-rate="0.9375" branch-rate="0.5" complexity="0">
+							<lines>
+								<line number="54" hits="13" branch="false"/>
+								<line number="55" hits="13" branch="false"/>
+								<line number="56" hits="13" branch="false"/>
+								<line number="59" hits="13" branch="false"/>
+								<line number="68" hits="13" branch="false"/>
+								<line number="76" hits="13" branch="false"/>
+								<line number="78" hits="13" branch="false"/>
+								<line number="81" hits="13" branch="false"/>
+								<line number="82" hits="13" branch="false"/>
+								<line number="83" hits="13" branch="false"/>
+								<line number="84" hits="13" branch="false"/>
+								<line number="87" hits="13" branch="false"/>
+								<line number="134" hits="13" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="135" hits="0" branch="false"/>
+								<line number="137" hits="13" branch="false"/>
+								<line number="140" hits="13" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="47" hits="9" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="48" hits="8" branch="false"/>
+						<line number="50" hits="9" branch="false"/>
+						<line number="54" hits="13" branch="false"/>
+						<line number="55" hits="13" branch="false"/>
+						<line number="56" hits="13" branch="false"/>
+						<line number="59" hits="13" branch="false"/>
+						<line number="60" hits="10" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="61" hits="9" branch="false"/>
+						<line number="63" hits="10" branch="false"/>
+						<line number="64" hits="10" branch="false"/>
+						<line number="68" hits="13" branch="false"/>
+						<line number="69" hits="10" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="70" hits="9" branch="false"/>
+						<line number="72" hits="10" branch="false"/>
+						<line number="73" hits="10" branch="false"/>
+						<line number="76" hits="13" branch="false"/>
+						<line number="78" hits="13" branch="false"/>
+						<line number="81" hits="13" branch="false"/>
+						<line number="82" hits="13" branch="false"/>
+						<line number="83" hits="13" branch="false"/>
+						<line number="84" hits="13" branch="false"/>
+						<line number="87" hits="13" branch="false"/>
+						<line number="88" hits="13" branch="false"/>
+						<line number="90" hits="13" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="91" hits="11" branch="false"/>
+						<line number="92" hits="11" branch="false"/>
+						<line number="94" hits="11" branch="false"/>
+						<line number="95" hits="0" branch="false"/>
+						<line number="96" hits="0" branch="false"/>
+						<line number="97" hits="11" branch="false"/>
+						<line number="99" hits="11" branch="false"/>
+						<line number="100" hits="11" branch="false"/>
+						<line number="103" hits="11" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="104" hits="14" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="105" hits="14" branch="false"/>
+						<line number="106" hits="14" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="107" hits="3" branch="false"/>
+						<line number="108" hits="3" branch="false"/>
+						<line number="109" hits="3" branch="false"/>
+						<line number="112" hits="14" branch="false"/>
+						<line number="115" hits="14" branch="false"/>
+						<line number="118" hits="11" branch="false"/>
+						<line number="119" hits="8" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="120" hits="8" branch="false"/>
+						<line number="121" hits="8" branch="false"/>
+						<line number="122" hits="8" branch="false"/>
+						<line number="124" hits="8" branch="false"/>
+						<line number="127" hits="8" branch="false"/>
+						<line number="129" hits="11" branch="false"/>
+						<line number="131" hits="13" branch="false"/>
+						<line number="134" hits="13" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="135" hits="0" branch="false"/>
+						<line number="137" hits="13" branch="false"/>
+						<line number="140" hits="13" branch="false"/>
+						<line number="145" hits="2" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.service.build.CommandExecutingPartialBuilder" filename="pl/matsuo/gitlab/service/build/CommandExecutingPartialBuilder.java" line-rate="0.7377049180327869" branch-rate="0.8333333333333334" complexity="0.0">
+					<methods>
+						<method name="executeWithReport" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/lang/String;Lpl/matsuo/gitlab/util/TriFunction;)Ljava/util/function/BiConsumer;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="120" hits="6" branch="false"/>
+							</lines>
+						</method>
+						<method name="internalExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/lang/String;Ljava/lang/String;Ljava/util/function/Function;Ljava/util/function/BiConsumer;)Ljava/util/concurrent/CompletableFuture;" line-rate="0.7346938775510204" branch-rate="0.9" complexity="0">
+							<lines>
+								<line number="43" hits="10" branch="false"/>
+								<line number="44" hits="10" branch="false"/>
+								<line number="46" hits="10" branch="false"/>
+								<line number="47" hits="10" branch="false"/>
+								<line number="49" hits="10" branch="false"/>
+								<line number="50" hits="10" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="53" hits="8" branch="false"/>
+								<line number="54" hits="0" branch="false"/>
+								<line number="55" hits="0" branch="false"/>
+								<line number="56" hits="0" branch="false"/>
+								<line number="57" hits="8" branch="false"/>
+								<line number="61" hits="10" branch="false"/>
+								<line number="62" hits="20" branch="false"/>
+								<line number="63" hits="10" branch="false"/>
+								<line number="64" hits="10" branch="false"/>
+								<line number="65" hits="10" branch="false"/>
+								<line number="66" hits="10" branch="false"/>
+								<line number="68" hits="10" branch="false"/>
+								<line number="70" hits="10" branch="false"/>
+								<line number="71" hits="10" branch="false"/>
+								<line number="72" hits="10" branch="false"/>
+								<line number="74" hits="58" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="75" hits="48" branch="false"/>
+								<line number="76" hits="48" branch="false"/>
+								<line number="78" hits="399" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="79" hits="351" branch="false"/>
+								<line number="80" hits="351" branch="false"/>
+								<line number="81" hits="351" branch="false"/>
+								<line number="82" hits="351" branch="false"/>
+								<line number="84" hits="48" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="85" hits="0" branch="false"/>
+								<line number="86" hits="0" branch="false"/>
+								<line number="87" hits="0" branch="false"/>
+								<line number="88" hits="0" branch="false"/>
+								<line number="91" hits="10" branch="false"/>
+								<line number="92" hits="10" branch="false"/>
+								<line number="94" hits="10" branch="false"/>
+								<line number="96" hits="10" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="97" hits="8" branch="false"/>
+								<line number="99" hits="2" branch="false"/>
+								<line number="101" hits="0" branch="false"/>
+								<line number="102" hits="0" branch="false"/>
+								<line number="103" hits="0" branch="false"/>
+								<line number="104" hits="0" branch="false"/>
+								<line number="106" hits="0" branch="false"/>
+								<line number="108" hits="0" branch="false"/>
+								<line number="109" hits="10" branch="false"/>
+								<line number="111" hits="10" branch="false"/>
+								<line number="113" hits="10" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$executeWithReport$10" signature="(Ljava/lang/String;Lpl/matsuo/gitlab/hook/PushEvent;Lpl/matsuo/gitlab/util/TriFunction;Lpl/matsuo/gitlab/hook/PartialBuildInfo;Ljava/io/File;)V" line-rate="0.7272727272727273" branch-rate="0.5" complexity="0">
+							<lines>
+								<line number="121" hits="6" branch="false"/>
+								<line number="122" hits="6" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="124" hits="6" branch="false"/>
+								<line number="126" hits="6" branch="false"/>
+								<line number="128" hits="6" branch="false"/>
+								<line number="129" hits="6" branch="false"/>
+								<line number="130" hits="0" branch="false"/>
+								<line number="131" hits="0" branch="false"/>
+								<line number="132" hits="6" branch="false"/>
+								<line number="134" hits="0" branch="false"/>
+								<line number="136" hits="6" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="43" hits="10" branch="false"/>
+						<line number="44" hits="10" branch="false"/>
+						<line number="46" hits="10" branch="false"/>
+						<line number="47" hits="10" branch="false"/>
+						<line number="49" hits="10" branch="false"/>
+						<line number="50" hits="10" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="53" hits="8" branch="false"/>
+						<line number="54" hits="0" branch="false"/>
+						<line number="55" hits="0" branch="false"/>
+						<line number="56" hits="0" branch="false"/>
+						<line number="57" hits="8" branch="false"/>
+						<line number="61" hits="10" branch="false"/>
+						<line number="62" hits="20" branch="false"/>
+						<line number="63" hits="10" branch="false"/>
+						<line number="64" hits="10" branch="false"/>
+						<line number="65" hits="10" branch="false"/>
+						<line number="66" hits="10" branch="false"/>
+						<line number="68" hits="10" branch="false"/>
+						<line number="70" hits="10" branch="false"/>
+						<line number="71" hits="10" branch="false"/>
+						<line number="72" hits="10" branch="false"/>
+						<line number="74" hits="58" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="75" hits="48" branch="false"/>
+						<line number="76" hits="48" branch="false"/>
+						<line number="78" hits="399" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="79" hits="351" branch="false"/>
+						<line number="80" hits="351" branch="false"/>
+						<line number="81" hits="351" branch="false"/>
+						<line number="82" hits="351" branch="false"/>
+						<line number="84" hits="48" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="85" hits="0" branch="false"/>
+						<line number="86" hits="0" branch="false"/>
+						<line number="87" hits="0" branch="false"/>
+						<line number="88" hits="0" branch="false"/>
+						<line number="91" hits="10" branch="false"/>
+						<line number="92" hits="10" branch="false"/>
+						<line number="94" hits="10" branch="false"/>
+						<line number="96" hits="10" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="97" hits="8" branch="false"/>
+						<line number="99" hits="2" branch="false"/>
+						<line number="101" hits="0" branch="false"/>
+						<line number="102" hits="0" branch="false"/>
+						<line number="103" hits="0" branch="false"/>
+						<line number="104" hits="0" branch="false"/>
+						<line number="106" hits="0" branch="false"/>
+						<line number="108" hits="0" branch="false"/>
+						<line number="109" hits="10" branch="false"/>
+						<line number="111" hits="10" branch="false"/>
+						<line number="113" hits="10" branch="false"/>
+						<line number="120" hits="6" branch="false"/>
+						<line number="121" hits="6" branch="false"/>
+						<line number="122" hits="6" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="124" hits="6" branch="false"/>
+						<line number="126" hits="6" branch="false"/>
+						<line number="128" hits="6" branch="false"/>
+						<line number="129" hits="6" branch="false"/>
+						<line number="130" hits="0" branch="false"/>
+						<line number="131" hits="0" branch="false"/>
+						<line number="132" hits="6" branch="false"/>
+						<line number="134" hits="0" branch="false"/>
+						<line number="136" hits="6" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.service.build.PartialBuilder" filename="pl/matsuo/gitlab/service/build/PartialBuilder.java" line-rate="0.5" branch-rate="1.0" complexity="1.5">
+					<methods>
+						<method name="execute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Ljava/util/concurrent/CompletableFuture;" line-rate="0.25" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="29" hits="15" branch="false"/>
+								<line number="30" hits="0" branch="false"/>
+								<line number="31" hits="0" branch="false"/>
+								<line number="32" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getName" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="41" hits="72" branch="false"/>
+								<line number="42" hits="72" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="29" hits="15" branch="false"/>
+						<line number="30" hits="0" branch="false"/>
+						<line number="31" hits="0" branch="false"/>
+						<line number="32" hits="0" branch="false"/>
+						<line number="41" hits="72" branch="false"/>
+						<line number="42" hits="72" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.service.build.checkstyle" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.service.build.checkstyle.CheckStylePartialBuilder" filename="pl/matsuo/gitlab/service/build/checkstyle/CheckStylePartialBuilder.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="internalExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Ljava/util/concurrent/CompletableFuture;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="22" hits="4" branch="false"/>
+								<line number="24" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$internalExecute$25" signature="(Ljava/lang/String;)[Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="23" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$internalExecute$26" signature="(Lpl/matsuo/gitlab/hook/PartialBuildInfo;Ljava/io/File;Ljava/lang/String;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="26" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="shouldExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Z" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="33" hits="2" branch="false"/>
+								<line number="34" hits="2" branch="false"/>
+								<line number="35" hits="2" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="22" hits="4" branch="false"/>
+						<line number="23" hits="2" branch="false"/>
+						<line number="24" hits="2" branch="false"/>
+						<line number="26" hits="2" branch="false"/>
+						<line number="33" hits="2" branch="false"/>
+						<line number="34" hits="2" branch="false"/>
+						<line number="35" hits="2" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.service.build.cobertura" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.service.build.cobertura.CoberturaPartialBuilder" filename="pl/matsuo/gitlab/service/build/cobertura/CoberturaPartialBuilder.java" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="internalExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Ljava/util/concurrent/CompletableFuture;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="21" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$internalExecute$13" signature="(Ljava/lang/String;)[Ljava/lang/String;" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="22" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$internalExecute$14" signature="(Lpl/matsuo/gitlab/hook/PartialBuildInfo;Ljava/io/File;)V" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="23" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="shouldExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Z" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="29" hits="0" branch="false"/>
+								<line number="30" hits="0" branch="false"/>
+								<line number="31" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="21" hits="0" branch="false"/>
+						<line number="22" hits="0" branch="false"/>
+						<line number="23" hits="0" branch="false"/>
+						<line number="29" hits="0" branch="false"/>
+						<line number="30" hits="0" branch="false"/>
+						<line number="31" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.service.build.docs" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.service.build.docs.DocumentationStylePartialBuilder" filename="pl/matsuo/gitlab/service/build/docs/DocumentationStylePartialBuilder.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="internalExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Ljava/util/concurrent/CompletableFuture;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="21" hits="1" branch="false"/>
+								<line number="22" hits="1" branch="false"/>
+								<line number="24" hits="1" branch="false"/>
+								<line number="25" hits="1" branch="false"/>
+								<line number="27" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="shouldExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Z" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="33" hits="1" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="21" hits="1" branch="false"/>
+						<line number="22" hits="1" branch="false"/>
+						<line number="24" hits="1" branch="false"/>
+						<line number="25" hits="1" branch="false"/>
+						<line number="27" hits="1" branch="false"/>
+						<line number="33" hits="1" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.service.build.findbugs" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.service.build.findbugs.FindBugsPartialBuilder" filename="pl/matsuo/gitlab/service/build/findbugs/FindBugsPartialBuilder.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="internalExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Ljava/util/concurrent/CompletableFuture;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="22" hits="4" branch="false"/>
+								<line number="25" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$internalExecute$15" signature="(Ljava/lang/String;)[Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="24" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$internalExecute$16" signature="(Lpl/matsuo/gitlab/hook/PartialBuildInfo;Ljava/io/File;Ljava/lang/String;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="28" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="shouldExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Z" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="35" hits="2" branch="false"/>
+								<line number="36" hits="2" branch="false"/>
+								<line number="37" hits="2" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="22" hits="4" branch="false"/>
+						<line number="24" hits="2" branch="false"/>
+						<line number="25" hits="2" branch="false"/>
+						<line number="28" hits="2" branch="false"/>
+						<line number="35" hits="2" branch="false"/>
+						<line number="36" hits="2" branch="false"/>
+						<line number="37" hits="2" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.service.build.javancss" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.service.build.javancss.JavaNcssPartialBuilder" filename="pl/matsuo/gitlab/service/build/javancss/JavaNcssPartialBuilder.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="internalExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Ljava/util/concurrent/CompletableFuture;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="22" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$internalExecute$27" signature="(Ljava/lang/String;)[Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="23" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$internalExecute$28" signature="(Lpl/matsuo/gitlab/hook/PartialBuildInfo;Ljava/io/File;)V" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="24" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="shouldExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Z" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="30" hits="2" branch="false"/>
+								<line number="31" hits="2" branch="false"/>
+								<line number="32" hits="2" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="22" hits="2" branch="false"/>
+						<line number="23" hits="2" branch="false"/>
+						<line number="24" hits="2" branch="false"/>
+						<line number="30" hits="2" branch="false"/>
+						<line number="31" hits="2" branch="false"/>
+						<line number="32" hits="2" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.service.build.jekyll" line-rate="0.2558139534883721" branch-rate="0.0" complexity="1.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.service.build.jekyll.JekyllGenerateTemplateService" filename="pl/matsuo/gitlab/service/build/jekyll/JekyllGenerateTemplateService.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.service.build.jekyll.JekyllGenerateTemplateServiceImpl" filename="pl/matsuo/gitlab/service/build/jekyll/JekyllGenerateTemplateServiceImpl.java" line-rate="0.0" branch-rate="0.0" complexity="0.0">
+					<methods>
+						<method name="generateTemplate" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Lpl/matsuo/gitlab/service/build/jekyll/JekyllProperties;)V" line-rate="0.0" branch-rate="0.0" complexity="0">
+							<lines>
+								<line number="30" hits="0" branch="false"/>
+								<line number="32" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="33" hits="0" branch="false"/>
+								<line number="37" hits="0" branch="false"/>
+								<line number="39" hits="0" branch="false"/>
+								<line number="41" hits="0" branch="false"/>
+								<line number="79" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$generateTemplate$6" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Lpl/matsuo/gitlab/file/FilePath;)V" line-rate="0.0" branch-rate="0.0" complexity="0">
+							<lines>
+								<line number="42" hits="0" branch="false"/>
+								<line number="45" hits="0" branch="false"/>
+								<line number="56" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="57" hits="0" branch="false"/>
+								<line number="62" hits="0" branch="false"/>
+								<line number="65" hits="0" branch="false"/>
+								<line number="66" hits="0" branch="false"/>
+								<line number="78" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$null$0" signature="(Lpl/matsuo/gitlab/data/ProjectInfo;Lpl/matsuo/gitlab/hook/PushEvent;Lpl/matsuo/gitlab/file/FilePath;)V" line-rate="0.0" branch-rate="0.0" complexity="0">
+							<lines>
+								<line number="47" hits="0" branch="false"/>
+								<line number="49" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="50" hits="0" branch="false"/>
+								<line number="51" hits="0" branch="false"/>
+								<line number="52" hits="0" branch="false"/>
+								<line number="53" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$null$1" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Lpl/matsuo/gitlab/file/FilePath;)V" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="58" hits="0" branch="false"/>
+								<line number="60" hits="0" branch="false"/>
+								<line number="61" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$null$2" signature="(Lpl/matsuo/gitlab/service/build/jekyll/model/projects/Project;)V" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="74" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$null$3" signature="(Lpl/matsuo/gitlab/service/build/jekyll/model/projects/Projects;)V" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="72" hits="0" branch="false"/>
+								<line number="75" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$null$4" signature="(Lpl/matsuo/gitlab/file/FilePath;)V" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="70" hits="0" branch="false"/>
+								<line number="76" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$null$5" signature="(Lpl/matsuo/gitlab/file/FilePath;)V" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="68" hits="0" branch="false"/>
+								<line number="77" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="30" hits="0" branch="false"/>
+						<line number="32" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="33" hits="0" branch="false"/>
+						<line number="37" hits="0" branch="false"/>
+						<line number="39" hits="0" branch="false"/>
+						<line number="41" hits="0" branch="false"/>
+						<line number="42" hits="0" branch="false"/>
+						<line number="45" hits="0" branch="false"/>
+						<line number="47" hits="0" branch="false"/>
+						<line number="49" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="50" hits="0" branch="false"/>
+						<line number="51" hits="0" branch="false"/>
+						<line number="52" hits="0" branch="false"/>
+						<line number="53" hits="0" branch="false"/>
+						<line number="56" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="57" hits="0" branch="false"/>
+						<line number="58" hits="0" branch="false"/>
+						<line number="60" hits="0" branch="false"/>
+						<line number="61" hits="0" branch="false"/>
+						<line number="62" hits="0" branch="false"/>
+						<line number="65" hits="0" branch="false"/>
+						<line number="66" hits="0" branch="false"/>
+						<line number="68" hits="0" branch="false"/>
+						<line number="70" hits="0" branch="false"/>
+						<line number="72" hits="0" branch="false"/>
+						<line number="74" hits="0" branch="false"/>
+						<line number="75" hits="0" branch="false"/>
+						<line number="76" hits="0" branch="false"/>
+						<line number="77" hits="0" branch="false"/>
+						<line number="78" hits="0" branch="false"/>
+						<line number="79" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.service.build.jekyll.JekyllPartialBuilder" filename="pl/matsuo/gitlab/service/build/jekyll/JekyllPartialBuilder.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="internalExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Ljava/util/concurrent/CompletableFuture;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="28" hits="2" branch="false"/>
+								<line number="34" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$internalExecute$23" signature="(Ljava/lang/String;)[Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="35" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$internalExecute$24" signature="(Lpl/matsuo/gitlab/hook/PartialBuildInfo;Ljava/io/File;)V" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="36" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="shouldExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Z" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="42" hits="2" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="28" hits="2" branch="false"/>
+						<line number="34" hits="2" branch="false"/>
+						<line number="35" hits="2" branch="false"/>
+						<line number="36" hits="2" branch="false"/>
+						<line number="42" hits="2" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.service.build.jekyll.JekyllProperties" filename="pl/matsuo/gitlab/service/build/jekyll/JekyllProperties.java" line-rate="0.8571428571428571" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/io/File;)V" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="23" hits="2" branch="false"/>
+								<line number="24" hits="2" branch="false"/>
+								<line number="25" hits="2" branch="false"/>
+								<line number="26" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="destination" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="35" hits="4" branch="false"/>
+							</lines>
+						</method>
+						<method name="generateTemplate" signature="()Z" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="40" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="source" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="30" hits="2" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="23" hits="2" branch="false"/>
+						<line number="24" hits="2" branch="false"/>
+						<line number="25" hits="2" branch="false"/>
+						<line number="26" hits="2" branch="false"/>
+						<line number="30" hits="2" branch="false"/>
+						<line number="35" hits="4" branch="false"/>
+						<line number="40" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.service.build.jekyll.model.projects" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.service.build.jekyll.model.projects.Project" filename="pl/matsuo/gitlab/service/build/jekyll/model/projects/Project.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.service.build.jekyll.model.projects.Projects" filename="pl/matsuo/gitlab/service/build/jekyll/model/projects/Projects.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.service.build.pmd" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.service.build.pmd.PmdPartialBuilder" filename="pl/matsuo/gitlab/service/build/pmd/PmdPartialBuilder.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="internalExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Ljava/util/concurrent/CompletableFuture;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="22" hits="4" branch="false"/>
+								<line number="24" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$internalExecute$11" signature="(Ljava/lang/String;)[Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="23" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="lambda$internalExecute$12" signature="(Lpl/matsuo/gitlab/hook/PartialBuildInfo;Ljava/io/File;Ljava/lang/String;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="27" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="shouldExecute" signature="(Lpl/matsuo/gitlab/hook/PushEvent;Ljava/util/Properties;)Z" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="34" hits="2" branch="false"/>
+								<line number="35" hits="2" branch="false"/>
+								<line number="36" hits="2" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="22" hits="4" branch="false"/>
+						<line number="23" hits="2" branch="false"/>
+						<line number="24" hits="2" branch="false"/>
+						<line number="27" hits="2" branch="false"/>
+						<line number="34" hits="2" branch="false"/>
+						<line number="35" hits="2" branch="false"/>
+						<line number="36" hits="2" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.service.db" line-rate="0.7307692307692307" branch-rate="0.8333333333333334" complexity="1.6111111111111112">
+			<classes>
+				<class name="pl.matsuo.gitlab.service.db.Database" filename="pl/matsuo/gitlab/service/db/Database.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.service.db.MapDbDatabase" filename="pl/matsuo/gitlab/service/db/MapDbDatabase.java" line-rate="0.7307692307692307" branch-rate="0.8333333333333334" complexity="2.2222222222222223">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="18" hits="14" branch="false"/>
+								<line number="21" hits="14" branch="false"/>
+								<line number="22" hits="14" branch="false"/>
+							</lines>
+						</method>
+						<method name="containsKey" signature="(Ljava/lang/String;)Z" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="89" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="delete" signature="(Ljava/lang/String;)V" line-rate="0.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="64" hits="0" branch="false"/>
+								<line number="65" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="get" signature="(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;" line-rate="0.75" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="37" hits="43" branch="false"/>
+								<line number="38" hits="43" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="39" hits="18" branch="false"/>
+								<line number="40" hits="25" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="41" hits="6" branch="false"/>
+								<line number="44" hits="19" branch="false"/>
+								<line number="45" hits="0" branch="false"/>
+								<line number="46" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="isEmpty" signature="()Z" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="84" hits="3" branch="false"/>
+							</lines>
+						</method>
+						<method name="keySet" signature="()Ljava/util/NavigableSet;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="69" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="put" signature="(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;" line-rate="0.5" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="27" hits="72" branch="false"/>
+								<line number="28" hits="72" branch="false"/>
+								<line number="29" hits="0" branch="false"/>
+								<line number="30" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="size" signature="()I" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="79" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="update" signature="(Ljava/lang/String;Ljava/lang/Class;Ljava/util/function/Function;)Ljava/lang/Object;" line-rate="1.0" branch-rate="0.5" complexity="0">
+							<lines>
+								<line number="53" hits="20" branch="false"/>
+								<line number="55" hits="20" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="56" hits="20" branch="false"/>
+								<line number="59" hits="20" branch="false"/>
+							</lines>
+						</method>
+						<method name="values" signature="()Ljava/util/Collection;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="74" hits="1" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="18" hits="14" branch="false"/>
+						<line number="21" hits="14" branch="false"/>
+						<line number="22" hits="14" branch="false"/>
+						<line number="27" hits="72" branch="false"/>
+						<line number="28" hits="72" branch="false"/>
+						<line number="29" hits="0" branch="false"/>
+						<line number="30" hits="0" branch="false"/>
+						<line number="37" hits="43" branch="false"/>
+						<line number="38" hits="43" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="39" hits="18" branch="false"/>
+						<line number="40" hits="25" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="41" hits="6" branch="false"/>
+						<line number="44" hits="19" branch="false"/>
+						<line number="45" hits="0" branch="false"/>
+						<line number="46" hits="0" branch="false"/>
+						<line number="53" hits="20" branch="false"/>
+						<line number="55" hits="20" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="56" hits="20" branch="false"/>
+						<line number="59" hits="20" branch="false"/>
+						<line number="64" hits="0" branch="false"/>
+						<line number="65" hits="0" branch="false"/>
+						<line number="69" hits="1" branch="false"/>
+						<line number="74" hits="1" branch="false"/>
+						<line number="79" hits="1" branch="false"/>
+						<line number="84" hits="3" branch="false"/>
+						<line number="89" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.service.git" line-rate="0.5813953488372093" branch-rate="0.5" complexity="2.0">
+			<classes>
+				<class name="pl.matsuo.gitlab.service.git.GitRepositoryService" filename="pl/matsuo/gitlab/service/git/GitRepositoryService.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.service.git.GitRepositoryServiceImpl" filename="pl/matsuo/gitlab/service/git/GitRepositoryServiceImpl.java" line-rate="0.5813953488372093" branch-rate="0.5" complexity="2.8333333333333335">
+					<methods>
+						<method name="checkout" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/eclipse/jgit/api/Git;" line-rate="0.4074074074074074" branch-rate="0.5" complexity="0">
+							<lines>
+								<line number="76" hits="10" branch="false"/>
+								<line number="80" hits="10" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="81" hits="1" branch="false"/>
+								<line number="82" hits="1" branch="false"/>
+								<line number="83" hits="1" branch="false"/>
+								<line number="84" hits="1" branch="false"/>
+								<line number="85" hits="1" branch="false"/>
+								<line number="87" hits="9" branch="false"/>
+								<line number="88" hits="9" branch="false"/>
+								<line number="89" hits="9" branch="false"/>
+								<line number="92" hits="10" branch="false"/>
+								<line number="93" hits="0" branch="false"/>
+								<line number="94" hits="0" branch="false"/>
+								<line number="95" hits="0" branch="false"/>
+								<line number="98" hits="0" branch="false"/>
+								<line number="99" hits="0" branch="false"/>
+								<line number="104" hits="0" branch="false"/>
+								<line number="106" hits="0" branch="false"/>
+								<line number="108" hits="0" branch="false"/>
+								<line number="110" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="111" hits="0" branch="false"/>
+								<line number="113" hits="0" branch="false"/>
+								<line number="114" hits="0" branch="false"/>
+								<line number="116" hits="0" branch="false"/>
+								<line number="118" hits="0" branch="false"/>
+								<line number="119" hits="0" branch="false"/>
+								<line number="120" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="checkout" signature="(Lpl/matsuo/gitlab/hook/PushEvent;)Lorg/eclipse/jgit/api/Git;" line-rate="0.8" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="58" hits="10" branch="false"/>
+								<line number="59" hits="6" branch="false"/>
+								<line number="61" hits="6" branch="false"/>
+								<line number="62" hits="0" branch="false"/>
+								<line number="63" hits="0" branch="false"/>
+								<line number="64" hits="6" branch="false"/>
+								<line number="65" hits="4" branch="false"/>
+								<line number="67" hits="10" branch="false"/>
+								<line number="69" hits="20" branch="false"/>
+								<line number="70" hits="10" branch="false"/>
+							</lines>
+						</method>
+						<method name="getKosher" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/Optional;" line-rate="1.0" branch-rate="0.5" complexity="0">
+							<lines>
+								<line number="42" hits="10" branch="false"/>
+								<line number="43" hits="10" branch="false"/>
+								<line number="44" hits="10" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="getKosher" signature="(Lpl/matsuo/gitlab/hook/PushEvent;)Ljava/util/Optional;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="37" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="getRepositoryFile" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="32" hits="34" branch="false"/>
+							</lines>
+						</method>
+						<method name="repository" signature="(Lpl/matsuo/gitlab/hook/PushEvent;)Ljava/io/File;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="50" hits="24" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="32" hits="34" branch="false"/>
+						<line number="37" hits="8" branch="false"/>
+						<line number="42" hits="10" branch="false"/>
+						<line number="43" hits="10" branch="false"/>
+						<line number="44" hits="10" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="50" hits="24" branch="false"/>
+						<line number="58" hits="10" branch="false"/>
+						<line number="59" hits="6" branch="false"/>
+						<line number="61" hits="6" branch="false"/>
+						<line number="62" hits="0" branch="false"/>
+						<line number="63" hits="0" branch="false"/>
+						<line number="64" hits="6" branch="false"/>
+						<line number="65" hits="4" branch="false"/>
+						<line number="67" hits="10" branch="false"/>
+						<line number="69" hits="20" branch="false"/>
+						<line number="70" hits="10" branch="false"/>
+						<line number="76" hits="10" branch="false"/>
+						<line number="80" hits="10" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="81" hits="1" branch="false"/>
+						<line number="82" hits="1" branch="false"/>
+						<line number="83" hits="1" branch="false"/>
+						<line number="84" hits="1" branch="false"/>
+						<line number="85" hits="1" branch="false"/>
+						<line number="87" hits="9" branch="false"/>
+						<line number="88" hits="9" branch="false"/>
+						<line number="89" hits="9" branch="false"/>
+						<line number="92" hits="10" branch="false"/>
+						<line number="93" hits="0" branch="false"/>
+						<line number="94" hits="0" branch="false"/>
+						<line number="95" hits="0" branch="false"/>
+						<line number="98" hits="0" branch="false"/>
+						<line number="99" hits="0" branch="false"/>
+						<line number="104" hits="0" branch="false"/>
+						<line number="106" hits="0" branch="false"/>
+						<line number="108" hits="0" branch="false"/>
+						<line number="110" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="111" hits="0" branch="false"/>
+						<line number="113" hits="0" branch="false"/>
+						<line number="114" hits="0" branch="false"/>
+						<line number="116" hits="0" branch="false"/>
+						<line number="118" hits="0" branch="false"/>
+						<line number="119" hits="0" branch="false"/>
+						<line number="120" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="pl.matsuo.gitlab.util" line-rate="1.0" branch-rate="1.0" complexity="1.5">
+			<classes>
+				<class name="pl.matsuo.gitlab.util.PushEventUtil" filename="pl/matsuo/gitlab/util/PushEventUtil.java" line-rate="1.0" branch-rate="1.0" complexity="1.6666666666666667">
+					<methods>
+						<method name="commit" signature="(Lpl/matsuo/gitlab/hook/PushEvent;[Ljava/lang/String;)Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="64" hits="32" branch="false"/>
+								<line number="65" hits="32" branch="false"/>
+								<line number="66" hits="32" branch="false"/>
+								<line number="68" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="getRef" signature="(Lpl/matsuo/gitlab/hook/PushEvent;)Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="45" hits="68" branch="false"/>
+								<line number="46" hits="68" branch="false"/>
+							</lines>
+						</method>
+						<method name="getRepository" signature="(Lpl/matsuo/gitlab/hook/PushEvent;)Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="32" hits="100" branch="false"/>
+								<line number="33" hits="100" branch="false"/>
+								<line number="34" hits="100" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="35" hits="6" branch="false"/>
+								<line number="36" hits="6" branch="false"/>
+								<line number="38" hits="94" branch="false"/>
+								<line number="39" hits="94" branch="false"/>
+							</lines>
+						</method>
+						<method name="getUser" signature="(Lpl/matsuo/gitlab/hook/PushEvent;)Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="19" hits="100" branch="false"/>
+								<line number="20" hits="100" branch="false"/>
+								<line number="21" hits="100" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="22" hits="6" branch="false"/>
+								<line number="23" hits="6" branch="false"/>
+								<line number="25" hits="94" branch="false"/>
+								<line number="26" hits="94" branch="false"/>
+							</lines>
+						</method>
+						<method name="subPath" signature="(Lpl/matsuo/gitlab/hook/PushEvent;[Ljava/lang/String;)Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="56" hits="13" branch="false"/>
+								<line number="57" hits="13" branch="false"/>
+								<line number="59" hits="13" branch="false"/>
+							</lines>
+						</method>
+						<method name="subPath" signature="([Ljava/lang/String;)Ljava/lang/String;" line-rate="1.0" branch-rate="1.0" complexity="0">
+							<lines>
+								<line number="51" hits="15" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="19" hits="100" branch="false"/>
+						<line number="20" hits="100" branch="false"/>
+						<line number="21" hits="100" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="22" hits="6" branch="false"/>
+						<line number="23" hits="6" branch="false"/>
+						<line number="25" hits="94" branch="false"/>
+						<line number="26" hits="94" branch="false"/>
+						<line number="32" hits="100" branch="false"/>
+						<line number="33" hits="100" branch="false"/>
+						<line number="34" hits="100" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="35" hits="6" branch="false"/>
+						<line number="36" hits="6" branch="false"/>
+						<line number="38" hits="94" branch="false"/>
+						<line number="39" hits="94" branch="false"/>
+						<line number="45" hits="68" branch="false"/>
+						<line number="46" hits="68" branch="false"/>
+						<line number="51" hits="15" branch="false"/>
+						<line number="56" hits="13" branch="false"/>
+						<line number="57" hits="13" branch="false"/>
+						<line number="59" hits="13" branch="false"/>
+						<line number="64" hits="32" branch="false"/>
+						<line number="65" hits="32" branch="false"/>
+						<line number="66" hits="32" branch="false"/>
+						<line number="68" hits="32" branch="false"/>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.util.ThrowingConsumer" filename="pl/matsuo/gitlab/util/ThrowingConsumer.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.util.TriConsumer" filename="pl/matsuo/gitlab/util/TriConsumer.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="pl.matsuo.gitlab.util.TriFunction" filename="pl/matsuo/gitlab/util/TriFunction.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+			</classes>
+		</package>
+	</packages>
+</coverage>

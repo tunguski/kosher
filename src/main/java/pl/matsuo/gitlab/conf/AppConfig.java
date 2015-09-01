@@ -5,11 +5,10 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-
-import java.util.concurrent.Executor;
 
 
 /**
@@ -28,8 +27,9 @@ public class AppConfig implements AsyncConfigurer {
     return ppc;
   }
 
-  @Override
-  public Executor getAsyncExecutor() {
+
+  @Override @Bean
+  public TaskExecutor getAsyncExecutor() {
     ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
     executor.setCorePoolSize(7);
     executor.setMaxPoolSize(42);
@@ -38,6 +38,7 @@ public class AppConfig implements AsyncConfigurer {
     executor.initialize();
     return executor;
   }
+
 
   @Override
   public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {

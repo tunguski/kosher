@@ -23,7 +23,6 @@ public class CheckStylePartialBuilder extends CommandExecutingPartialBuilder {
         destination -> new String[] { "mvn", "checkstyle:checkstyle" },
         executeWithReport(pushEvent, "checkstyle-result.xml", (partialBuildInfo, generationBase, reportBody) -> {
           // fixme: parse report and calculate all quality values
-
           return reportBody;
         }));
   }
