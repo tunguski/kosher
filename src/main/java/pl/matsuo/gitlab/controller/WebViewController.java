@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 
+import static org.apache.commons.io.FileUtils.*;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 
@@ -57,7 +58,10 @@ public class WebViewController {
             return getPageTemplate(user, project, branch, request);
           }
 
-          return FileUtils.readFileToString(file);
+          String fileSource = readFileToString(file);
+          return file.getName().endsWith(".html")
+              ? fileSource.replace("<head>", "<head>\n<base href=\"" + getBaseHref(user, project, branch, request) + "\" />")
+              : fileSource;
         } else {
           System.out.println("file not found: " + file.getAbsolutePath());
           return getPageTemplate(user, project, branch, request);
@@ -79,8 +83,7 @@ public class WebViewController {
     String template = IOUtils.toString(getClass().getResourceAsStream("/templates/page.html"));
 
     // todo: base href must contain absolute url - extract from request
-    String basePath = url.substring(0,
-        url.indexOf(String.join("/", user, project, branch)) + String.join("/", user, project, branch).length()) + "/";
+    String basePath = getBaseHref(user, project, branch, request);
 
     return template
         .replaceAll("#user_name#", user)
@@ -88,6 +91,14 @@ public class WebViewController {
         .replaceAll("#page_title#", user + " - " + project + " - " + branch)
         .replaceAll("#base_href#", basePath)
         ;
+  }
+
+
+  protected String getBaseHref(String user, String project, String branch, HttpServletRequest request) {
+    String url = request.getRequestURL().toString();
+    // todo: base href must contain absolute url - extract from request
+    return url.substring(0, url.indexOf(String.join("/", user, project, branch))
+        + String.join("/", user, project, branch).length()) + "/";
   }
 }
 
