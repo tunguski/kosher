@@ -46,8 +46,7 @@ public class TestWebViewController extends AbstractControllerRequestTest {
 
     performAndCheckStatus(get("/tunguski/gitlab-java-event-listener/master/index.html"), status().isOk(),
         html -> System.out.println(html),
-        html -> assertTrue(html.contains("<h1>Test!</h1>")),
-        html -> assertTrue(html.contains("<head>\n<base href=\"http://localhost/tunguski/gitlab-java-event-listener/master/\" />")));
+        html -> assertTrue(html.contains("<h1>Test!</h1>")));
 
     performAndCheckStatus(get("/tunguski/gitlab-java-event-listener/master/branch_master.html"), status().isOk(),
         html -> System.out.println(html),

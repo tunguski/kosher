@@ -26,8 +26,13 @@ public class JekyllProperties {
   }
 
 
-  public String source() {
-    return properties.getProperty("jekyll.source", "src/site");
+  /**
+   * @param raw if it is documentation only repository root of repository is root of documentation; for maven projects,
+   *            default root of documentation is src/site
+   * @return relative source path
+   */
+  public String source(boolean raw) {
+    return properties.getProperty("jekyll.source", raw ? "." : "src/site");
   }
 
 
@@ -36,8 +41,27 @@ public class JekyllProperties {
   }
 
 
-  public boolean generateTemplate() {
-    return Boolean.getBoolean(properties.getProperty("jekyll.generateTemplate", "true"));
+  /**
+   * Returns url to project denoting base project style. Defaults to kosher-base-style project on github.
+   */
+  public String styleRepository() {
+    return properties.getProperty("jekyll.styleRepository", "https://github.com/tunguski/kosher-base-style.git");
+  }
+
+
+  /**
+   * Returns branch from style repository that should be used.
+   */
+  public String styleBranch() {
+    return properties.getProperty("jekyll.styleBranch", "master");
+  }
+
+
+  /**
+   * Returns style directory to which style repository should be checked out.
+   */
+  public String styleDirectory() {
+    return properties.getProperty("jekyll.styleDirectory", ".style");
   }
 }
 

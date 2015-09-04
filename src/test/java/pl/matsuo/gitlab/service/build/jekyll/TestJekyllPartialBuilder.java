@@ -22,7 +22,8 @@ public class TestJekyllPartialBuilder extends AbstractPartialBuildTest {
   public void testInternalExecute() throws Exception {
     Fun.Tuple2<String, File> checkout = checkoutProject();
 
-    assertTrue(new File(checkout.b, "_site/index.html").exists());
+    assertTrue(new File(checkout.b, "_site").exists());
+    assertTrue(new File(checkout.b, ".style").exists());
 
     BuildInfo buildInfo = db.get(checkout.a, BuildInfo.class);
 

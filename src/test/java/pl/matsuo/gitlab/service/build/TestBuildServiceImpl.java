@@ -10,6 +10,7 @@ import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.hook.Repository;
 import pl.matsuo.gitlab.service.db.Database;
+import pl.matsuo.gitlab.service.execute.ExecutionService;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
 import java.io.File;
@@ -34,6 +35,8 @@ public class TestBuildServiceImpl {
   GitRepositoryService gitRepositoryService;
   @Mock
   PartialBuilder partialBuilder;
+  @Mock
+  ExecutionService executionService;
   @InjectMocks
   BuildServiceImpl buildService = new BuildServiceImpl();
 
@@ -44,6 +47,12 @@ public class TestBuildServiceImpl {
 
     buildService.partialBuilders = new ArrayList<>();
     buildService.partialBuilders.add(partialBuilder);
+
+
+    doAnswer(invocation -> {
+      ((Runnable) invocation.getArguments()[0]).run();
+      return null;
+    }).when(executionService).run(any(Runnable.class));
 
     when(partialBuilder.shouldExecute(any(PushEvent.class), any(Properties.class))).thenReturn(true);
   }

@@ -79,7 +79,7 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
       Git git;
       if (!cloneFile.exists()) {
         git = Git.cloneRepository()
-            .setBranch("master")
+            .setBranch(refName)
             .setURI(uri)
             .setDirectory(cloneFile)
             .call();

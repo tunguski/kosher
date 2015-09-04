@@ -11,6 +11,7 @@ import pl.matsuo.gitlab.data.UserInfo;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.db.Database;
+import pl.matsuo.gitlab.service.execute.ExecutionService;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
 import javax.annotation.PostConstruct;
@@ -37,8 +38,8 @@ public class BuildServiceImpl implements BuildService {
   GitRepositoryService gitRepositoryService;
   @Autowired(required = false)
   List<PartialBuilder> partialBuilders;
-  @Autowired(required = false)
-  TaskExecutor taskExecutor;
+  @Autowired
+  ExecutionService executionService;
 
 
   @PostConstruct
@@ -130,12 +131,7 @@ public class BuildServiceImpl implements BuildService {
       }
     };
 
-    // if taskExecutor is not configured, execute in synch
-    if (taskExecutor != null) {
-      taskExecutor.execute(exec);
-    } else {
-      exec.run();
-    }
+    executionService.run(exec);
 
     return idBuild;
   }

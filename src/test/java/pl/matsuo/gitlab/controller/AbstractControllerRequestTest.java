@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import pl.matsuo.gitlab.AbstractSampleProjectTest;
 import pl.matsuo.gitlab.conf.TestConfig;
+import pl.matsuo.gitlab.service.execute.ExecutionServiceImpl;
 import pl.matsuo.gitlab.util.ThrowingConsumer;
 
 import static org.springframework.http.MediaType.*;
@@ -28,7 +29,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { TestConfig.class })
+@ContextConfiguration(classes = { TestConfig.class, ExecutionServiceImpl.class })
 public abstract class AbstractControllerRequestTest extends AbstractSampleProjectTest {
 
 

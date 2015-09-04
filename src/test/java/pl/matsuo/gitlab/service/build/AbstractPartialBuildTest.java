@@ -12,6 +12,7 @@ import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.hook.Repository;
 import pl.matsuo.gitlab.service.db.Database;
 import pl.matsuo.gitlab.service.db.MapDbDatabase;
+import pl.matsuo.gitlab.service.execute.ExecutionServiceImpl;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 import pl.matsuo.gitlab.service.git.GitRepositoryServiceImpl;
 
@@ -23,7 +24,8 @@ import java.io.File;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { TestConfig.class, MapDbDatabase.class, BuildServiceImpl.class, GitRepositoryServiceImpl.class})
+@ContextConfiguration(classes = { TestConfig.class, MapDbDatabase.class, ExecutionServiceImpl.class, BuildServiceImpl.class,
+                                  GitRepositoryServiceImpl.class})
 public abstract class AbstractPartialBuildTest extends AbstractSampleProjectTest {
 
 
