@@ -48,6 +48,10 @@ public class TestWebViewController extends AbstractControllerRequestTest {
         html -> System.out.println("----\n" + html + "\n----"),
         html -> assertTrue(html.contains("<h1>Test!</h1>")));
 
+    performAndCheckStatus(get("/tunguski/kosher/master/markdown.html"), status().isOk(),
+        html -> System.out.println("----\n" + html + "\n----"),
+        html -> assertTrue(html.contains("<h1>Test!</h1>")));
+
     performAndCheckStatus(get("/tunguski/kosher/master/branch_master.html"), status().isOk(),
         html -> System.out.println("----\n" + html + "\n----"),
         html -> assertTrue(html.contains("tunguski - kosher - master")));

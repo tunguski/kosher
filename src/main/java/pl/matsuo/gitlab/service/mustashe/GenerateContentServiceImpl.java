@@ -11,6 +11,7 @@ import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
 import com.github.mustachejava.MustacheResolver;
 import org.apache.commons.io.FileUtils;
+import org.pegdown.PegDownProcessor;
 import org.springframework.stereotype.Service;
 import pl.matsuo.gitlab.service.build.jekyll.JekyllProperties;
 import pl.matsuo.gitlab.service.build.jekyll.model.SiteConfig;
@@ -66,6 +67,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
           mapper.readTree(new File(styleRoot, ".kosher.yml")).get("site"),
           buildModel(user, project, branch, request));
 
+      boolean demarkdownified = false;
       boolean process = true;
       while (process) {
         // read custom configuration
@@ -73,6 +75,13 @@ public class GenerateContentServiceImpl implements GenerateContentService {
           String[] split = template.split("---", 3);
           provider = provider.sub(mapper.readTree(split[1]));
           template = (split.length > 2 ? split[2] : "").trim();
+        }
+
+        if (!demarkdownified) {
+          // markdown processing
+          PegDownProcessor processor = new PegDownProcessor();
+          template = processor.markdownToHtml(template);
+          demarkdownified = true;
         }
 
         // layout processing
@@ -85,9 +94,6 @@ public class GenerateContentServiceImpl implements GenerateContentService {
 
       // mustache processing
       String mustache = mustache(config, properties, template, provider);
-
-      // markdown processing
-
 
       return mustache;
     } catch (IOException e) {
