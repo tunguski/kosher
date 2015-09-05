@@ -15,9 +15,7 @@ import pl.matsuo.gitlab.service.mustashe.GenerateContentService;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static java.util.Arrays.*;
 import static org.apache.commons.io.FileUtils.*;
@@ -65,7 +63,7 @@ public class WebViewController {
 
           return generated;
         }
-    }).orElseThrow(() -> new RuntimeException("No .kosher.yml file found"));
+    }).orElseThrow(() -> new ResourceNotFoundException());
   }
 
 
@@ -86,7 +84,7 @@ public class WebViewController {
         System.out.println("file not found: " + restOfTheUrl);
         throw new ResourceNotFoundException();
       }
-    }).orElseThrow(() -> new RuntimeException("No .kosher file found"));
+    }).orElseThrow(() -> new ResourceNotFoundException());
   }
 
 

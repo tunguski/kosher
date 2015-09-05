@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.data.ProjectInfo;
 import pl.matsuo.gitlab.data.UserInfo;
+import pl.matsuo.gitlab.exception.ResourceNotFoundException;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.service.db.Database;
 
+import static org.springframework.http.HttpStatus.*;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 import static pl.matsuo.gitlab.util.PushEventUtil.*;
 
@@ -30,7 +32,7 @@ public class CodeStatisticsController {
 
 
   @RequestMapping(value = "/", method = GET)
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(OK)
   public @ResponseBody
   String all() {
     String result = "";
@@ -44,7 +46,7 @@ public class CodeStatisticsController {
 
 
   @RequestMapping(value = "/{user}", method = GET)
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(OK)
   public @ResponseBody
   UserInfo user(@PathVariable("user") String user) {
     return db.get(user, UserInfo.class);
@@ -52,7 +54,7 @@ public class CodeStatisticsController {
 
 
   @RequestMapping(value = "/{user}/{project}", method = GET)
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(OK)
   public @ResponseBody
   ProjectInfo project(@PathVariable("user") String user,
                  @PathVariable("project") String project) {
@@ -61,37 +63,58 @@ public class CodeStatisticsController {
 
 
   @RequestMapping(value = "/{user}/{project}/{branch}", method = GET)
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(OK)
   public @ResponseBody
-  String branch(@PathVariable("user") String user,
+  Object branch(@PathVariable("user") String user,
                    @PathVariable("project") String project,
                    @PathVariable("branch") String branch) {
-    // returns commit reference
-    return db.get(subPath(user, project, branch), String.class);
+    String data = db.get(subPath(user, project, branch), String.class);
+
+    if (data.contains("{")) {
+      // returns BuildInfo
+      return db.get(subPath(user, project, branch), BuildInfo.class);
+    } else {
+      // returns commit reference
+      return data;
+    }
   }
 
 
-  @RequestMapping(value = "/{user}/{project}/{branch}/{commit}", method = GET)
-  @ResponseStatus(HttpStatus.OK)
-  public @ResponseBody
-  BuildInfo commit(@PathVariable("user") String user,
-                   @PathVariable("project") String project,
-                   @PathVariable("branch") String branch,
-                   @PathVariable("commit") String commit) {
-    return db.get(subPath(user, project, commit), BuildInfo.class);
-  }
-
-
-  @RequestMapping(value = "/{user}/{project}/{branch}/{commit}/{element}", method = GET)
-  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(value = "/{user}/{project}/{commit}/{element}", method = GET)
+  @ResponseStatus(OK)
   public @ResponseBody
   PartialBuildInfo element(@PathVariable("user") String user,
                            @PathVariable("project") String project,
-                           @PathVariable("branch") String branch,
                            @PathVariable("commit") String commit,
                            @PathVariable("element") String element) {
     BuildInfo buildInfo = db.get(subPath(user, project, commit), BuildInfo.class);
-    return buildInfo.getPartialStatuses().get(element);
+    PartialBuildInfo data = buildInfo.getPartialStatuses().get(element);
+    if (data == null) {
+      throw new ResourceNotFoundException();
+    }
+    return data;
+  }
+
+
+  @RequestMapping(value = "/{user}/{project}/{commit}/{element}/{subelement}", method = GET)
+  @ResponseStatus(OK)
+  public @ResponseBody
+  String subelement(@PathVariable("user") String user,
+                             @PathVariable("project") String project,
+                             @PathVariable("commit") String commit,
+                             @PathVariable("element") String element,
+                              @PathVariable("subelement") String subelement) {
+    String data = db.get(subPath(user, project, commit, element, subelement), String.class);
+    if (data == null) {
+      throw new ResourceNotFoundException();
+    }
+    return data;
+  }
+
+
+  @RequestMapping(value = "/{user}/{project}/{commit}/{element}/{subelement}/**", method = GET)
+  @ResponseStatus(NOT_FOUND)
+  public void subelement() {
   }
 }
 
