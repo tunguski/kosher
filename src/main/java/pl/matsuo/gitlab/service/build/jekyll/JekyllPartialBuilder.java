@@ -31,7 +31,7 @@ public class JekyllPartialBuilder extends CommandExecutingPartialBuilder {
 
 
   public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, File config) {
-    JekyllProperties jekyllProperties = new JekyllProperties(config, true);
+    JekyllProperties jekyllProperties = new JekyllProperties(config);
 
     PartialBuildInfo partialBuildInfo = new PartialBuildInfo();
     partialBuildInfo.setName(getName());

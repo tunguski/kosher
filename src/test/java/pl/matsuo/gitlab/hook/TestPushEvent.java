@@ -23,13 +23,13 @@ public class TestPushEvent {
         getClass().getResourceAsStream("/sample_pushEvent.json"), PushEvent.class);
 
     assertNotNull(pushEvent);
-    assertEquals("http://github.com/tunguski/gitlab-java-event-listener.git",
+    assertEquals("http://github.com/tunguski/kosher.git",
         pushEvent.getRepository().getGit_http_url());
 
     String serialized = objectMapper.writeValueAsString(pushEvent);
 
     assertNotNull(serialized);
-    assertEquals(1143, serialized.length());
+    assertEquals(1083, serialized.length());
   }
 }
 

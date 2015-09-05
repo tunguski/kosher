@@ -45,8 +45,8 @@ public class TestCodeStatisticsController extends AbstractControllerRequestTest 
     pushEvent.setRepository(new Repository());
     pushEvent.setRef("refs/heads/master");
     pushEvent.setAfter("78af4d73667e3ef4bbb06e82270e0015a1f251ea");
-    pushEvent.getRepository().setUrl("https://github.com/tunguski/gitlab-java-event-listener.git");
-    pushEvent.getRepository().setGit_ssh_url("git@github.com:tunguski/gitlab-java-event-listener.git");
+    pushEvent.getRepository().setUrl("https://github.com/tunguski/kosher.git");
+    pushEvent.getRepository().setGit_ssh_url("git@github.com:tunguski/kosher.git");
 
     buildService.pushEvent(pushEvent);
   }
@@ -54,10 +54,10 @@ public class TestCodeStatisticsController extends AbstractControllerRequestTest 
 
   @Test
   public void testCommit() throws Exception {
-    performAndCheckStatus(get("/s/tunguski/gitlab-java-event-listener/master"), status().isOk(),
+    performAndCheckStatus(get("/s/tunguski/kosher/master"), status().isOk(),
         ref -> {
           String cleanRef = ref.replaceAll("[\\\\\"]+", "");
-          System.out.println("/s/tunguski/gitlab-java-event-listener/master: " + cleanRef);
+          System.out.println("/s/tunguski/kosher/master: " + cleanRef);
           performAndCheckStatus(get("/s/" + cleanRef), status().isOk(), html -> {
             System.out.println(cleanRef + ": " + html);
 

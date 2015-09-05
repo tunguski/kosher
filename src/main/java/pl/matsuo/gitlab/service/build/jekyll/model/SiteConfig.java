@@ -14,6 +14,9 @@ public class SiteConfig {
   String styleDirectory;
   PageConfig page;
 
+  String layout;
+  String highlighter;
+
 
   public String getSource() {
     return source;
@@ -50,6 +53,18 @@ public class SiteConfig {
   }
   public void setPage(PageConfig page) {
     this.page = page;
+  }
+  public String getLayout() {
+    return layout;
+  }
+  public void setLayout(String layout) {
+    this.layout = layout;
+  }
+  public String getHighlighter() {
+    return highlighter;
+  }
+  public void setHighlighter(String highlighter) {
+    this.highlighter = highlighter;
   }
 }
 

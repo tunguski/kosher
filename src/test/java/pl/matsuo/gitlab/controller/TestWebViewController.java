@@ -38,29 +38,20 @@ public class TestWebViewController extends AbstractControllerRequestTest {
     PushEvent pushEvent = new PushEvent();
     pushEvent.setRepository(new Repository());
     pushEvent.setRef("refs/heads/master");
-    pushEvent.setAfter("78af4d73667e3ef4bbb06e82270e0015a1f251ea");
-    pushEvent.getRepository().setUrl("https://github.com/tunguski/gitlab-java-event-listener.git");
-    pushEvent.getRepository().setGit_ssh_url("git@github.com:tunguski/gitlab-java-event-listener.git");
+    pushEvent.setAfter("51ede2a78d50473b548f7992b977f43590b3afbb");
+    pushEvent.getRepository().setUrl("https://github.com/tunguski/kosher.git");
+    pushEvent.getRepository().setGit_ssh_url("git@github.com:tunguski/kosher.git");
 
     buildService.pushEvent(pushEvent);
 
-    performAndCheckStatus(get("/tunguski/gitlab-java-event-listener/master/index.html"), status().isOk(),
-        html -> System.out.println(html),
+    performAndCheckStatus(get("/tunguski/kosher/master/index.html"), status().isOk(),
+        html -> System.out.println("----\n" + html + "\n----"),
         html -> assertTrue(html.contains("<h1>Test!</h1>")));
 
-    performAndCheckStatus(get("/tunguski/gitlab-java-event-listener/master/branch_master.html"), status().isOk(),
-        html -> System.out.println(html),
-        html -> assertTrue(html.contains("tunguski - gitlab-java-event-listener - master")),
-        html -> assertTrue(html.contains("<base href=\"http://localhost/tunguski/gitlab-java-event-listener/master/\" />")));
-  }
-
-
-  @Test
-  public void testGetPageTemplate() throws Exception {
-    MockHttpServletRequest request = new MockHttpServletRequest("GET", "/user/project/branch/directory/file.html");
-    String pageTemplate = controller.getPageTemplate("user", "project", "branch", request, null, null);
-
-    assertTrue(pageTemplate, pageTemplate.contains("<base href=\"http://localhost/user/project/branch/\" />"));
+    performAndCheckStatus(get("/tunguski/kosher/master/branch_master.html"), status().isOk(),
+        html -> System.out.println("----\n" + html + "\n----"),
+        html -> assertTrue(html.contains("tunguski - kosher - master")),
+        html -> assertTrue(html.contains("<base href=\"http://localhost/tunguski/kosher/master/\" />")));
   }
 }
 

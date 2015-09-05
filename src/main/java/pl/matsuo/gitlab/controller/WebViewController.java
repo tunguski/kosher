@@ -15,7 +15,11 @@ import pl.matsuo.gitlab.service.mustashe.GenerateContentService;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
+import static java.util.Arrays.*;
 import static org.apache.commons.io.FileUtils.*;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 import static org.springframework.web.servlet.HandlerMapping.*;
@@ -43,44 +47,16 @@ public class WebViewController {
              @PathVariable("branch") String branch,
              HttpServletRequest request) {
     return gitRepositoryService.getKosher(user, project, branch).map(config -> {
-      try {
-        JekyllProperties properties = new JekyllProperties(config, !new File(config.getParent(), "pom.xml").exists());
+        JekyllProperties properties = new JekyllProperties(config);
         String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
             .replaceFirst("/" + user + "/" + project + "/" + branch, "");
 
-        String destination = properties.destination();
-        File file = new File(new File(config.getParentFile(), destination), restOfTheUrl);
-        // if url denotes directory, assumes it looks for index.html
-        if (file.isDirectory()) {
-          file = new File(file, "index.html");
-        }
-
-        // security - cannot escape from project directory by using ../../..
-        if (!file.getCanonicalPath().startsWith(config.getParentFile().getCanonicalPath())) {
-          throw new IllegalArgumentException("Illegal path: " + file.getCanonicalPath());
-        }
-
-        if (file.exists()) {
-          // file exists in project directory
-          return readFileToString(file);
+        String body = readFile(config, new JekyllProperties(config), restOfTheUrl);
+        if (body != null) {
+          return body;
         } else {
-          // maybe file exists in style directory
-          destination = properties.styleDirectory();
-          file = new File(new File(config.getParentFile(), destination), restOfTheUrl);
-          // if url denotes directory, assumes it looks for index.html
-          if (file.isDirectory()) {
-            file = new File(file, "index.html");
-          }
-
-          if (file.exists()) {
-            // return file from style directory
-            return readFileToString(file);
-          }
+          return generateContentService.generate(user, project, branch, request, config, properties);
         }
-        return getPageTemplate(user, project, branch, request, config, properties);
-      } catch (Exception e) {
-        throw new ResourceNotFoundException();
-      }
     }).orElseThrow(() -> new RuntimeException("No .kosher.yml file found"));
   }
 
@@ -92,51 +68,42 @@ public class WebViewController {
              @PathVariable("project") String project,
              @PathVariable("branch") String branch,
              HttpServletRequest request) {
-
     return gitRepositoryService.getKosher(user, project, branch).map(config -> {
-      try {
-        JekyllProperties properties = new JekyllProperties(config, !new File(config.getParent(), "pom.xml").exists());
-
-        String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
-            .replaceFirst("/" + user + "/" + project + "/" + branch, "");
-
-        String destination = properties.destination();
-        File file = new File(new File(config.getParentFile(), destination), restOfTheUrl);
-        if (file.exists()) {
-          // security - cannot escape from project directory by using ../../..
-          if (!file.getCanonicalPath().startsWith(config.getParentFile().getCanonicalPath())) {
-            System.out.println("file not found: " + file.getAbsolutePath());
-            throw new ResourceNotFoundException();
-          }
-
-          return readFileToString(file);
-        } else {
-          // if resource does not exist in project, maybe it should be find in style directory
-          destination = properties.styleDirectory();
-          file = new File(new File(config.getParentFile(), destination), restOfTheUrl);
-          if (file.exists()) {
-            // security - cannot escape from project directory by using ../../..
-            if (!file.getCanonicalPath().startsWith(config.getParentFile().getCanonicalPath())) {
-              System.out.println("file not found: " + file.getAbsolutePath());
-              throw new ResourceNotFoundException();
-            }
-
-            return readFileToString(file);
-          } else {
-            System.out.println("file not found: " + file.getAbsolutePath());
-            throw new ResourceNotFoundException();
-          }
-        }
-      } catch (IOException e) {
-        throw new RuntimeException(e);
+      String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
+          .replaceFirst("/" + user + "/" + project + "/" + branch, "");
+      String body = readFile(config, new JekyllProperties(config), restOfTheUrl);
+      if (body != null) {
+        return body;
+      } else {
+        System.out.println("file not found: " + restOfTheUrl);
+        throw new ResourceNotFoundException();
       }
     }).orElseThrow(() -> new RuntimeException("No .kosher file found"));
   }
 
 
-  protected String getPageTemplate(String user, String project, String branch, HttpServletRequest request,
-                                   File config, JekyllProperties properties) throws IOException {
-    return generateContentService.generate(user, project, branch, request, config, properties);
+  protected List<String> lookup(JekyllProperties properties) {
+    return asList(properties.destination(), properties.source(), properties.styleDirectory());
+  }
+
+
+  protected String readFile(File config, JekyllProperties properties, String path) {
+    try {
+      for (String directory : lookup(properties)) {
+        File file = new File(new File(config.getParentFile(), directory), path);
+        if (file.exists()) {
+          // security - cannot escape from project directory by using ../../..
+          if (!file.getCanonicalPath().startsWith(config.getParentFile().getCanonicalPath())) {
+            throw new IllegalArgumentException("Illegal path: " + file.getCanonicalPath());
+          }
+          return readFileToString(file);
+        }
+      }
+
+      return null;
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 }
 

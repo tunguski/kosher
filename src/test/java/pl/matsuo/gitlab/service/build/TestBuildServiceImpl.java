@@ -67,14 +67,14 @@ public class TestBuildServiceImpl {
 
     when(gitRepositoryService.getKosher(any(PushEvent.class))).thenReturn(Optional.of(File.createTempFile(".kosher", "")));
 
-    pushEvent.getRepository().setUrl("git@github.com:tunguski/gitlab-java-event-listener.git");
+    pushEvent.getRepository().setUrl("git@github.com:tunguski/kosher.git");
     buildService.pushEvent(pushEvent);
 
     verify(partialBuilder).execute(any(PushEvent.class), any(File.class));
 
     when(gitRepositoryService.getKosher(any(PushEvent.class))).thenReturn(Optional.of(File.createTempFile(".kosher", "")));
 
-    pushEvent.getRepository().setUrl("https://github.com/tunguski/gitlab-java-event-listener.git");
+    pushEvent.getRepository().setUrl("https://github.com/tunguski/kosher.git");
     buildService.pushEvent(pushEvent);
   }
 
@@ -85,7 +85,7 @@ public class TestBuildServiceImpl {
     pushEvent.setRepository(new Repository());
     pushEvent.setRef("refs/heads/master");
     pushEvent.setAfter("78af4d73667e3ef4bbb06e82270e0015a1f251ea");
-    pushEvent.getRepository().setUrl("git@github.com:tunguski/gitlab-java-event-listener.git");
+    pushEvent.getRepository().setUrl("git@github.com:tunguski/kosher.git");
 
     when(gitRepositoryService.getKosher(any(PushEvent.class))).thenReturn(Optional.of(File.createTempFile(".kosher", "")));
 

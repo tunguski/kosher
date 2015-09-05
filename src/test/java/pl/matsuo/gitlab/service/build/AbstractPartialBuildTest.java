@@ -40,9 +40,9 @@ public abstract class AbstractPartialBuildTest extends AbstractSampleProjectTest
   protected Fun.Tuple2<String, File> checkoutProject() {
     PushEvent pushEvent = new PushEvent();
     pushEvent.setRepository(new Repository());
-    pushEvent.getRepository().setUrl("ssh://github.com/tunguski/gitlab-java-event-listener.git");
-    pushEvent.getRepository().setGit_http_url("http://github.com/tunguski/gitlab-java-event-listener.git");
-    pushEvent.getRepository().setGit_ssh_url("git@github.com:tunguski/gitlab-java-event-listener.git");
+    pushEvent.getRepository().setUrl("ssh://github.com/tunguski/kosher.git");
+    pushEvent.getRepository().setGit_http_url("http://github.com/tunguski/kosher.git");
+    pushEvent.getRepository().setGit_ssh_url("git@github.com:tunguski/kosher.git");
     pushEvent.setRef("refs/heads/master");
     pushEvent.setAfter("78af4d73667e3ef4bbb06e82270e0015a1f251ea");
 

@@ -17,22 +17,32 @@ import java.util.Properties;
 public class JekyllProperties {
 
 
+  private final static ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
   private final SiteConfig config;
   private final String sourceBase;
 
 
-  public JekyllProperties(File file, boolean rawSite) {
+  public JekyllProperties(File config) {
     try {
-      ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-      JsonNode jsonNode = mapper.readTree(file);
-      JsonNode jekyll = jsonNode.get("site");
-
-      config = mapper.readValue(jekyll.toString(), SiteConfig.class);
-
-      sourceBase = rawSite ? "." : "src/site";
+      this.config = readConfig(config);
+      sourceBase = new File(config.getParent(), "pom.xml").exists() ? "src/site" : ".";
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+
+  public static SiteConfig readConfig(File config) throws IOException {
+    JsonNode jsonNode = mapper.readTree(config);
+    JsonNode jekyll = jsonNode.get("site");
+    return mapper.readValue(jekyll.toString(), SiteConfig.class);
+  }
+
+
+  public static SiteConfig readConfig(String config) throws IOException {
+    JsonNode jsonNode = mapper.readTree(config);
+    JsonNode jekyll = jsonNode.get("site");
+    return mapper.readValue(jekyll.toString(), SiteConfig.class);
   }
 
 

@@ -9,11 +9,11 @@
   "project_id": 15,
   "repository": {
     "name": "Diaspora",
-    "url": "https://github.com/tunguski/gitlab-java-event-listener.git",
+    "url": "https://github.com/tunguski/kosher.git",
     "description": "",
     "homepage": "http://example.com/mike/diaspora",
-    "git_http_url":"http://github.com/tunguski/gitlab-java-event-listener.git",
-    "git_ssh_url":"git@github.com:tunguski/gitlab-java-event-listener.git",
+    "git_http_url":"http://github.com/tunguski/kosher.git",
+    "git_ssh_url":"git@github.com:tunguski/kosher.git",
     "visibility_level":0
   },
   "commits": [

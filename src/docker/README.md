@@ -70,6 +70,6 @@
 # kosher
 
     mvn clean install -DskipTests 
-    docker build -t tunguski/gitlab-java-event-listener . 
-    docker rm -f gitlab-java-event-listener 
-    docker run -d --name gitlab-java-event-listener -p 10082:8080 --volumes-from=dbdata tunguski/gitlab-java-event-listener:latest
+    docker build -t tunguski/kosher . 
+    docker rm -f kosher 
+    docker run -d --name kosher -p 10082:8080 --volumes-from=dbdata tunguski/kosher:latest

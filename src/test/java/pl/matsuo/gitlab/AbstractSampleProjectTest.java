@@ -25,13 +25,13 @@ public abstract class AbstractSampleProjectTest {
       gitlabRepositoryBaseFile.mkdirs();
     }
 
-    File sampleProject = new File(gitlabRepositoryBaseFile, "tunguski/gitlab-java-event-listener.git");
+    File sampleProject = new File(gitlabRepositoryBaseFile, "tunguski/kosher.git");
 
     if (!sampleProject.exists()) {
       try {
         Git.cloneRepository()
             .setBranch("master")
-            .setURI("https://github.com/tunguski/gitlab-java-event-listener.git")
+            .setURI("https://github.com/tunguski/kosher.git")
             .setBare(true)
             .setDirectory(sampleProject)
             .call();
