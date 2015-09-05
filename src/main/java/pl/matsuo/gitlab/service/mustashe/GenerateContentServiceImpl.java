@@ -11,6 +11,7 @@ import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
 import com.github.mustachejava.MustacheResolver;
 import org.apache.commons.io.FileUtils;
+import org.pegdown.Extensions;
 import org.pegdown.PegDownProcessor;
 import org.springframework.stereotype.Service;
 import pl.matsuo.gitlab.service.build.jekyll.JekyllProperties;
@@ -28,6 +29,7 @@ import java.util.Map;
 
 import static java.util.Arrays.asList;
 import static org.apache.commons.io.FileUtils.readFileToString;
+import static org.pegdown.Extensions.*;
 import static org.springframework.web.servlet.HandlerMapping.*;
 import static pl.matsuo.gitlab.service.build.jekyll.JekyllProperties.*;
 
@@ -79,7 +81,11 @@ public class GenerateContentServiceImpl implements GenerateContentService {
 
         if (!demarkdownified) {
           // markdown processing
-          PegDownProcessor processor = new PegDownProcessor();
+          // HARDWRAPS,AUTOLINKS,FENCED_CODE_BLOCKS,DEFINITIONS,TABLES
+          PegDownProcessor processor =
+              new PegDownProcessor(TABLES | DEFINITIONS | FENCED_CODE_BLOCKS | AUTOLINKS | HARDWRAPS);
+          processor.parser.Table();
+
           template = processor.markdownToHtml(template);
           demarkdownified = true;
         }

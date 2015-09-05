@@ -2,7 +2,6 @@ package pl.matsuo.gitlab.controller;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.context.ContextConfiguration;
 import pl.matsuo.gitlab.file.YamlFileConverterProvider;
 import pl.matsuo.gitlab.hook.PushEvent;
@@ -37,10 +36,11 @@ public class TestWebViewController extends AbstractControllerRequestTest {
   public void testGetRequest() throws Exception {
     PushEvent pushEvent = new PushEvent();
     pushEvent.setRepository(new Repository());
-    pushEvent.setRef("refs/heads/master");
-    pushEvent.setAfter("51ede2a78d50473b548f7992b977f43590b3afbb");
-    pushEvent.getRepository().setUrl("https://github.com/tunguski/kosher.git");
+    pushEvent.getRepository().setUrl("ssh://github.com/tunguski/kosher.git");
+    pushEvent.getRepository().setGit_http_url("http://github.com/tunguski/kosher.git");
     pushEvent.getRepository().setGit_ssh_url("git@github.com:tunguski/kosher.git");
+    pushEvent.setRef("refs/heads/master");
+    pushEvent.setAfter("78af4d73667e3ef4bbb06e82270e0015a1f251ea");
 
     buildService.pushEvent(pushEvent);
 
@@ -50,7 +50,11 @@ public class TestWebViewController extends AbstractControllerRequestTest {
 
     performAndCheckStatus(get("/tunguski/kosher/master/markdown.html"), status().isOk(),
         html -> System.out.println("----\n" + html + "\n----"),
-        html -> assertTrue(html.contains("<h1>Test!</h1>")));
+        html -> assertTrue(html.contains("<li><strong>two</strong></li>")),
+        html -> assertTrue(html.contains("<h3>Header 3</h3>")),
+        html -> assertTrue(html.contains("<th>col3</th>")),
+        html -> assertTrue(html.contains("<a href=\"tunguski.github.io\">Some link</a>"))
+    );
 
     performAndCheckStatus(get("/tunguski/kosher/master/branch_master.html"), status().isOk(),
         html -> System.out.println("----\n" + html + "\n----"),

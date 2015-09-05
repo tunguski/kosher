@@ -55,7 +55,15 @@ public class WebViewController {
         if (body != null) {
           return body;
         } else {
-          return generateContentService.generate(user, project, branch, request, config, properties);
+          String generated = generateContentService.generate(user, project, branch, request, config, properties);
+
+          try {
+            writeStringToFile(new File(new File(config.getParentFile(), properties.destination()), restOfTheUrl), generated);
+          } catch (IOException e) {
+            e.printStackTrace();
+          }
+
+          return generated;
         }
     }).orElseThrow(() -> new RuntimeException("No .kosher.yml file found"));
   }
