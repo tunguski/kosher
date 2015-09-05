@@ -2,7 +2,10 @@ package pl.matsuo.gitlab.service.mustashe;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.JsonNodeCreator;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.github.mustachejava.Code;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
@@ -58,9 +61,10 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       }
       template = template.trim();
 
-      MultiSourceValueProvider<JsonNode> provider = new MultiSourceValueProvider<>(
+      MultiSourceValueProvider provider = new MultiSourceValueProvider(
+          mapper.readTree(config).get("site"),
           mapper.readTree(new File(styleRoot, ".kosher.yml")).get("site"),
-          mapper.readTree(config).get("site"));
+          buildModel(user, project, branch, request));
 
       boolean process = true;
       while (process) {
@@ -72,15 +76,15 @@ public class GenerateContentServiceImpl implements GenerateContentService {
         }
 
         // layout processing
-        String layout = provider.get(conf -> conf.get("layout").asText());
+        String layout = provider.get(conf -> conf.get("layout") != null ? conf.get("layout").asText() : null);
         String layoutBody = readFile(config, properties, "_layouts/" + layout + ".html");
-        template = layoutBody.replaceFirst("\\{\\{\\s*content\\s*\\}\\}", template).trim();
+        template = layoutBody.replaceAll("\\{\\{\\s*content\\s*\\}\\}", template).trim();
 
         process = template.startsWith("---");
       }
 
       // mustache processing
-      String mustache = mustache(user, project, branch, request, config, properties, template);
+      String mustache = mustache(config, properties, template, provider);
 
       // markdown processing
 
@@ -89,6 +93,17 @@ public class GenerateContentServiceImpl implements GenerateContentService {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  private JsonNode buildModel(String user, String project, String branch, HttpServletRequest request) throws IOException {
+    return mapper.readTree(
+          "project:" +
+        "\n  user: " + user +
+        "\n  name: " + project +
+        "\n  branch: " + branch +
+        "\npage: " +
+        "\n  title: " + user + " - " + project + " - " + branch +
+        "\n  href: " + getBaseHref(user, project, branch, request));
   }
 
 
@@ -117,15 +132,8 @@ public class GenerateContentServiceImpl implements GenerateContentService {
   }
 
 
-  protected String mustache(String user, String project, String branch, HttpServletRequest request,
-                            File config, JekyllProperties properties, String template) throws IOException {
-    Map<String, Object> model = new HashMap<>();
-    model.put("user_name", user);
-    model.put("project_name", project);
-    model.put("branch_name", branch);
-    model.put("page_title", user + " - " + project + " - " + branch);
-    model.put("base_href", getBaseHref(user, project, branch, request));
-
+  protected String mustache(File config, JekyllProperties properties, String template,
+                            MultiSourceValueProvider provider) throws IOException {
     MustacheResolver resolver = name -> {
       // Reader
       return null;
@@ -133,8 +141,9 @@ public class GenerateContentServiceImpl implements GenerateContentService {
 
     MustacheFactory mf = new DefaultMustacheFactory(resolver);
     Mustache mustache = mf.compile(new StringReader(template), "page_template.md");
+
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    mustache.execute(new OutputStreamWriter(baos), model).flush();
+    mustache.execute(new OutputStreamWriter(baos), provider.asMap()).flush();
 
     return new String(baos.toByteArray());
   }

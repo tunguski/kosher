@@ -50,8 +50,7 @@ public class TestWebViewController extends AbstractControllerRequestTest {
 
     performAndCheckStatus(get("/tunguski/kosher/master/branch_master.html"), status().isOk(),
         html -> System.out.println("----\n" + html + "\n----"),
-        html -> assertTrue(html.contains("tunguski - kosher - master")),
-        html -> assertTrue(html.contains("<base href=\"http://localhost/tunguski/kosher/master/\" />")));
+        html -> assertTrue(html.contains("tunguski - kosher - master")));
   }
 }
 
