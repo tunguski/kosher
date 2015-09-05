@@ -50,6 +50,10 @@ public class TestWebViewController extends AbstractControllerRequestTest {
 
     performAndCheckStatus(get("/tunguski/kosher/master/markdown.html"), status().isOk(),
         html -> System.out.println("----\n" + html + "\n----"),
+        // link relativeness
+        html -> assertTrue(html.contains("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/main.css\">")),
+        // link relativeness
+        html -> assertTrue(html.contains("window.base_mustache = './';")),
         // lists and bold
         html -> assertTrue(html.contains("<li><strong>two</strong></li>")),
         // headers

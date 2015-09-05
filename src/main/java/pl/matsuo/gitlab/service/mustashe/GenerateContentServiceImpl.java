@@ -108,6 +108,16 @@ public class GenerateContentServiceImpl implements GenerateContentService {
   }
 
   private JsonNode buildModel(String user, String project, String branch, HttpServletRequest request) throws IOException {
+    String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
+        .replaceFirst("/" + user + "/" + project + "/" + branch, "")
+        .replaceAll("/+", "/");
+
+    int depth = restOfTheUrl.split("/").length - 1;
+    String base = "./";
+    for (int i = 0; i < depth; i++) {
+      base = base + "../";
+    }
+
     return mapper.readTree(
           "project:" +
         "\n  user: " + user +
@@ -115,7 +125,8 @@ public class GenerateContentServiceImpl implements GenerateContentService {
         "\n  branch: " + branch +
         "\npage: " +
         "\n  title: " + user + " - " + project + " - " + branch +
-        "\n  href: " + getBaseHref(user, project, branch, request));
+        "\n  href: " + getBaseHref(user, project, branch, request) +
+        "\nbase: " + base);
   }
 
 
