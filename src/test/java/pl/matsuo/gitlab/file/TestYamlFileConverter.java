@@ -1,7 +1,6 @@
 package pl.matsuo.gitlab.file;
 
 import org.junit.Test;
-import pl.matsuo.gitlab.service.build.jekyll.model.projects.Project;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -20,6 +19,15 @@ public class TestYamlFileConverter {
 
   private String projectText = "name: \"Something\"";
   private InputStream projectStream = new ByteArrayInputStream("name: \"Something\"".getBytes());
+
+
+  public static class Project {
+    String name;
+
+    public String getName() {
+      return name;
+    }
+  }
 
 
   @Test

@@ -30,8 +30,8 @@ public class JekyllPartialBuilder extends CommandExecutingPartialBuilder {
   ExecutionService executionService;
 
 
-  public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties) {
-    JekyllProperties jekyllProperties = new JekyllProperties(properties);
+  public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, File config) {
+    JekyllProperties jekyllProperties = new JekyllProperties(config, true);
 
     PartialBuildInfo partialBuildInfo = new PartialBuildInfo();
     partialBuildInfo.setName(getName());
@@ -100,7 +100,7 @@ public class JekyllPartialBuilder extends CommandExecutingPartialBuilder {
 
 
   @Override
-  public boolean shouldExecute(PushEvent pushEvent, Properties properties) {
+  public boolean shouldExecute(PushEvent pushEvent, File properties) {
     return true;
   }
 }

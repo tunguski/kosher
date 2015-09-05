@@ -1,5 +1,10 @@
 package pl.matsuo.gitlab.service.build.jekyll;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import pl.matsuo.gitlab.service.build.jekyll.model.SiteConfig;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,32 +17,40 @@ import java.util.Properties;
 public class JekyllProperties {
 
 
-  private final Properties properties;
+  private final SiteConfig config;
+  private final String sourceBase;
 
 
-  public JekyllProperties(Properties properties) {
-    this.properties = properties;
+  public JekyllProperties(File file, boolean rawSite) {
+    try {
+      ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+      JsonNode jsonNode = mapper.readTree(file);
+      JsonNode jekyll = jsonNode.get("jekyll");
+
+      config = mapper.readValue(jekyll.toString(), SiteConfig.class);
+
+      sourceBase = rawSite ? "." : "src/site";
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 
 
-  public JekyllProperties(File file) throws IOException {
-    this.properties = new Properties();
-    properties.load(new FileInputStream(file));
+  public <E> E or(E value, E defaultValue) {
+    return value != null ? value : defaultValue;
   }
 
 
   /**
-   * @param raw if it is documentation only repository root of repository is root of documentation; for maven projects,
-   *            default root of documentation is src/site
    * @return relative source path
    */
-  public String source(boolean raw) {
-    return properties.getProperty("jekyll.source", raw ? "." : "src/site");
+  public String source() {
+    return or(config.getSource(), sourceBase);
   }
 
 
   public String destination() {
-    return properties.getProperty("jekyll.destination", "_site");
+    return or(config.getDestination(), "_site");
   }
 
 
@@ -45,7 +58,7 @@ public class JekyllProperties {
    * Returns url to project denoting base project style. Defaults to kosher-base-style project on github.
    */
   public String styleRepository() {
-    return properties.getProperty("jekyll.styleRepository", "https://github.com/tunguski/kosher-base-style.git");
+    return or(config.getStyleRepository(), "https://github.com/tunguski/kosher-base-style.git");
   }
 
 
@@ -53,7 +66,7 @@ public class JekyllProperties {
    * Returns branch from style repository that should be used.
    */
   public String styleBranch() {
-    return properties.getProperty("jekyll.styleBranch", "master");
+    return or(config.getStyleBranch(), "master");
   }
 
 
@@ -61,7 +74,7 @@ public class JekyllProperties {
    * Returns style directory to which style repository should be checked out.
    */
   public String styleDirectory() {
-    return properties.getProperty("jekyll.styleDirectory", ".style");
+    return or(config.getStyleDirectory(), ".style");
   }
 }
 

@@ -54,7 +54,7 @@ public class TestBuildServiceImpl {
       return null;
     }).when(executionService).run(any(Runnable.class));
 
-    when(partialBuilder.shouldExecute(any(PushEvent.class), any(Properties.class))).thenReturn(true);
+    when(partialBuilder.shouldExecute(any(PushEvent.class), any(File.class))).thenReturn(true);
   }
 
 
@@ -70,7 +70,7 @@ public class TestBuildServiceImpl {
     pushEvent.getRepository().setUrl("git@github.com:tunguski/gitlab-java-event-listener.git");
     buildService.pushEvent(pushEvent);
 
-    verify(partialBuilder).execute(any(PushEvent.class), any(Properties.class));
+    verify(partialBuilder).execute(any(PushEvent.class), any(File.class));
 
     when(gitRepositoryService.getKosher(any(PushEvent.class))).thenReturn(Optional.of(File.createTempFile(".kosher", "")));
 

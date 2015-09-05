@@ -1,6 +1,5 @@
 package pl.matsuo.gitlab.controller;
 
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -8,15 +7,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.HandlerMapping;
 import pl.matsuo.gitlab.exception.ResourceNotFoundException;
 import pl.matsuo.gitlab.service.build.jekyll.JekyllProperties;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
+import pl.matsuo.gitlab.service.mustashe.GenerateContentService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 
 import static org.apache.commons.io.FileUtils.*;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
@@ -33,6 +31,8 @@ public class WebViewController {
 
   @Autowired
   GitRepositoryService gitRepositoryService;
+  @Autowired
+  GenerateContentService generateContentService;
 
 
   @RequestMapping(value = "/**/*.html", method = GET, produces = "text/html;charset=UTF-8")
@@ -44,7 +44,7 @@ public class WebViewController {
              HttpServletRequest request) {
     return gitRepositoryService.getKosher(user, project, branch).map(config -> {
       try {
-        JekyllProperties properties = new JekyllProperties(config);
+        JekyllProperties properties = new JekyllProperties(config, !new File(config.getParent(), "pom.xml").exists());
         String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
             .replaceFirst("/" + user + "/" + project + "/" + branch, "");
 
@@ -77,11 +77,11 @@ public class WebViewController {
             return readFileToString(file);
           }
         }
-        return getPageTemplate(user, project, branch, request);
+        return getPageTemplate(user, project, branch, request, config, properties);
       } catch (Exception e) {
         throw new ResourceNotFoundException();
       }
-    }).orElseThrow(() -> new RuntimeException("No .kosher file found"));
+    }).orElseThrow(() -> new RuntimeException("No .kosher.yml file found"));
   }
 
 
@@ -95,7 +95,7 @@ public class WebViewController {
 
     return gitRepositoryService.getKosher(user, project, branch).map(config -> {
       try {
-        JekyllProperties properties = new JekyllProperties(config);
+        JekyllProperties properties = new JekyllProperties(config, !new File(config.getParent(), "pom.xml").exists());
 
         String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
             .replaceFirst("/" + user + "/" + project + "/" + branch, "");
@@ -134,27 +134,9 @@ public class WebViewController {
   }
 
 
-  protected String getPageTemplate(String user, String project, String branch,
-                                   HttpServletRequest request) throws IOException {
-    // fixme: 1. if markdown file exist, generate page
-    //        2.
-
-    String url = request.getRequestURL().toString();
-
-    return IOUtils.toString(getClass().getResourceAsStream("/templates/page.html"))
-        .replaceAll("#user_name#", user)
-        .replaceAll("#project_name#", project)
-        .replaceAll("#page_title#", user + " - " + project + " - " + branch)
-        .replaceAll("#base_href#", getBaseHref(user, project, branch, request))
-        ;
-  }
-
-
-  protected String getBaseHref(String user, String project, String branch, HttpServletRequest request) {
-    String url = request.getRequestURL().toString();
-    // todo: base href must contain absolute url - extract from request
-    return url.substring(0, url.indexOf(String.join("/", user, project, branch))
-        + String.join("/", user, project, branch).length()) + "/";
+  protected String getPageTemplate(String user, String project, String branch, HttpServletRequest request,
+                                   File config, JekyllProperties properties) throws IOException {
+    return generateContentService.generate(user, project, branch, request, config, properties);
   }
 }
 

@@ -39,7 +39,7 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
 
 
   public Optional<File> getKosher(String userName, String projectName, String refName) {
-    File file = new File(repositoryBase, userName + "/" + projectName + "/" + refName + "/.kosher");
+    File file = new File(repositoryBase, userName + "/" + projectName + "/" + refName + "/.kosher.yml");
     System.out.println("getKosher: " + file.getAbsolutePath() + " exists: " + file.exists());
     return file.exists() ? Optional.of(file) : Optional.<File>empty();
   }

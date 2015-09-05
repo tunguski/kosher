@@ -7,6 +7,7 @@ import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.db.Database;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
+import java.io.File;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 
@@ -24,7 +25,7 @@ public abstract class PartialBuilder {
 
 
   @Async
-  public final CompletableFuture<PartialBuildInfo> execute(PushEvent pushEvent, Properties properties) {
+  public final CompletableFuture<PartialBuildInfo> execute(PushEvent pushEvent, File properties) {
     try {
       return internalExecute(pushEvent, properties);
     } catch (Exception e) {
@@ -34,7 +35,7 @@ public abstract class PartialBuilder {
   }
 
 
-  public abstract CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties);
+  public abstract CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, File properties);
 
 
   public final String getName() {
@@ -43,6 +44,6 @@ public abstract class PartialBuilder {
   }
 
 
-  public abstract boolean shouldExecute(PushEvent pushEvent, Properties properties);
+  public abstract boolean shouldExecute(PushEvent pushEvent, File properties);
 }
 

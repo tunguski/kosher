@@ -90,19 +90,12 @@ public class BuildServiceImpl implements BuildService {
 
       if (partialBuilders != null) {
         gitRepositoryService.getKosher(pushEvent).ifPresent(config -> {
-          Properties properties = new Properties();
-          try {
-            properties.load(new FileInputStream(config));
-          } catch (IOException e) {
-            throw new RuntimeException(e);
-          }
-
           CompletableFuture<PartialBuildInfo> future = new CompletableFuture<>();
           future.complete(null);
 
           // add all partial builders in async queue
           for (PartialBuilder builder : partialBuilders) {
-            if (builder.shouldExecute(pushEvent, properties)) {
+            if (builder.shouldExecute(pushEvent, config)) {
               future = future.thenCompose(info -> {
                 if (info != null) {
                   BuildInfo buildInfo = db.get(idBuild, BuildInfo.class);
@@ -110,7 +103,7 @@ public class BuildServiceImpl implements BuildService {
                   db.put(idBuild, buildInfo);
                 }
 
-                return builder.execute(pushEvent, properties);
+                return builder.execute(pushEvent, config);
               });
             }
           }

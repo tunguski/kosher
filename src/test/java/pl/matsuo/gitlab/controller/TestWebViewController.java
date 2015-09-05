@@ -8,10 +8,10 @@ import pl.matsuo.gitlab.file.YamlFileConverterProvider;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.hook.Repository;
 import pl.matsuo.gitlab.service.build.BuildServiceImpl;
-import pl.matsuo.gitlab.service.build.jekyll.JekyllGenerateTemplateServiceImpl;
 import pl.matsuo.gitlab.service.build.jekyll.JekyllPartialBuilder;
 import pl.matsuo.gitlab.service.db.MapDbDatabase;
 import pl.matsuo.gitlab.service.git.GitRepositoryServiceImpl;
+import pl.matsuo.gitlab.service.mustashe.GenerateContentServiceImpl;
 
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -22,8 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Created by marek on 04.07.15.
  */
 @ContextConfiguration(classes = { BuildServiceImpl.class, MapDbDatabase.class, GitRepositoryServiceImpl.class,
-                                  JekyllPartialBuilder.class, JekyllGenerateTemplateServiceImpl.class,
-                                  YamlFileConverterProvider.class, WebViewController.class })
+                                  JekyllPartialBuilder.class, YamlFileConverterProvider.class, WebViewController.class,
+                                  GenerateContentServiceImpl.class})
 public class TestWebViewController extends AbstractControllerRequestTest {
 
 
@@ -58,7 +58,7 @@ public class TestWebViewController extends AbstractControllerRequestTest {
   @Test
   public void testGetPageTemplate() throws Exception {
     MockHttpServletRequest request = new MockHttpServletRequest("GET", "/user/project/branch/directory/file.html");
-    String pageTemplate = controller.getPageTemplate("user", "project", "branch", request);
+    String pageTemplate = controller.getPageTemplate("user", "project", "branch", request, null, null);
 
     assertTrue(pageTemplate, pageTemplate.contains("<base href=\"http://localhost/user/project/branch/\" />"));
   }

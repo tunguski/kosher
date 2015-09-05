@@ -17,7 +17,7 @@ public class CoberturaPartialBuilder extends CommandExecutingPartialBuilder {
 
 
   @Override
-  public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties) {
+  public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, File properties) {
     return internalExecute(pushEvent, ".", "target",
         destination -> new String[] { "mvn", "cobertura:cobertura", "-DskipTests" },
         (partialBuildInfo, generationBase) -> {});
@@ -25,7 +25,7 @@ public class CoberturaPartialBuilder extends CommandExecutingPartialBuilder {
 
 
   @Override
-  public boolean shouldExecute(PushEvent pushEvent, Properties properties) {
+  public boolean shouldExecute(PushEvent pushEvent, File properties) {
     boolean exists = new File(gitRepositoryService.repository(pushEvent), "pom.xml").exists();
     System.out.println(getName() + " partial builder should execute: " + exists);
     return exists;

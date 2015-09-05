@@ -5,6 +5,7 @@ import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.PartialBuilder;
 
+import java.io.File;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 
@@ -17,7 +18,7 @@ public class DocumentationStylePartialBuilder extends PartialBuilder {
 
 
   @Override
-  public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, Properties properties) {
+  public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, File properties) {
     PartialBuildInfo partialBuildInfo = new PartialBuildInfo();
     partialBuildInfo.setName(getName());
 
@@ -29,7 +30,7 @@ public class DocumentationStylePartialBuilder extends PartialBuilder {
 
 
   @Override
-  public boolean shouldExecute(PushEvent pushEvent, Properties properties) {
+  public boolean shouldExecute(PushEvent pushEvent, File properties) {
     return true;
   }
 }
