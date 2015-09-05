@@ -25,7 +25,7 @@ public class JekyllProperties {
     try {
       ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
       JsonNode jsonNode = mapper.readTree(file);
-      JsonNode jekyll = jsonNode.get("jekyll");
+      JsonNode jekyll = jsonNode.get("site");
 
       config = mapper.readValue(jekyll.toString(), SiteConfig.class);
 
