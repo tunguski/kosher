@@ -61,9 +61,7 @@ RUN  \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get install -y apt-utils sudo vim wget curl git ruby ruby-dev make gcc nodejs
-
-RUN	ruby -S gem install jekyll
+  apt-get install -y apt-utils sudo vim wget curl git
 
 RUN wget http://ftp.ps.pl/pub/apache/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz \
  && tar -zxvf apache-maven-3.3.3-bin.tar.gz -C /opt/ \

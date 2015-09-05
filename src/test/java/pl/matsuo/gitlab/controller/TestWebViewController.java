@@ -50,9 +50,17 @@ public class TestWebViewController extends AbstractControllerRequestTest {
 
     performAndCheckStatus(get("/tunguski/kosher/master/markdown.html"), status().isOk(),
         html -> System.out.println("----\n" + html + "\n----"),
+        // lists and bold
         html -> assertTrue(html.contains("<li><strong>two</strong></li>")),
+        // headers
         html -> assertTrue(html.contains("<h3>Header 3</h3>")),
+        // conditional parts
+        html -> assertTrue(html.contains("<div class=\"col-sm-12 col-md-4 col-lg-4 page-menu\">")),
+        // conditional parts
+        html -> assertTrue(html.contains("<div class=\"col-sm-12 col-md-8 col-lg-8 project-description\">")),
+        // tables
         html -> assertTrue(html.contains("<th>col3</th>")),
+        // links
         html -> assertTrue(html.contains("<a href=\"tunguski.github.io\">Some link</a>"))
     );
 
