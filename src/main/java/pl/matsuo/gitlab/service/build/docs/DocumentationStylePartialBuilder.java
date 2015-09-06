@@ -6,7 +6,6 @@ import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.PartialBuilder;
 
 import java.io.File;
-import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 
 

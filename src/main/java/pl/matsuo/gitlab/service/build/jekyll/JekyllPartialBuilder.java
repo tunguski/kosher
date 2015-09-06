@@ -11,11 +11,8 @@ import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.CommandExecutingPartialBuilder;
 import pl.matsuo.gitlab.service.execute.ExecutionService;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 
 

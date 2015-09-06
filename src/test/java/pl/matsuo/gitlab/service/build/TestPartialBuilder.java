@@ -5,7 +5,6 @@ import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 
 import java.io.File;
-import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 
 import static org.junit.Assert.*;

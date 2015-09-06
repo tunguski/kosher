@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -51,6 +52,9 @@ public class MultiSourceValueProvider {
 
   public Map<String, Object> asMap() {
     return new Map<String, Object>() {
+
+      Map<String, Object> additionals = new HashMap<>();
+
       @Override
       public int size() {
         throw new RuntimeException();
@@ -63,6 +67,10 @@ public class MultiSourceValueProvider {
 
       @Override
       public boolean containsKey(Object key) {
+        if (additionals.containsKey(key)) {
+          return true;
+        }
+
         String[] split = ((String) key).split("\\.");
 
         for (JsonNode source : sources) {
@@ -90,6 +98,10 @@ public class MultiSourceValueProvider {
 
       @Override
       public Object get(Object key) {
+        if (additionals.containsKey(key)) {
+          return additionals.get(key);
+        }
+
         String[] split = ((String) key).split("\\.");
 
         for (JsonNode source : sources) {
@@ -112,22 +124,22 @@ public class MultiSourceValueProvider {
 
       @Override
       public Object put(String key, Object value) {
-        throw new RuntimeException();
+        return additionals.put(key, value);
       }
 
       @Override
       public Object remove(Object key) {
-        throw new RuntimeException();
+        return additionals.remove(key);
       }
 
       @Override
       public void putAll(Map<? extends String, ?> m) {
-        throw new RuntimeException();
+        additionals.putAll(m);
       }
 
       @Override
       public void clear() {
-        throw new RuntimeException();
+        additionals.clear();
       }
 
       @Override

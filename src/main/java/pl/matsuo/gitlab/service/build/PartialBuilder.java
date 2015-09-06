@@ -8,7 +8,6 @@ import pl.matsuo.gitlab.service.db.Database;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
 import java.io.File;
-import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 
 

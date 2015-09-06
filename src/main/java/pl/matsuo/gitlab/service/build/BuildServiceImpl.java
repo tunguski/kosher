@@ -2,7 +2,6 @@ package pl.matsuo.gitlab.service.build;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
-import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import pl.matsuo.gitlab.data.BuildInfo;
@@ -15,11 +14,8 @@ import pl.matsuo.gitlab.service.execute.ExecutionService;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
 import javax.annotation.PostConstruct;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 
 import static java.util.Collections.*;

@@ -16,7 +16,6 @@ import pl.matsuo.gitlab.service.git.GitRepositoryService;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.Properties;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;

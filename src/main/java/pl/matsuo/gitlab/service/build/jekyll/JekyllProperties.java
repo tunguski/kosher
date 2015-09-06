@@ -6,9 +6,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import pl.matsuo.gitlab.service.build.jekyll.model.SiteConfig;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Properties;
 
 
 /**

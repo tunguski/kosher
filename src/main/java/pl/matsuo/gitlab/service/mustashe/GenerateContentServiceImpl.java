@@ -2,36 +2,32 @@ package pl.matsuo.gitlab.service.mustashe;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.JsonNodeCreator;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.github.mustachejava.Code;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
 import com.github.mustachejava.MustacheResolver;
+import com.github.mustachejava.TemplateFunction;
 import org.apache.commons.io.FileUtils;
-import org.pegdown.Extensions;
+import org.apache.commons.io.IOUtils;
 import org.pegdown.PegDownProcessor;
 import org.springframework.stereotype.Service;
 import pl.matsuo.gitlab.service.build.jekyll.JekyllProperties;
-import pl.matsuo.gitlab.service.build.jekyll.model.SiteConfig;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.Reader;
 import java.io.StringReader;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static java.util.Arrays.asList;
-import static org.apache.commons.io.FileUtils.readFileToString;
+import static java.util.Arrays.*;
+import static org.apache.commons.io.FileUtils.*;
 import static org.pegdown.Extensions.*;
 import static org.springframework.web.servlet.HandlerMapping.*;
-import static pl.matsuo.gitlab.service.build.jekyll.JekyllProperties.*;
 
 
 /**
@@ -118,14 +114,14 @@ public class GenerateContentServiceImpl implements GenerateContentService {
     }
 
     return mapper.readTree(
-          "project:" +
-        "\n  user: " + user +
-        "\n  name: " + project +
-        "\n  branch: " + branch +
-        "\npage: " +
-        "\n  title: " + user + " - " + project + " - " + branch +
-        "\n  href: " + getBaseHref(user, project, branch, request) +
-        "\nbase: " + base);
+        "project:" +
+            "\n  user: " + user +
+            "\n  name: " + project +
+            "\n  branch: " + branch +
+            "\npage: " +
+            "\n  title: " + user + " - " + project + " - " + branch +
+            "\n  href: " + getBaseHref(user, project, branch, request) +
+            "\nbase: " + base);
   }
 
 
@@ -157,15 +153,35 @@ public class GenerateContentServiceImpl implements GenerateContentService {
   protected String mustache(File config, JekyllProperties properties, String template,
                             MultiSourceValueProvider provider) throws IOException {
     MustacheResolver resolver = name -> {
-      // Reader
-      return null;
+      String content = readFile(config, properties, "_includes/" + name);
+      if (content != null) {
+        return new StringReader(content);
+      } else {
+        return null;
+      }
     };
 
     MustacheFactory mf = new DefaultMustacheFactory(resolver);
     Mustache mustache = mf.compile(new StringReader(template), "page_template.md");
 
+    Map<String, Object> model = provider.asMap();
+    model.put("renderDynamic", (TemplateFunction) templateNameField -> {
+      String templateName = (String) model.get(templateNameField);
+      if (templateName != null) {
+        Reader reader = resolver.getReader(templateName);
+        if (reader != null) {
+          try {
+            return String.join("\n", IOUtils.readLines(reader));
+          } catch (IOException e) {
+            throw new RuntimeException(e);
+          }
+        }
+      }
+      return "";
+    });
+
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    mustache.execute(new OutputStreamWriter(baos), provider.asMap()).flush();
+    mustache.execute(new OutputStreamWriter(baos), model).flush();
 
     return new String(baos.toByteArray());
   }
