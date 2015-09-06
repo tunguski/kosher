@@ -98,8 +98,11 @@ public class WebViewController {
       for (String directory : lookup(properties)) {
         File file = new File(new File(config.getParentFile(), directory), path);
         if (file.exists()) {
-          // security - cannot escape from project directory by using ../../..
-          if (!file.getCanonicalPath().startsWith(config.getParentFile().getCanonicalPath())) {
+          // security:
+          //    1) cannot escape from project directory by using ../../..
+          //    2) hidden files are excluded
+          if (!file.getCanonicalPath().startsWith(config.getParentFile().getCanonicalPath())
+              || file.getName().startsWith(".")) {
             throw new IllegalArgumentException("Illegal path: " + file.getCanonicalPath());
           }
           return readFileToString(file);

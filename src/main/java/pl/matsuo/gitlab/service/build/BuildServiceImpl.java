@@ -17,6 +17,7 @@ import pl.matsuo.gitlab.service.git.GitRepositoryService;
 import javax.annotation.PostConstruct;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
@@ -82,6 +83,7 @@ public class BuildServiceImpl implements BuildService {
       BuildInfo buildInfo = new BuildInfo();
       buildInfo.setId(idBuild);
       buildInfo.setPushEvent(pushEvent);
+      buildInfo.setBuildStart(new Date());
       db.put(idBuild, buildInfo);
     }
 
@@ -113,6 +115,7 @@ public class BuildServiceImpl implements BuildService {
             if (info != null) {
               BuildInfo buildInfo = db.get(idBuild, BuildInfo.class);
               buildInfo.getPartialStatuses().put(info.getName(), info);
+              buildInfo.setBuildEnd(new Date());
               db.put(idBuild, buildInfo);
 
               System.out.println("Build finished: " + idBuild);
