@@ -31,20 +31,6 @@ public class CodeStatisticsController {
   Database db;
 
 
-  @RequestMapping(value = "/", method = GET)
-  @ResponseStatus(OK)
-  public @ResponseBody
-  String all() {
-    String result = "";
-
-    for (String key : db.keySet()) {
-      result += key + ": " + db.get(key, String.class) + "\n\n";
-    }
-
-    return result;
-  }
-
-
   @RequestMapping(value = "/{user}", method = GET)
   @ResponseStatus(OK)
   public @ResponseBody

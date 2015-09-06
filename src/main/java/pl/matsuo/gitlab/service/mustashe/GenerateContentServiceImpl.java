@@ -112,9 +112,8 @@ public class GenerateContentServiceImpl implements GenerateContentService {
         .replaceFirst("/" + user + "/" + project + "/" + branch, "")
         .replaceAll("/+", "/");
 
-    int depth = restOfTheUrl.split("/").length - 1;
     String base = "./";
-    for (int i = 0; i < depth; i++) {
+    for (int i = 0; i < restOfTheUrl.split("/").length - 2; i++) {
       base = base + "../";
     }
 
