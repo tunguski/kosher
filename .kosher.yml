@@ -1,2 +1,5 @@
 site:
   source: src/site
+
+project:
+  name: "Kosher"
