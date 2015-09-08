@@ -17,6 +17,10 @@ col1 | col2 | col3
 ---- | ---- | ----
 val1 | val2 | val3
 
+col1 | col2 | col3
+---- | ---- | ----
+val1 |  -   | val3
+
 ##### Header 5
 
     public {
@@ -26,4 +30,6 @@ val1 | val2 | val3
 # *Header X*
 
 [Some link](tunguski.github.io)
+[Test file](test file.html)
+[Test file 2](test file (aaa).html)
 

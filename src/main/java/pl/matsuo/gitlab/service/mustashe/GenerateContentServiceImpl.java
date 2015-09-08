@@ -23,6 +23,10 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.util.Arrays.*;
 import static org.apache.commons.io.FileUtils.*;
@@ -75,12 +79,18 @@ public class GenerateContentServiceImpl implements GenerateContentService {
           template = (split.length > 2 ? split[2] : "").trim();
         }
 
+        template = replaceComplex("(\\[[^]]+\\]\\(([^)]*\\([^)]*\\))*[^)]*\\))", template,
+            (matcher, sb) -> {
+              String[] split = matcher.group().split("\\]", 2);
+              String linkName = String.join("]", split[0], split[1].replaceAll(" ", "%20"));
+              matcher.appendReplacement(sb, linkName);
+            }, null);
+
         if (!demarkdownified) {
           // markdown processing
           // HARDWRAPS,AUTOLINKS,FENCED_CODE_BLOCKS,DEFINITIONS,TABLES
           PegDownProcessor processor =
               new PegDownProcessor(TABLES | DEFINITIONS | FENCED_CODE_BLOCKS | AUTOLINKS | HARDWRAPS);
-          processor.parser.Table();
 
           template = processor.markdownToHtml(template);
           demarkdownified = true;
@@ -102,6 +112,24 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       throw new RuntimeException(e);
     }
   }
+
+
+  protected String replaceComplex(String regex, String template,
+                                  BiConsumer<Matcher, StringBuffer> modifier, BiConsumer<Matcher, StringBuffer> tail) {
+    Pattern linkRegex = Pattern.compile(regex);
+    Matcher matcher = linkRegex.matcher(template);
+
+    StringBuffer sb = new StringBuffer();
+    while (matcher.find()) {
+      modifier.accept(matcher, sb);
+    }
+    if (tail != null) {
+      tail.accept(matcher, sb);
+    }
+
+    return sb.toString();
+  }
+
 
   private JsonNode buildModel(String user, String project, String branch, HttpServletRequest request) throws IOException {
     String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
