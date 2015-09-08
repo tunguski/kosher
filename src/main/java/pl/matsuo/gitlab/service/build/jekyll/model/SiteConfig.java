@@ -13,7 +13,6 @@ public class SiteConfig {
   String styleBranch;
   String styleDirectory;
   PageConfig page;
-  ProjectConfig project;
 
   String layout;
   String highlighter;
@@ -66,12 +65,6 @@ public class SiteConfig {
   }
   public void setHighlighter(String highlighter) {
     this.highlighter = highlighter;
-  }
-  public ProjectConfig getProject() {
-    return project;
-  }
-  public void setProject(ProjectConfig project) {
-    this.project = project;
   }
 }
 

@@ -67,6 +67,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       }
 
       MultiSourceValueProvider provider = new MultiSourceValueProvider(
+          mapper.readTree(config),
           mapper.readTree(config).get("site"),
           mapper.readTree(new File(styleRoot, ".kosher.yml")).get("site"),
           buildModel(user, project, branch, request));
