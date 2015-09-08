@@ -86,9 +86,9 @@ public class GenerateContentServiceImpl implements GenerateContentService {
               matcher.appendReplacement(sb, linkName);
             }, null);
 
-        template = replaceComplex("(\\| *- *\\|)", template,
+        template = replaceComplex("(\\|[ ]*-[ ]*\\|)", template,
             (matcher, sb) -> {
-              String linkName = matcher.group().replaceAll("-", "\\-");
+              String linkName = matcher.group().replaceAll("-", "\\\\-");
               matcher.appendReplacement(sb, linkName);
             }, null);
 
