@@ -120,13 +120,14 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       String layout = provider.get(conf -> conf.get("layout") != null ? conf.get("layout").asText() : null);
       if (layout != null) {
         String layoutBody = readFile(config, properties, "_layouts/" + layout + ".html");
+        layoutBody = String.join("\\$", layoutBody.trim().split("$"));
         template = layoutBody.replaceAll("\\{\\{\\s*content\\s*\\}\\}", template).trim();
       }
 
       process = template.startsWith("---");
     }
 
-    return template;
+    return String.join("$", template.trim().split("\\$"));
   }
 
 
