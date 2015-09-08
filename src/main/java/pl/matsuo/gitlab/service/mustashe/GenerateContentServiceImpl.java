@@ -85,7 +85,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
 
   protected String processTemplate(String template, File config, JekyllProperties properties,
                                    MultiSourceValueProvider provider) throws IOException {
-    template = String.join("\\$", template.trim().split("$"));
+    template = template.trim();
 
     boolean demarkdownified = false;
     boolean process = true;
@@ -120,14 +120,13 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       String layout = provider.get(conf -> conf.get("layout") != null ? conf.get("layout").asText() : null);
       if (layout != null) {
         String layoutBody = readFile(config, properties, "_layouts/" + layout + ".html");
-        layoutBody = String.join("\\$", layoutBody.trim().split("$"));
-        template = layoutBody.replaceAll("\\{\\{\\s*content\\s*\\}\\}", template).trim();
+        template = layoutBody.replaceAll("\\{\\{\\s*content\\s*\\}\\}", template.replaceAll("\\$", "\\\\\\$")).trim();
       }
 
       process = template.startsWith("---");
     }
 
-    return String.join("$", template.trim().split("\\$"));
+    return template;
   }
 
 
