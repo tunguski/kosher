@@ -13,6 +13,7 @@ public class SiteConfig {
   String styleBranch;
   String styleDirectory;
   PageConfig page;
+  ProjectConfig project;
 
   String layout;
   String highlighter;
