@@ -86,6 +86,12 @@ public class GenerateContentServiceImpl implements GenerateContentService {
               matcher.appendReplacement(sb, linkName);
             }, null);
 
+        template = replaceComplex("(\\| *- *\\|)", template,
+            (matcher, sb) -> {
+              String linkName = matcher.group().replaceAll("-", "\\-");
+              matcher.appendReplacement(sb, linkName);
+            }, null);
+
         if (!demarkdownified) {
           // markdown processing
           // HARDWRAPS,AUTOLINKS,FENCED_CODE_BLOCKS,DEFINITIONS,TABLES
@@ -125,6 +131,8 @@ public class GenerateContentServiceImpl implements GenerateContentService {
     }
     if (tail != null) {
       tail.accept(matcher, sb);
+    } else {
+      matcher.appendTail(sb);
     }
 
     return sb.toString();
