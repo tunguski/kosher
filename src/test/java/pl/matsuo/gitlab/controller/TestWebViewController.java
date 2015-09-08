@@ -64,6 +64,8 @@ public class TestWebViewController extends AbstractControllerRequestTest {
         html -> assertTrue(html.contains("<div class=\"col-sm-12 col-md-8 col-lg-8 project-description\">")),
         // tables
         html -> assertTrue(html.contains("<th>col3</th>")),
+        // minus sign in table
+        html -> assertTrue(html.contains("<td>- </td>")),
         // links
         html -> assertTrue(html.contains("<a href=\"tunguski.github.io\">Some link</a>"))
     );

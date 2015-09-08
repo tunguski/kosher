@@ -15,7 +15,7 @@
 
 col1 | col2 | col3
 ---- | ---- | ----
-val1 | val2 | val3
+val1 | val2 | val3 $777
 
 col1 | col2 | col3
 ---- | ---- | ----

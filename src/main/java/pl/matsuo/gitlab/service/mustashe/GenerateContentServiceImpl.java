@@ -85,7 +85,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
 
   protected String processTemplate(String template, File config, JekyllProperties properties,
                                    MultiSourceValueProvider provider) throws IOException {
-    template = template.trim();
+    template = String.join("\\$", template.trim().split("$"));
 
     boolean demarkdownified = false;
     boolean process = true;
@@ -106,7 +106,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
 
       template = replaceComplex("(\\|[ ]*-[ ]*\\|)", template,
           (matcher, sb) -> {
-            String linkName = matcher.group().replaceAll("-", "\\\\\\-");
+            String linkName = matcher.group().replaceAll("-", "\\\\\\\\\\\\-");
             matcher.appendReplacement(sb, linkName);
           }, null);
 
