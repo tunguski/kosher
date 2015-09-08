@@ -41,7 +41,10 @@ import static org.springframework.web.servlet.HandlerMapping.*;
 public class GenerateContentServiceImpl implements GenerateContentService {
 
 
+  // HARDWRAPS,AUTOLINKS,FENCED_CODE_BLOCKS,DEFINITIONS,TABLES
+  PegDownProcessor processor = new PegDownProcessor(TABLES | DEFINITIONS | FENCED_CODE_BLOCKS | AUTOLINKS);
   ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+
 
 
   @Override
@@ -62,53 +65,13 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       } else if (new File(styleRoot, mdRestOfUrl).exists()) {
         template = FileUtils.readFileToString(new File(styleRoot, mdRestOfUrl));
       }
-      template = template.trim();
 
       MultiSourceValueProvider provider = new MultiSourceValueProvider(
           mapper.readTree(config).get("site"),
           mapper.readTree(new File(styleRoot, ".kosher.yml")).get("site"),
           buildModel(user, project, branch, request));
 
-      boolean demarkdownified = false;
-      boolean process = true;
-      while (process) {
-        // read custom configuration
-        if (template.startsWith("---")) {
-          String[] split = template.split("---", 3);
-          provider = provider.sub(mapper.readTree(split[1]));
-          template = (split.length > 2 ? split[2] : "").trim();
-        }
-
-        template = replaceComplex("(\\[[^]]+\\]\\(([^)]*\\([^)]*\\))*[^)]*\\))", template,
-            (matcher, sb) -> {
-              String[] split = matcher.group().split("\\]", 2);
-              String linkName = String.join("]", split[0], split[1].replaceAll(" ", "%20"));
-              matcher.appendReplacement(sb, linkName);
-            }, null);
-
-        template = replaceComplex("(\\|[ ]*-[ ]*\\|)", template,
-            (matcher, sb) -> {
-              String linkName = matcher.group().replaceAll("-", "\\\\-");
-              matcher.appendReplacement(sb, linkName);
-            }, null);
-
-        if (!demarkdownified) {
-          // markdown processing
-          // HARDWRAPS,AUTOLINKS,FENCED_CODE_BLOCKS,DEFINITIONS,TABLES
-          PegDownProcessor processor =
-              new PegDownProcessor(TABLES | DEFINITIONS | FENCED_CODE_BLOCKS | AUTOLINKS | HARDWRAPS);
-
-          template = processor.markdownToHtml(template);
-          demarkdownified = true;
-        }
-
-        // layout processing
-        String layout = provider.get(conf -> conf.get("layout") != null ? conf.get("layout").asText() : null);
-        String layoutBody = readFile(config, properties, "_layouts/" + layout + ".html");
-        template = layoutBody.replaceAll("\\{\\{\\s*content\\s*\\}\\}", template).trim();
-
-        process = template.startsWith("---");
-      }
+      template = processTemplate(template, config, properties, provider);
 
       // mustache processing
       String mustache = mustache(config, properties, template, provider);
@@ -117,6 +80,53 @@ public class GenerateContentServiceImpl implements GenerateContentService {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+
+  protected String processTemplate(String template, File config, JekyllProperties properties,
+                                   MultiSourceValueProvider provider) throws IOException {
+    template = template.trim();
+
+    boolean demarkdownified = false;
+    boolean process = true;
+    while (process) {
+      // read custom configuration
+      if (template.startsWith("---")) {
+        String[] split = template.split("---", 3);
+        provider = provider.sub(mapper.readTree(split[1]));
+        template = (split.length > 2 ? split[2] : "").trim();
+      }
+
+      template = replaceComplex("(\\[[^]]+\\]\\(([^)]*\\([^)]*\\))*[^)]*\\))", template,
+          (matcher, sb) -> {
+            String[] split = matcher.group().split("\\]", 2);
+            String linkName = String.join("]", split[0], split[1].replaceAll(" ", "%20"));
+            matcher.appendReplacement(sb, linkName);
+          }, null);
+
+      template = replaceComplex("(\\|[ ]*-[ ]*\\|)", template,
+          (matcher, sb) -> {
+            String linkName = matcher.group().replaceAll("-", "\\\\\\-");
+            matcher.appendReplacement(sb, linkName);
+          }, null);
+
+      if (!demarkdownified) {
+        // markdown processing
+        template = processor.markdownToHtml(template);
+        demarkdownified = true;
+      }
+
+      // layout processing
+      String layout = provider.get(conf -> conf.get("layout") != null ? conf.get("layout").asText() : null);
+      if (layout != null) {
+        String layoutBody = readFile(config, properties, "_layouts/" + layout + ".html");
+        template = layoutBody.replaceAll("\\{\\{\\s*content\\s*\\}\\}", template).trim();
+      }
+
+      process = template.startsWith("---");
+    }
+
+    return template;
   }
 
 
