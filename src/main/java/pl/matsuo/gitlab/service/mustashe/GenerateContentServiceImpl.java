@@ -41,7 +41,8 @@ public class GenerateContentServiceImpl implements GenerateContentService {
 
 
   // HARDWRAPS,AUTOLINKS,FENCED_CODE_BLOCKS,DEFINITIONS,TABLES
-  PegDownProcessor processor = new PegDownProcessor(TABLES | DEFINITIONS | FENCED_CODE_BLOCKS | AUTOLINKS);
+  // may render page up to 30 seconds - it is done once and cached
+  PegDownProcessor processor = new PegDownProcessor(TABLES | DEFINITIONS | FENCED_CODE_BLOCKS | AUTOLINKS, 30000);
   ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
 
 
