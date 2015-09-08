@@ -24,7 +24,6 @@ import java.io.StringReader;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -68,8 +67,8 @@ public class GenerateContentServiceImpl implements GenerateContentService {
 
       MultiSourceValueProvider provider = new MultiSourceValueProvider(
           mapper.readTree(config),
-          mapper.readTree(config).get("site"),
-          mapper.readTree(new File(styleRoot, ".kosher.yml")).get("site"),
+          mapper.readTree(config),
+          mapper.readTree(new File(styleRoot, ".kosher.yml")),
           buildModel(user, project, branch, request));
 
       template = processTemplate(template, config, properties, provider);
@@ -94,7 +93,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       // read custom configuration
       if (template.startsWith("---")) {
         String[] split = template.split("---", 3);
-        provider = provider.sub(mapper.readTree(split[1]));
+        provider = provider.add(mapper.readTree(split[1]));
         template = (split.length > 2 ? split[2] : "").trim();
       }
 
@@ -162,13 +161,13 @@ public class GenerateContentServiceImpl implements GenerateContentService {
 
     return mapper.readTree(
         "project:" +
-            "\n  user: " + user +
-            "\n  name: " + project +
-            "\n  branch: " + branch +
-            "\npage: " +
-            "\n  title: " + user + " - " + project + " - " + branch +
-            "\n  href: " + getBaseHref(user, project, branch, request) +
-            "\nbase: " + base);
+      "\n  user: " + user +
+      "\n  name: " + project +
+      "\n  branch: " + branch +
+      "\npage: " +
+      "\n  title: " + user + " - " + project + " - " + branch +
+      "\n  href: " + getBaseHref(user, project, branch, request) +
+      "\nbase: " + base);
   }
 
 

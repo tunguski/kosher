@@ -21,7 +21,7 @@ public class MultiSourceValueProvider {
 
 
   public MultiSourceValueProvider(JsonNode ... sources) {
-    this.sources = asList(sources);
+    this.sources = new ArrayList<>(asList(sources));
   }
 
 
@@ -42,11 +42,9 @@ public class MultiSourceValueProvider {
   }
 
 
-  public MultiSourceValueProvider sub(JsonNode source) {
-    List<JsonNode> sources = new ArrayList<>();
-    sources.add(source);
-    sources.addAll(this.sources);
-    return new MultiSourceValueProvider(sources);
+  public MultiSourceValueProvider add(JsonNode source) {
+    sources.add(0, source);
+    return this;
   }
 
 
