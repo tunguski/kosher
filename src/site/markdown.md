@@ -47,3 +47,6 @@ x | x | x | x | x  | x | x | x | x | x | x |
 [Test file](test file.html)
 [Test file 2](test file (aaa).html)
 
+## Images
+
+![CC](cc.logo.large.png)

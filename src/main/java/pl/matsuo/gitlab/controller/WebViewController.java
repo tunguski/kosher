@@ -14,7 +14,10 @@ import pl.matsuo.gitlab.service.mustashe.GenerateContentService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import static java.util.Arrays.*;
@@ -49,8 +52,16 @@ public class WebViewController {
         String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
             .replaceFirst("/" + user + "/" + project + "/" + branch, "");
 
-        String body = readFile(config, new JekyllProperties(config), restOfTheUrl);
-        if (body != null) {
+      String body = null;
+      try {
+        File file = readFile(config, new JekyllProperties(config), restOfTheUrl);
+        if (file != null) {
+          body = readFileToString(file);
+        }
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+      if (body != null) {
           return body;
         } else {
           String generated = generateContentService.generate(user, project, branch, request, config, properties);
@@ -70,16 +81,20 @@ public class WebViewController {
   @RequestMapping(value = "/**/*", method = GET)
   @ResponseStatus(HttpStatus.OK)
   public @ResponseBody
-  String getResource(@PathVariable("user") String user,
+  InputStream getResource(@PathVariable("user") String user,
              @PathVariable("project") String project,
              @PathVariable("branch") String branch,
              HttpServletRequest request) {
     return gitRepositoryService.getKosher(user, project, branch).map(config -> {
       String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
           .replaceFirst("/" + user + "/" + project + "/" + branch, "");
-      String body = readFile(config, new JekyllProperties(config), restOfTheUrl);
-      if (body != null) {
-        return body;
+      File file = readFile(config, new JekyllProperties(config), restOfTheUrl);
+      if (file != null) {
+        try {
+          return new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+          throw new RuntimeException(e);
+        }
       } else {
         System.out.println("file not found: " + restOfTheUrl);
         throw new ResourceNotFoundException();
@@ -93,7 +108,7 @@ public class WebViewController {
   }
 
 
-  protected String readFile(File config, JekyllProperties properties, String path) {
+  protected File readFile(File config, JekyllProperties properties, String path) {
     try {
       for (String directory : lookup(properties)) {
         File file = new File(new File(config.getParentFile(), directory), path);
@@ -105,7 +120,7 @@ public class WebViewController {
               || file.getName().startsWith(".")) {
             throw new IllegalArgumentException("Illegal path: " + file.getCanonicalPath());
           }
-          return readFileToString(file);
+          return file;
         }
       }
 

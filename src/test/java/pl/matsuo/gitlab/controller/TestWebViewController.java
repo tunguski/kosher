@@ -57,7 +57,7 @@ public class TestWebViewController extends AbstractControllerRequestTest {
         // lists and bold
         html -> assertTrue(html.contains("<li><strong>two</strong></li>")),
         // headers
-        html -> assertTrue(html.contains("<h3>Header 3</h3>")),
+        html -> assertTrue(html.contains("<h2>Complex table with strong and italic</h2>")),
         // conditional parts
         html -> assertTrue(html.contains("<div class=\"col-sm-12 col-md-4 col-lg-4 page-menu\">")),
         // conditional parts
