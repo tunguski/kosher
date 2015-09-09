@@ -1,6 +1,7 @@
 package pl.matsuo.gitlab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,10 +41,10 @@ public class WebViewController {
   GenerateContentService generateContentService;
 
 
-  @RequestMapping(value = "/**/*.html", method = GET, produces = "text/html;charset=UTF-8")
+  @RequestMapping(value = "/**/*", method = GET)
   @ResponseStatus(HttpStatus.OK)
   public @ResponseBody
-  String getHtml(@PathVariable("user") String user,
+  Object getHtml(@PathVariable("user") String user,
              @PathVariable("project") String project,
              @PathVariable("branch") String branch,
              HttpServletRequest request) {
@@ -52,53 +53,21 @@ public class WebViewController {
         String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
             .replaceFirst("/" + user + "/" + project + "/" + branch, "");
 
-      String body = null;
-      try {
-        File file = readFile(config, new JekyllProperties(config), restOfTheUrl);
-        if (file != null) {
-          body = readFileToString(file);
-        }
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
-      if (body != null) {
-          return body;
-        } else {
-          String generated = generateContentService.generate(user, project, branch, request, config, properties);
-
-          try {
-            writeStringToFile(new File(new File(config.getParentFile(), properties.destination()), restOfTheUrl), generated);
-          } catch (IOException e) {
-            e.printStackTrace();
-          }
-
-          return generated;
-        }
-    }).orElseThrow(() -> new ResourceNotFoundException());
-  }
-
-
-  @RequestMapping(value = "/**/*", method = GET)
-  @ResponseStatus(HttpStatus.OK)
-  public @ResponseBody
-  InputStream getResource(@PathVariable("user") String user,
-             @PathVariable("project") String project,
-             @PathVariable("branch") String branch,
-             HttpServletRequest request) {
-    return gitRepositoryService.getKosher(user, project, branch).map(config -> {
-      String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
-          .replaceFirst("/" + user + "/" + project + "/" + branch, "");
       File file = readFile(config, new JekyllProperties(config), restOfTheUrl);
       if (file != null) {
-        try {
-          return new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-          throw new RuntimeException(e);
-        }
-      } else {
-        System.out.println("file not found: " + restOfTheUrl);
-        throw new ResourceNotFoundException();
+        return new FileSystemResource(file);
       }
+
+      String generated = generateContentService.generate(user, project, branch, request, config, properties);
+
+      try {
+        writeStringToFile(new File(new File(config.getParentFile(), properties.destination()), restOfTheUrl), generated);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+
+      return generated;
+
     }).orElseThrow(() -> new ResourceNotFoundException());
   }
 

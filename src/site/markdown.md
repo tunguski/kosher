@@ -47,6 +47,15 @@ x | x | x | x | x  | x | x | x | x | x | x |
 [Test file](test file.html)
 [Test file 2](test file (aaa).html)
 
+## Non latin letters
+
+* ᴃ
+* ɣ
+* ꜭ
+* ś
+* ź
+* ā́
+
 ## Images
 
 ![CC](cc.logo.large.png)
