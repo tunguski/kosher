@@ -1,33 +1,47 @@
-# Header 1
+# Main header
 
-## Header 2
+## Lists, strong and italic
 
 * one
 * **two**
 * *three*
 
-### Header 3
+## Quote
 
 > some
 > text
 
-#### Header 4
+## Dollar sign in markdown file
+
+$777
+
+## Simple tables
 
 col1 | col2 | col3
 ---- | ---- | ----
-val1 | val2 | val3 $777
+val1 | val2 | val3
 
 col1 | col2 | col3
 ---- | ---- | ----
 val1 |  -   | val3
 
-##### Header 5
+## Complex table with strong and italic
+
+x | x | x | x | x  | x | x | x | x | x | x | 
+------ | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----
+***x**x* | *x **- x** - x **- x** x **- x** - x **x * | *x**x*** | ***x** x****x ****x* | ***x ****x* | ***x*** | *x* | ***x** x * | ***x*** | *x* | *x* | 
+***x**x* | *x **x**x * | *x**x*** | ***x** x* | ***x ****x* | ***x*** | *x * | ***x** x * | ***x*** | *x* | *x* | 
+***x**x**x* | *x* | *x**x*** | ***x ****x* | ***x ****x* | ***x*** | *x * | ***x*** | ***x*** | *x* | *x* | 
+***x ****x* | *x * | *x**x*** | ***x ****x* | ***x ****x* | ***x*** | *x* | ***x*** | ***x*** | *x* | *x* | 
+***x **x* | *x **x**x * | *x**x*** | ***x** x ****x **x* | ***x ****x* | ***x*** | *x* | ***x- **x** **x** **x * | ***x*** | *x* | *x* | 
+
+## Code
 
     public {
       val order = 7;
     }
 
-# *Header X*
+## *Links (plus italic in header)*
 
 [Some link](tunguski.github.io)
 [Test file](test file.html)
