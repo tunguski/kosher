@@ -79,6 +79,32 @@ public class WebViewController {
   }
 
 
+  @RequestMapping(value = "/**/*.json", method = GET, produces = "application/json;charset=UTF-8")
+  @ResponseStatus(HttpStatus.OK)
+  public @ResponseBody
+  String getJson(@PathVariable("user") String user,
+             @PathVariable("project") String project,
+             @PathVariable("branch") String branch,
+             HttpServletRequest request) {
+    return gitRepositoryService.getKosher(user, project, branch).map(config -> {
+        JekyllProperties properties = new JekyllProperties(config);
+        String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
+            .replaceFirst("/" + user + "/" + project + "/" + branch, "");
+
+      try {
+        File file = readFile(config, new JekyllProperties(config), restOfTheUrl);
+        if (file != null) {
+          return readFileToString(file);
+        } else {
+          throw new ResourceNotFoundException();
+        }
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }).orElseThrow(() -> new ResourceNotFoundException());
+  }
+
+
   @RequestMapping(value = "/**/*", method = GET)
   @ResponseStatus(HttpStatus.OK)
   public @ResponseBody
