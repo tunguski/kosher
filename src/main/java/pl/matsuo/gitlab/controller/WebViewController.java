@@ -41,10 +41,10 @@ public class WebViewController {
   GenerateContentService generateContentService;
 
 
-  @RequestMapping(value = "/**/*", method = GET)
+  @RequestMapping(value = "/**/*.html", method = GET, produces = "text/html;charset=UTF-8")
   @ResponseStatus(HttpStatus.OK)
   public @ResponseBody
-  Object getHtml(@PathVariable("user") String user,
+  String getHtml(@PathVariable("user") String user,
              @PathVariable("project") String project,
              @PathVariable("branch") String branch,
              HttpServletRequest request) {
@@ -53,21 +53,50 @@ public class WebViewController {
         String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
             .replaceFirst("/" + user + "/" + project + "/" + branch, "");
 
+      String body = null;
+      try {
+        File file = readFile(config, new JekyllProperties(config), restOfTheUrl);
+        if (file != null) {
+          body = readFileToString(file);
+        }
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+      if (body != null) {
+          return body;
+        } else {
+          String generated = generateContentService.generate(user, project, branch, request, config, properties);
+
+          try {
+            writeStringToFile(new File(new File(config.getParentFile(), properties.destination()), restOfTheUrl), generated);
+          } catch (IOException e) {
+            e.printStackTrace();
+          }
+
+          return generated;
+        }
+    }).orElseThrow(() -> new ResourceNotFoundException());
+  }
+
+
+  @RequestMapping(value = "/**/*", method = GET)
+  @ResponseStatus(HttpStatus.OK)
+  public @ResponseBody
+  FileSystemResource getResource(@PathVariable("user") String user,
+             @PathVariable("project") String project,
+             @PathVariable("branch") String branch,
+             HttpServletRequest request) {
+    return gitRepositoryService.getKosher(user, project, branch).map(config -> {
+      String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
+          .replaceFirst("/" + user + "/" + project + "/" + branch, "");
+
       File file = readFile(config, new JekyllProperties(config), restOfTheUrl);
       if (file != null) {
         return new FileSystemResource(file);
+      } else {
+        System.out.println("file not found: " + restOfTheUrl);
+        throw new ResourceNotFoundException();
       }
-
-      String generated = generateContentService.generate(user, project, branch, request, config, properties);
-
-      try {
-        writeStringToFile(new File(new File(config.getParentFile(), properties.destination()), restOfTheUrl), generated);
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-
-      return generated;
-
     }).orElseThrow(() -> new ResourceNotFoundException());
   }
 
