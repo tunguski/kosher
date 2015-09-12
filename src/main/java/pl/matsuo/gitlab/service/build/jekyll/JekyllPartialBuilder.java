@@ -10,6 +10,7 @@ import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.CommandExecutingPartialBuilder;
 import pl.matsuo.gitlab.service.execute.ExecutionService;
+import pl.matsuo.gitlab.util.ThrowingRunnable;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +28,16 @@ public class JekyllPartialBuilder extends CommandExecutingPartialBuilder {
   ExecutionService executionService;
 
 
+  public void execIO(PartialBuildInfo partialBuildInfo, ThrowingRunnable runnable) {
+    try {
+      runnable.run();
+    } catch (Exception e) {
+      e.printStackTrace();
+      partialBuildInfo.setStatus(e.getMessage());
+    }
+  }
+
+
   public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, File config) {
     JekyllProperties jekyllProperties = new JekyllProperties(config);
 
@@ -39,55 +50,31 @@ public class JekyllPartialBuilder extends CommandExecutingPartialBuilder {
 
     File generationBase = new File(projectBase, jekyllProperties.destination());
     if (generationBase.exists()) {
-      try {
-        FileUtils.deleteDirectory(generationBase);
-      } catch (IOException e) {
-        e.printStackTrace();
-        partialBuildInfo.setStatus(e.getMessage());
-      }
+      execIO(partialBuildInfo, () -> FileUtils.deleteDirectory(generationBase));
     }
 
     if (!generationBase.mkdirs()) {
-      try {
-        // FileUtils is better at creating directories than JRE
-        FileUtils.forceMkdir(generationBase);
-      } catch (IOException e) {
-        e.printStackTrace();
-        partialBuildInfo.setStatus(e.getMessage());
-      }
+      // FileUtils is better at creating directories than JRE
+      execIO(partialBuildInfo, () -> FileUtils.forceMkdir(generationBase));
     }
 
     executionService.run(() -> {
       File styleDirectory = new File(projectBase, jekyllProperties.styleDirectory());
       if (styleDirectory.exists()) {
-        try {
-          FileUtils.deleteDirectory(styleDirectory);
-        } catch (IOException e) {
-          e.printStackTrace();
-          partialBuildInfo.setStatus(e.getMessage());
-        }
+        execIO(partialBuildInfo, () -> FileUtils.deleteDirectory(styleDirectory));
       }
 
       if (!styleDirectory.mkdirs()) {
-        try {
-          // FileUtils is better at creating directories than JRE
-          FileUtils.forceMkdir(styleDirectory);
-        } catch (IOException e) {
-          e.printStackTrace();
-          partialBuildInfo.setStatus(e.getMessage());
-        }
+        // FileUtils is better at creating directories than JRE
+        execIO(partialBuildInfo, () -> FileUtils.forceMkdir(styleDirectory));
       }
 
-      try {
-        Git.cloneRepository()
-            .setBranch(jekyllProperties.styleBranch())
-            .setURI(jekyllProperties.styleRepository())
-            .setDirectory(styleDirectory)
-            .call();
-      } catch (Exception e) {
-        e.printStackTrace();
-        partialBuildInfo.setStatus(e.getMessage());
-      }
+      execIO(partialBuildInfo,
+          () -> Git.cloneRepository()
+              .setBranch(jekyllProperties.styleBranch())
+              .setURI(jekyllProperties.styleRepository())
+              .setDirectory(styleDirectory)
+              .call());
     });
 
     future.complete(partialBuildInfo);
