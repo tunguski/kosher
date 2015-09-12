@@ -71,7 +71,7 @@ public class FilePath {
    * Execute if file denoted by subPath does exist. Returns this subPaths' FilePath object.
    */
   public FilePath with(String subPath, Consumer<FilePath> execute) {
-    return new FilePath(new File(file, subPath)).with(execute);
+    return new FilePath(new File(file, subPath)).configure(fileConverterProvider).with(execute);
   }
 
 
@@ -108,7 +108,7 @@ public class FilePath {
    * Execute if file does not exist.
    */
   public FilePath without(String subPath, Consumer<FilePath> execute) {
-    return new FilePath(new File(file, subPath)).without(execute);
+    return new FilePath(new File(file, subPath)).configure(fileConverterProvider).without(execute);
   }
 
 
@@ -163,6 +163,12 @@ public class FilePath {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+
+  @Override
+  public String toString() {
+    return file.getAbsolutePath();
   }
 }
 

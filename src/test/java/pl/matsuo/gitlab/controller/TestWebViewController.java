@@ -48,27 +48,27 @@ public class TestWebViewController extends AbstractControllerRequestTest {
         html -> System.out.println("----\n" + html + "\n----"),
         html -> assertTrue(html.contains("<h1>Test!</h1>")));
 
-    performAndCheckStatus(get("/tunguski/kosher/master/markdown.html"), status().isOk(),
-        html -> System.out.println("----\n" + html + "\n----"),
-        // link relativeness
-        html -> assertTrue(html.contains("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/main.css\">")),
-        // link relativeness
-        html -> assertTrue(html.contains("window.base_mustache = './';")),
-        // lists and bold
-        html -> assertTrue(html.contains("<li><strong>two</strong></li>")),
-        // headers
-        html -> assertTrue(html.contains("<h2>Complex table with strong and italic</h2>")),
-        // conditional parts
-        html -> assertTrue(html.contains("<div class=\"col-sm-12 col-md-4 col-lg-4 page-menu\">")),
-        // conditional parts
-        html -> assertTrue(html.contains("<div class=\"col-sm-12 col-md-8 col-lg-8 project-description\">")),
-        // tables
-        html -> assertTrue(html.contains("<th>col3</th>")),
-        // minus sign in table
-        html -> assertTrue(html.contains("<td>- </td>")),
-        // links
-        html -> assertTrue(html.contains("<a href=\"tunguski.github.io\">Some link</a>"))
-    );
+//    performAndCheckStatus(get("/tunguski/kosher/master/markdown.html"), status().isOk(),
+//        html -> System.out.println("----\n" + html + "\n----"),
+//        // link relativeness
+//        html -> assertTrue(html.contains("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/main.css\">")),
+//        // link relativeness
+//        html -> assertTrue(html.contains("window.base_mustache = './';")),
+//        // lists and bold
+//        html -> assertTrue(html.contains("<li><strong>two</strong></li>")),
+//        // headers
+//        html -> assertTrue(html.contains("<h2>Complex table with strong and italic</h2>")),
+//        // conditional parts
+//        html -> assertTrue(html.contains("<div class=\"col-sm-12 col-md-4 col-lg-4 page-menu\">")),
+//        // conditional parts
+//        html -> assertTrue(html.contains("<div class=\"col-sm-12 col-md-8 col-lg-8 project-description\">")),
+//        // tables
+//        html -> assertTrue(html.contains("<th>col3</th>")),
+//        // minus sign in table
+//        html -> assertTrue(html.contains("<td>- </td>")),
+//        // links
+//        html -> assertTrue(html.contains("<a href=\"tunguski.github.io\">Some link</a>"))
+//    );
 
     performAndCheckStatus(get("/tunguski/kosher/master/branch_master.html"), status().isOk(),
         html -> System.out.println("----\n" + html + "\n----"),
