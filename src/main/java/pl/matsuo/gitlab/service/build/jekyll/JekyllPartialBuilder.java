@@ -1,20 +1,21 @@
 package pl.matsuo.gitlab.service.build.jekyll;
 
-import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.Git;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
+import pl.matsuo.gitlab.function.ThrowingExceptionsRunnable;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.CommandExecutingPartialBuilder;
 import pl.matsuo.gitlab.service.execute.ExecutionService;
-import pl.matsuo.gitlab.util.ThrowingRunnable;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
+
+import static org.apache.commons.io.FileUtils.*;
+import static pl.matsuo.gitlab.function.FunctionalUtil.*;
 
 
 /**
@@ -28,12 +29,13 @@ public class JekyllPartialBuilder extends CommandExecutingPartialBuilder {
   ExecutionService executionService;
 
 
-  public void execIO(PartialBuildInfo partialBuildInfo, ThrowingRunnable runnable) {
-    try {
-      runnable.run();
-    } catch (Exception e) {
-      e.printStackTrace();
-      partialBuildInfo.setStatus(e.getMessage());
+  public void execWithLogException(boolean shouldExecute, PartialBuildInfo partialBuildInfo,
+                                   ThrowingExceptionsRunnable runnable) {
+    if (shouldExecute) {
+      runtimeEx(runnable, e -> {
+        e.printStackTrace();
+        partialBuildInfo.setStatus(e.getMessage());
+      });
     }
   }
 
@@ -49,27 +51,19 @@ public class JekyllPartialBuilder extends CommandExecutingPartialBuilder {
     File projectBase = gitRepositoryService.repository(pushEvent);
 
     File generationBase = new File(projectBase, jekyllProperties.destination());
-    if (generationBase.exists()) {
-      execIO(partialBuildInfo, () -> FileUtils.deleteDirectory(generationBase));
-    }
+    execWithLogException(generationBase.exists(), partialBuildInfo, () -> deleteDirectory(generationBase));
 
-    if (!generationBase.mkdirs()) {
-      // FileUtils is better at creating directories than JRE
-      execIO(partialBuildInfo, () -> FileUtils.forceMkdir(generationBase));
-    }
+    // FileUtils is better at creating directories than JRE
+    execWithLogException(!generationBase.mkdirs(), partialBuildInfo, () -> forceMkdir(generationBase));
 
     executionService.run(() -> {
       File styleDirectory = new File(projectBase, jekyllProperties.styleDirectory());
-      if (styleDirectory.exists()) {
-        execIO(partialBuildInfo, () -> FileUtils.deleteDirectory(styleDirectory));
-      }
+      execWithLogException(styleDirectory.exists(), partialBuildInfo, () -> deleteDirectory(styleDirectory));
 
-      if (!styleDirectory.mkdirs()) {
-        // FileUtils is better at creating directories than JRE
-        execIO(partialBuildInfo, () -> FileUtils.forceMkdir(styleDirectory));
-      }
+      // FileUtils is better at creating directories than JRE
+      execWithLogException(!styleDirectory.mkdirs(), partialBuildInfo, () -> forceMkdir(styleDirectory));
 
-      execIO(partialBuildInfo,
+      execWithLogException(true, partialBuildInfo,
           () -> Git.cloneRepository()
               .setBranch(jekyllProperties.styleBranch())
               .setURI(jekyllProperties.styleRepository())

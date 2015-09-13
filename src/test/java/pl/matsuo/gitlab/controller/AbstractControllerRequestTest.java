@@ -16,8 +16,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import pl.matsuo.gitlab.AbstractSampleProjectTest;
 import pl.matsuo.gitlab.conf.TestConfig;
+import pl.matsuo.gitlab.function.ThrowingExceptionsConsumer;
 import pl.matsuo.gitlab.service.execute.ExecutionServiceImpl;
-import pl.matsuo.gitlab.util.ThrowingConsumer;
 
 import static org.springframework.http.MediaType.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -56,18 +56,18 @@ public abstract class AbstractControllerRequestTest extends AbstractSampleProjec
   }
 
 
-  protected void performAndCheck(MockHttpServletRequestBuilder request, ThrowingConsumer<String>... checks) throws Exception {
+  protected void performAndCheck(MockHttpServletRequestBuilder request, ThrowingExceptionsConsumer<String>... checks) throws Exception {
     performAndCheckStatus(request, status().isOk(), checks);
   }
 
 
   protected void performAndCheckStatus(MockHttpServletRequestBuilder request, ResultMatcher status,
-                                       ThrowingConsumer<String>... checks) throws Exception {
+                                       ThrowingExceptionsConsumer<String>... checks) throws Exception {
     ResultActions result = mockMvc.perform(request);
     result.andExpect(status);
     String html = result.andReturn().getResponse().getContentAsString();
 
-    for (ThrowingConsumer<String> check : checks) {
+    for (ThrowingExceptionsConsumer<String> check : checks) {
       check.accept(html);
     }
   }

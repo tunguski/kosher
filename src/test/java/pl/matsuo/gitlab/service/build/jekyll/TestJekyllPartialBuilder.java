@@ -6,7 +6,6 @@ import org.springframework.test.context.ContextConfiguration;
 import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.service.build.AbstractPartialBuildTest;
-import pl.matsuo.gitlab.service.build.PartialBuilder;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,11 +37,8 @@ public class TestJekyllPartialBuilder extends AbstractPartialBuildTest {
   @Test
   public void testExecIO() throws Exception {
     JekyllPartialBuilder builder = new JekyllPartialBuilder();
-
     PartialBuildInfo buildInfo = new PartialBuildInfo();
-
-    builder.execIO(buildInfo, () -> {});
-
+    builder.execWithLogException(true, buildInfo, () -> {});
     assertEquals("Pending", buildInfo.getStatus());
   }
 
@@ -50,13 +46,10 @@ public class TestJekyllPartialBuilder extends AbstractPartialBuildTest {
   @Test
   public void testExecIO1() throws Exception {
     JekyllPartialBuilder builder = new JekyllPartialBuilder();
-
     PartialBuildInfo buildInfo = new PartialBuildInfo();
-
-    builder.execIO(buildInfo, () -> {
+    builder.execWithLogException(true, buildInfo, () -> {
       throw new IOException("Test");
     });
-
     assertEquals("Test", buildInfo.getStatus());
   }
 }
