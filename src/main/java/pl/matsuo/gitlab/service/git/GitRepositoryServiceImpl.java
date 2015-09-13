@@ -92,6 +92,10 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
       return git;
     } catch (Exception e) {
       e.printStackTrace();
+      System.out.println("user: " + userName);
+      System.out.println("project: " + projectName);
+      System.out.println("ref: " + refName);
+      System.out.println("uri: " + uri);
       System.out.println("Could not clone using jgit. Attempt to clone via script.");
 
       try {
