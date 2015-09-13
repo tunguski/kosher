@@ -31,6 +31,7 @@ import static java.util.Arrays.*;
 import static org.apache.commons.io.FileUtils.*;
 import static org.pegdown.Extensions.*;
 import static org.springframework.web.servlet.HandlerMapping.*;
+import static pl.matsuo.gitlab.function.FunctionalUtil.*;
 
 
 /**
@@ -50,7 +51,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
   @Override
   public String generate(String user, String project, String branch, HttpServletRequest request,
                          File config, JekyllProperties properties) {
-    try {
+    return runtimeEx(() -> {
       File sourceRoot = new File(config.getParentFile(), properties.source());
       File styleRoot = new File(config.getParentFile(), properties.styleDirectory());
 
@@ -78,9 +79,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       String mustache = mustache(config, properties, template, provider);
 
       return mustache;
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    });
   }
 
 
@@ -178,7 +177,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
 
 
   protected String readFile(File config, JekyllProperties properties, String path) {
-    try {
+    return runtimeEx(() -> {
       for (String directory : lookup(properties)) {
         File file = new File(new File(config.getParentFile(), directory), path);
         if (file.exists()) {
@@ -191,9 +190,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       }
 
       return null;
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    });
   }
 
 
@@ -201,11 +198,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
                             MultiSourceValueProvider provider) throws IOException {
     MustacheResolver resolver = name -> {
       String content = readFile(config, properties, "_includes/" + name);
-      if (content != null) {
-        return new StringReader(content);
-      } else {
-        return null;
-      }
+      return content != null ? new StringReader(content) : null;
     };
 
     MustacheFactory mf = new DefaultMustacheFactory(resolver);
@@ -217,11 +210,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       if (templateName != null) {
         Reader reader = resolver.getReader(templateName);
         if (reader != null) {
-          try {
-            return String.join("\n", IOUtils.readLines(reader));
-          } catch (IOException e) {
-            throw new RuntimeException(e);
-          }
+          runtimeEx(() -> String.join("\n", IOUtils.readLines(reader)));
         }
       }
       return "";
