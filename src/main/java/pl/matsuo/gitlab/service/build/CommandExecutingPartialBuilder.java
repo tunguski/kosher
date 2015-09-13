@@ -4,6 +4,7 @@ package pl.matsuo.gitlab.service.build;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import pl.matsuo.gitlab.function.FunctionalUtil;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.db.Database;
@@ -22,6 +23,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 import static org.apache.commons.io.FileUtils.*;
+import static pl.matsuo.gitlab.function.FunctionalUtil.*;
 import static pl.matsuo.gitlab.util.PushEventUtil.*;
 
 
@@ -48,13 +50,11 @@ public abstract class CommandExecutingPartialBuilder extends PartialBuilder {
 
     File generationBase = new File(projectBase, destination);
     if (!generationBase.mkdirs()) {
-      try {
-        // FileUtils is better at creating directories than JRE
-        FileUtils.forceMkdir(generationBase);
-      } catch (IOException e) {
+      // FileUtils is better at creating directories than JRE
+      runtimeEx(() -> forceMkdir(generationBase), e -> {
         e.printStackTrace();
         throw new RuntimeException("Cannot create site base directory: " + generationBase.getAbsolutePath());
-      }
+      });
     }
 
     // fixme: execute build
@@ -120,16 +120,12 @@ public abstract class CommandExecutingPartialBuilder extends PartialBuilder {
     return (partialBuildInfo, generationBase) -> {
       File reportFile = new File(generationBase, reportName);
       if (reportFile.exists()) {
-        try {
+        runtimeEx(() -> {
           String reportBody = readFileToString(reportFile);
-
           String idReport = commit(pushEvent, getName(), "file");
-
           Object report = exec.apply(partialBuildInfo, generationBase, reportBody);
           database.put(idReport, objectMapper.writeValueAsString(report));
-        } catch (IOException e) {
-          throw new RuntimeException(e);
-        }
+        });
       } else {
         throw new RuntimeException("Could not find " + reportName + " file");
       }
