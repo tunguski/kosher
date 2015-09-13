@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import pl.matsuo.gitlab.exception.ResourceNotFoundException;
+import pl.matsuo.gitlab.function.FunctionalUtil;
 import pl.matsuo.gitlab.service.build.jekyll.JekyllProperties;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 import pl.matsuo.gitlab.service.mustashe.GenerateContentService;
@@ -25,6 +26,7 @@ import static java.util.Arrays.*;
 import static org.apache.commons.io.FileUtils.*;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 import static org.springframework.web.servlet.HandlerMapping.*;
+import static pl.matsuo.gitlab.function.FunctionalUtil.*;
 
 
 /**
@@ -53,26 +55,16 @@ public class WebViewController {
         String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
             .replaceFirst("/" + user + "/" + project + "/" + branch, "");
 
-      String body = null;
-      try {
+      String body = runtimeEx(() -> {
         File file = readFile(config, new JekyllProperties(config), restOfTheUrl);
-        if (file != null) {
-          body = readFileToString(file);
-        }
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
+        return file != null ? readFileToString(file) : null;
+      });
       if (body != null) {
           return body;
         } else {
           String generated = generateContentService.generate(user, project, branch, request, config, properties);
-
-          try {
-            writeStringToFile(new File(new File(config.getParentFile(), properties.destination()), restOfTheUrl), generated);
-          } catch (IOException e) {
-            e.printStackTrace();
-          }
-
+          ignoreEx(() -> writeStringToFile(
+              new File(new File(config.getParentFile(), properties.destination()), restOfTheUrl), generated));
           return generated;
         }
     }).orElseThrow(() -> new ResourceNotFoundException());
@@ -91,16 +83,14 @@ public class WebViewController {
         String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
             .replaceFirst("/" + user + "/" + project + "/" + branch, "");
 
-      try {
+      return processEx(() -> {
         File file = readFile(config, new JekyllProperties(config), restOfTheUrl);
         if (file != null) {
           return readFileToString(file);
         } else {
           throw new ResourceNotFoundException();
         }
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
+      }, e -> { throw new ResourceNotFoundException(); });
     }).orElseThrow(() -> new ResourceNotFoundException());
   }
 
@@ -133,7 +123,7 @@ public class WebViewController {
 
 
   protected File readFile(File config, JekyllProperties properties, String path) {
-    try {
+    return runtimeEx(() -> {
       for (String directory : lookup(properties)) {
         File file = new File(new File(config.getParentFile(), directory), path);
         if (file.exists()) {
@@ -149,9 +139,7 @@ public class WebViewController {
       }
 
       return null;
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    });
   }
 }
 
