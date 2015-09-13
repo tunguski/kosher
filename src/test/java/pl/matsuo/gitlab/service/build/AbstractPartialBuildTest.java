@@ -24,8 +24,8 @@ import java.io.File;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { TestConfig.class, MapDbDatabase.class, ExecutionServiceImpl.class, BuildServiceImpl.class,
-                                  GitRepositoryServiceImpl.class})
+@ContextConfiguration(classes = { TestConfig.class, MapDbDatabase.class, ExecutionServiceImpl.class,
+                                  BuildServiceImpl.class, GitRepositoryServiceImpl.class})
 public abstract class AbstractPartialBuildTest extends AbstractSampleProjectTest {
 
 

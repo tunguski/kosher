@@ -38,6 +38,7 @@ public abstract class AbstractSampleProjectTest {
       } catch (GitAPIException e) {
         e.printStackTrace();
       }
+      System.out.println("Cloned test repo to " + sampleProject.getAbsolutePath());
     }
   }
 }
