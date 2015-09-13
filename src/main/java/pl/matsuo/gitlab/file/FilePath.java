@@ -1,14 +1,14 @@
 package pl.matsuo.gitlab.file;
 
-import org.apache.commons.io.FileUtils;
+import pl.matsuo.gitlab.function.ThrowingExceptionsRunnable;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.function.Consumer;
 
 import static org.apache.commons.io.FileUtils.*;
 import static pl.matsuo.gitlab.file.FileConverterProviderUtil.*;
+import static pl.matsuo.gitlab.function.FunctionalUtil.*;
 
 
 /**
@@ -46,14 +46,19 @@ public class FilePath {
   }
 
 
+  protected FilePath execAndReturnThis(boolean shouldExec, Runnable runnable) {
+    if (shouldExec) {
+      runnable.run();
+    }
+    return this;
+  }
+
+
   /**
    * Execute if file does exist.
    */
   public FilePath with(Consumer<FilePath> execute) {
-    if (file.exists()) {
-      execute.accept(this);
-    }
-    return this;
+    return execAndReturnThis(file.exists(), () -> execute.accept(this));
   }
 
 
@@ -97,10 +102,7 @@ public class FilePath {
    * Execute if file does not exist.
    */
   public FilePath without(Consumer<FilePath> execute) {
-    if (!file.exists()) {
-      execute.accept(this);
-    }
-    return this;
+    return execAndReturnThis(!file.exists(), () -> execute.accept(this));
   }
 
 
@@ -113,56 +115,28 @@ public class FilePath {
 
 
   public FilePath content(Consumer execute) {
-    if (file.exists()) {
-      try {
-        execute.accept(readFileToString(file));
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
-    }
-    return this;
+    return execAndReturnThis(file.exists(), () -> runtimeEx(() -> execute.accept(readFileToString(file))));
   }
 
 
   public <E> FilePath content(Class<E> clazz, Consumer<E> execute) {
-    if (file.exists()) {
-      try {
-        execute.accept(fileConverterProvider.converter(clazz).convert(new FileInputStream(file)));
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
-    }
-    return this;
+    return execAndReturnThis(file.exists(),
+        () -> runtimeEx(() -> execute.accept(fileConverterProvider.converter(clazz).convert(new FileInputStream(file)))));
   }
 
 
   public FilePath overwrite(String body) {
-    try {
-      FileUtils.write(file, body);
-      return this;
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    return execAndReturnThis(true, () -> runtimeEx(() -> write(file, body)));
   }
 
 
   public FilePath append(String body) {
-    try {
-      FileUtils.write(file, body, true);
-      return this;
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    return execAndReturnThis(true, () -> runtimeEx(() -> write(file, body, true)));
   }
 
 
   public FilePath appendln(String body) {
-    try {
-      FileUtils.write(file, body + "\n", true);
-      return this;
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    return execAndReturnThis(true, () -> runtimeEx(() -> write(file, body + "\n", true)));
   }
 
 
