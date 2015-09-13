@@ -9,6 +9,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import pl.matsuo.gitlab.AbstractSampleProjectTest;
 import pl.matsuo.gitlab.conf.TestConfig;
 import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
@@ -32,7 +33,7 @@ import static pl.matsuo.gitlab.data.BuildStatus.*;
 @WebAppConfiguration
 @ContextConfiguration(classes = { TestConfig.class, MapDbDatabase.class, BuildServiceImpl.class, ExecutionServiceImpl.class,
                                   GitRepositoryServiceImpl.class, GitLabWebHookController.class })
-public class TestGitLabWebHookController {
+public class TestGitLabWebHookController extends AbstractSampleProjectTest {
 
 
   @Autowired

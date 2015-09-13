@@ -78,12 +78,16 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
     try {
       Git git;
       if (!cloneFile.exists()) {
+        System.out.println("Cloning: " + uri);
+
         git = Git.cloneRepository()
             .setBranch(refName)
             .setURI(uri)
             .setDirectory(cloneFile)
             .call();
       } else {
+        System.out.println("Checkout: " + uri);
+
         git = Git.open(cloneFile);
         git.checkout().setName(refName).setForce(true).call();
         git.pull().call();
