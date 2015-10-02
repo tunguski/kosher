@@ -1,6 +1,7 @@
 package pl.matsuo.gitlab.service.gitlab;
 
 import org.gitlab.api.GitlabAPI;
+import pl.matsuo.gitlab.hook.PushEvent;
 
 
 /**
@@ -10,8 +11,11 @@ public class GitlabApiServiceImpl implements GitlabApiService {
 
 
   @Override
-  public void comment(String markdownText) {
+  public void comment(PushEvent pushEvent, String markdownText) {
     GitlabAPI gitlabAPI = GitlabAPI.connect("gitlab", "test");
+
+    // POST /projects/:id/repository/commits/:sha/comments
+    // gitlabAPI.createNote();
   }
 }
 
