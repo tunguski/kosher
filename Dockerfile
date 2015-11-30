@@ -21,7 +21,7 @@ RUN set -xe \
 		gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
 	done
 
-ENV JETTY_VERSION 9.3.2.v20150730
+ENV JETTY_VERSION 9.3.6.v20151106
 ENV JETTY_TGZ_URL https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/$JETTY_VERSION/jetty-distribution-$JETTY_VERSION.tar.gz
 
 RUN set -xe \
@@ -91,4 +91,4 @@ RUN chmod a+x /home/kosher/clone-repository.sh
 #RUN chown jetty:jetty -R ${repositoriesBase}
 #RUN chown jetty:jetty -R ${gitlabRepositoryBase}
 
-COPY target/base-listener-1.0-SNAPSHOT.war /var/lib/jetty/webapps/ROOT.WAR
+COPY target/kosher-1.0-SNAPSHOT.war /var/lib/jetty/webapps/ROOT.WAR
