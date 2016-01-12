@@ -43,7 +43,8 @@ public class TestGenerateContentServiceImpl {
 
     Writer writer = new StringWriter();
     MustacheFactory mf = new DefaultMustacheFactory();
-    Mustache mustache = mf.compile(new StringReader("map.key={{map.key}}{{#upper}}, in #upper map.key={{map.key}}{{/upper}} \n" +
+    Mustache mustache = mf.compile(new StringReader(
+        "map.key={{map.key}}{{#upper}}, in #upper map.key={{map.key}}{{/upper}} \n" +
         "in #map{{#map}}, in #upper {{#upper}} keyInUpper={{key}} {{/upper}} {{/map}} "), "example");
 
     mustache.execute(writer, scopes);
@@ -68,12 +69,12 @@ public class TestGenerateContentServiceImpl {
     assertEquals(IOUtils.toString(getClass().getResourceAsStream("/markdown_result.html")), result);
   }
 
+
   @Test
   public void testReplaceComplex() throws Exception {
     BiConsumer<Matcher, StringBuffer> modifier = (matcher, sb) -> matcher.appendReplacement(sb, matcher.group() + matcher.group());
     BiConsumer<Matcher, StringBuffer> tail = (matcher, sb) -> matcher.appendTail(sb);
-    String result = generateContentService.replaceComplex("([abc]*)", "abz", modifier, tail);
-    assertEquals("ababz", result);
+    assertEquals("ababz", generateContentService.replaceComplex("([abc]*)", "abz", modifier, tail));
   }
 }
 

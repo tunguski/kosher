@@ -78,6 +78,9 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       // mustache processing
       String mustache = mustache(config, properties, template, provider);
 
+      // replace {[{ }]} with {{ }} - for default angular brackets
+      mustache = mustache.replaceAll("\\{\\[\\{", "{{").replaceAll("\\}\\]\\}", "}}");
+
       return mustache;
     });
   }
@@ -97,6 +100,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
         template = (split.length > 2 ? split[2] : "").trim();
       }
 
+      // escape all spaces in links
       template = replaceComplex("(\\[[^]]+\\]\\(([^)]*\\([^)]*\\))*[^)]*\\))", template,
           (matcher, sb) -> {
             String[] split = matcher.group().split("\\]", 2);
@@ -104,6 +108,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
             matcher.appendReplacement(sb, linkName);
           }, null);
 
+      // escape minus signs in tables
       template = replaceComplex("(\\|[ ]*-[ ]*\\|)", template,
           (matcher, sb) -> {
             String linkName = matcher.group().replaceAll("-", "\\\\\\\\\\\\-");
@@ -154,6 +159,7 @@ public class GenerateContentServiceImpl implements GenerateContentService {
         .replaceFirst("/" + user + "/" + project + "/" + branch, "")
         .replaceAll("/+", "/");
 
+    // FIXME: for java projects should be src/main/site; use config in general
     String base = "./";
     for (int i = 0; i < restOfTheUrl.split("/").length - 2; i++) {
       base = base + "../";
