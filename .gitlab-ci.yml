@@ -1,0 +1,8 @@
+test:
+  stage: build
+  script:
+    - mvn -q clean install #cobertura:cobertura pmd:pmd findbugs:findbugs checkstyle:checkstyle
+#    - bash add_comments.sh
+  tags:
+    - mvn
+# notin'
