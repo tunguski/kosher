@@ -52,6 +52,7 @@ public abstract class AbstractControllerRequestTest extends AbstractSampleProjec
 
   @Before
   public void setup() {
+    super.setup();
     mockMvc = webAppContextSetup(wac).build();
   }
 
