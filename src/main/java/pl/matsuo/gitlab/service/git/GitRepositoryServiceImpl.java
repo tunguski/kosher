@@ -57,11 +57,10 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
     try {
       path = new URL(pushEvent.getRepository().getUrl()).getPath();
     } catch (MalformedURLException e) {
+      e.printStackTrace();
       try {
         path = new URL(pushEvent.getRepository().getGit_http_url()).getPath();
       } catch (MalformedURLException e2) {
-        System.out.println("Exception while trying to get checkout path");
-        e.printStackTrace();
         throw new RuntimeException(e2);
       }
     }
