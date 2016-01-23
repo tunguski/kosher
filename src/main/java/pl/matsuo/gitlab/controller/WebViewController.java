@@ -9,17 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import pl.matsuo.gitlab.exception.ResourceNotFoundException;
-import pl.matsuo.gitlab.function.FunctionalUtil;
 import pl.matsuo.gitlab.service.build.jekyll.JekyllProperties;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 import pl.matsuo.gitlab.service.mustashe.GenerateContentService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import static java.util.Arrays.*;
