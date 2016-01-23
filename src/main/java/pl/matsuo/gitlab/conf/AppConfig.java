@@ -24,6 +24,8 @@ public class AppConfig implements AsyncConfigurer {
     System.out.println("PropertyPlaceholderConfigurer configured!");
     PropertyPlaceholderConfigurer ppc =  new PropertyPlaceholderConfigurer();
     ppc.setLocation(new ClassPathResource("/app.properties"));
+    ppc.setSearchSystemEnvironment(true);
+
     return ppc;
   }
 
