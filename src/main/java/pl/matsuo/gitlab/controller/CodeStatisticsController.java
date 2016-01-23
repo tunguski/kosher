@@ -55,7 +55,7 @@ public class CodeStatisticsController {
                    @PathVariable("branch") String branch) {
     String data = db.get(subPath(user, project, branch), String.class);
 
-    if (data.contains("{")) {
+    if (data != null && data.contains("{")) {
       // returns BuildInfo
       return db.get(subPath(user, project, branch), BuildInfo.class);
     } else {
