@@ -21,7 +21,7 @@ RUN set -xe \
 		gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
 	done
 
-ENV JETTY_VERSION 9.3.6.v20151106
+ENV JETTY_VERSION 9.3.7.v20160115
 ENV JETTY_TGZ_URL https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/$JETTY_VERSION/jetty-distribution-$JETTY_VERSION.tar.gz
 
 RUN set -xe \
@@ -63,9 +63,9 @@ RUN  \
   apt-get -y upgrade && \
   apt-get install -y apt-utils sudo vim wget curl git
 
-RUN wget http://ftp.ps.pl/pub/apache/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz \
- && tar -zxvf apache-maven-3.3.3-bin.tar.gz -C /opt/ \
- && ln -s /opt/apache-maven-3.3.3/bin/mvn /usr/bin/mvn
+RUN wget http://ftp.ps.pl/pub/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz \
+ && tar -zxvf apache-maven-3.3.9-bin.tar.gz -C /opt/ \
+ && ln -s /opt/apache-maven-3.3.9/bin/mvn /usr/bin/mvn
 
 ENV repositoriesBase /home/kosher
 ENV gitlabRepositoryBase /home/git
