@@ -24,7 +24,6 @@ public class AppConfig implements AsyncConfigurer {
     System.out.println("PropertyPlaceholderConfigurer configured!");
     PropertyPlaceholderConfigurer ppc =  new PropertyPlaceholderConfigurer();
     ppc.setLocation(new ClassPathResource("/app.properties"));
-    ppc.setSearchSystemEnvironment(true);
 
     return ppc;
   }
@@ -36,7 +35,7 @@ public class AppConfig implements AsyncConfigurer {
     executor.setCorePoolSize(7);
     executor.setMaxPoolSize(42);
     executor.setQueueCapacity(11);
-    executor.setThreadNamePrefix("gitlab-listener-");
+    executor.setThreadNamePrefix("kosher-");
     executor.initialize();
     return executor;
   }
