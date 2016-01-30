@@ -59,6 +59,7 @@ public class GitlabProxyController {
 
       // FIXME: response codes from controller based on this response code
       int responseCode = con.getResponseCode();
+      System.out.println("Response code: " + responseCode + " for url " + url);
 
       BufferedReader in = new BufferedReader(
           new InputStreamReader(con.getInputStream()));
