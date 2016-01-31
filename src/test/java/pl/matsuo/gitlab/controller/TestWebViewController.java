@@ -46,7 +46,7 @@ public class TestWebViewController extends AbstractControllerRequestTest {
 
     performAndCheckStatus(get("/tunguski/kosher/master/index.html"), status().isOk(),
         html -> System.out.println("----\n" + html + "\n----"),
-        html -> assertTrue(html.contains("<h1>Test!</h1>")));
+        html -> assertTrue(html.contains("<h2>What is Kosher?</h2>")));
 
     performAndCheckStatus(get("/tunguski/kosher/master/markdown.html"), status().isOk(),
         html -> System.out.println("----\n" + html + "\n----"),
