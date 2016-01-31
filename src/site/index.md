@@ -20,7 +20,7 @@ Kosher provides many additional tools for dynamic functions based on your Gitlab
 * Show full issue body
 * Show discussion for commit
 
-**Planned features**
+## Planned features
 
 [Full open features list](full_open_features_list.html)
 
