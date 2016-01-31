@@ -22,7 +22,7 @@ Kosher provides many additional tools for dynamic functions based on your Gitlab
 
 **Planned features**
 
-[Full open features list](full_open_features_list.md)
+[Full open features list](full_open_features_list.html)
 
 * Add file comment from generated documentation page
 * Verification of documentation file based on provided template
@@ -35,3 +35,4 @@ Kosher provides many additional tools for dynamic functions based on your Gitlab
 * Presenting selected issues as list
 * Activity page
 * Auto referencing defined names to pages
+* Central page for your Gitlab repositories documentation

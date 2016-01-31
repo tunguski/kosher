@@ -1,5 +1,5 @@
 # Full open features list
 
 <issues-list>
-  <source src="root/kosher-test" labels="feature">
+  <source src="tunguski/kosher" labels="feature" status="open">
 </issues-list>
