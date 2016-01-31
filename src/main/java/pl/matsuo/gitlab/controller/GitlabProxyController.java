@@ -37,10 +37,21 @@ public class GitlabProxyController {
   String projectIssues(@PathVariable("user") String user,
                        @PathVariable("project") String project,
                        @RequestParam(value = "labels", required = false) String labels,
+                       @RequestParam(value = "status", required = false) String status,
                        @RequestParam(value = "milestone", required = false) String milestone) {
     return sendGet(gitlabServer + "/api/v3/projects/" + user + "%2F" + project + "/issues?"
         + (labels != null ? "labels=" + labels + "&" : "")
+        + (status != null ? "status=" + status + "&" : "")
         + (milestone != null ? "milestone=" + milestone + "&" : ""));
+  }
+
+
+  @RequestMapping(value = "/projects/{idProject}/issues/{idIssue}/notes", method = GET)
+  @ResponseStatus(OK)
+  public @ResponseBody
+  String projectNotes(@PathVariable("idProject") Integer idProject,
+                       @PathVariable("idIssue") Integer idIssue) {
+    return sendGet(gitlabServer + "/api/v3/projects/" + idProject + "/issues/" + idIssue + "/notes");
   }
 
 
