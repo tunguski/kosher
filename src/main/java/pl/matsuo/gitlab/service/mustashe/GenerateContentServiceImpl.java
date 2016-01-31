@@ -11,6 +11,7 @@ import com.github.mustachejava.TemplateFunction;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.pegdown.PegDownProcessor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import pl.matsuo.gitlab.service.build.jekyll.JekyllProperties;
 
@@ -39,6 +40,10 @@ import static pl.matsuo.gitlab.function.FunctionalUtil.*;
  */
 @Service
 public class GenerateContentServiceImpl implements GenerateContentService {
+
+
+  @Value("#{environment.GITLAB_SERVER}")
+  private String gitlabServer;
 
 
   // HARDWRAPS,AUTOLINKS,FENCED_CODE_BLOCKS,DEFINITIONS,TABLES
@@ -173,7 +178,8 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       "\npage: " +
       "\n  title: " + user + " - " + project + " - " + branch +
       "\n  href: " + getBaseHref(user, project, branch, request) +
-      "\nbase: " + base);
+      "\nbase: " + base +
+      "\nbase_gitlab: " + gitlabServer);
   }
 
 
