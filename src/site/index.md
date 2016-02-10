@@ -6,7 +6,7 @@ Kosher is Gitlab connected application that automatically builds project documen
 
 Kosher provides many additional tools for dynamic functions based on your Gitlab repositories data.
 
-## What am I able to achieve using Kosher?
+## What are you able to achieve using Kosher?
 
 * Automatically generate new documentation version for every commit
 * Add buttons referencing project source:
