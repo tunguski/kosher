@@ -63,6 +63,10 @@ public class GenerateContentServiceImpl implements GenerateContentService {
       String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
           .replaceFirst("/" + user + "/" + project + "/" + branch, "");
       String mdRestOfUrl = restOfTheUrl.replaceAll("\\.html", ".md");
+      // if request points to directory, return index file from this directory
+      if (mdRestOfUrl.endsWith("/")) {
+        mdRestOfUrl = mdRestOfUrl + "index.md";
+      }
 
       // if markdown file exist, read it; if not 404
       String template = "";

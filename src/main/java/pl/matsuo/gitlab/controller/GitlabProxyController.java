@@ -46,11 +46,22 @@ public class GitlabProxyController {
   }
 
 
+
+  @RequestMapping(value = "/projects/{user}/{project}/milestones/{idMilestone}", method = GET)
+  @ResponseStatus(OK)
+  public @ResponseBody
+  String projectMilestones(@PathVariable("user") String user,
+		                       @PathVariable("project") String project,
+                           @PathVariable("idMilestone") Integer idMilestone) {
+    return sendGet(gitlabServer + "/api/v3/projects/" + user + "%2F" + project + "/milestones/" + idMilestone);
+  }
+
+
   @RequestMapping(value = "/projects/{idProject}/issues/{idIssue}/notes", method = GET)
   @ResponseStatus(OK)
   public @ResponseBody
   String projectNotes(@PathVariable("idProject") Integer idProject,
-                       @PathVariable("idIssue") Integer idIssue) {
+                      @PathVariable("idIssue") Integer idIssue) {
     return sendGet(gitlabServer + "/api/v3/projects/" + idProject + "/issues/" + idIssue + "/notes");
   }
 

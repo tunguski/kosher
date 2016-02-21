@@ -16,6 +16,7 @@ import pl.matsuo.gitlab.service.mustashe.GenerateContentService;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.List;
+import java.util.function.Supplier;
 
 import static java.util.Arrays.*;
 import static org.apache.commons.io.FileUtils.*;
@@ -38,7 +39,7 @@ public class WebViewController {
   GenerateContentService generateContentService;
 
 
-  @RequestMapping(value = "/**/*.html", method = GET, produces = "text/html;charset=UTF-8")
+  @RequestMapping(value = { "/**/*.html", "/**/" }, method = GET, produces = "text/html;charset=UTF-8")
   @ResponseStatus(HttpStatus.OK)
   public @ResponseBody
   String getHtml(@PathVariable("user") String user,
@@ -46,9 +47,20 @@ public class WebViewController {
              @PathVariable("branch") String branch,
              HttpServletRequest request) {
     return gitRepositoryService.getKosher(user, project, branch).map(config -> {
-        JekyllProperties properties = new JekyllProperties(config);
-        String restOfTheUrl = ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
-            .replaceFirst("/" + user + "/" + project + "/" + branch, "");
+      JekyllProperties properties = new JekyllProperties(config);
+
+      Supplier<String> restOfTheUrlSupplier = () -> {
+        String restOfTheUrl =
+            ((String) request.getAttribute(PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE))
+                .replaceFirst("/" + user + "/" + project + "/" + branch, "");
+        // if request points to directory, return index file from this directory
+        if (restOfTheUrl.endsWith("/")) {
+          restOfTheUrl = restOfTheUrl + "index.html";
+        }
+        return restOfTheUrl;
+      };
+
+      String restOfTheUrl = restOfTheUrlSupplier.get();
 
       String body = runtimeEx(() -> {
         File file = readFile(config, new JekyllProperties(config), restOfTheUrl);
