@@ -10,7 +10,7 @@ For testing purposes only!
 
 ## Table
 
-one | two | three
------ | ----- | -----
-1 | 2 | 3
-x | y | z
+| one | two | three |
+| ----- | ----- | ----- |
+| 1 | 2 | 3 |
+| x | y | z |
