@@ -65,6 +65,32 @@ public class GitlabProxyController {
   }
 
 
+  @RequestMapping(value = "/projects/{user}/{project}/repository/tree", method = GET)
+  @ResponseStatus(OK)
+  public @ResponseBody
+  String listFiles(@PathVariable("user") String user,
+                       @PathVariable("project") String project,
+                       @RequestParam(value = "path") String path,
+                       @RequestParam(value = "ref_name") String ref_name) {
+    return sendGet(gitlabServer + "/api/v3/projects/" + user + "%2F" + project + "/repository/tree?"
+        + (path != null ? "path=" + path + "&" : "")
+        + (ref_name != null ? "ref_name=" + ref_name + "&" : ""));
+  }
+
+
+  @RequestMapping(value = "/projects/{user}/{project}/repository/files", method = GET)
+  @ResponseStatus(OK)
+  public @ResponseBody
+  String getFile(@PathVariable("user") String user,
+                   @PathVariable("project") String project,
+                   @RequestParam(value = "file_path") String file_path,
+                   @RequestParam(value = "ref") String ref) {
+    return sendGet(gitlabServer + "/api/v3/projects/" + user + "%2F" + project + "/repository/files?"
+        + (file_path != null ? "file_path=" + file_path + "&" : "")
+        + (ref != null ? "ref=" + ref + "&" : ""));
+  }
+
+
   // HTTP GET request
   private String sendGet(String url) {
     try {
