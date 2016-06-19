@@ -1,6 +1,9 @@
 language: java
 sudo: false
-install: gem install jekyll
+install:
+  - rvm install 2.2.0 --rubygems 2.4.6
+  - rvm use 2.2.0 --default
+  - gem install jekyll
 script: mvn package
 after_success: mvn cobertura:cobertura coveralls:report
 jdk:
