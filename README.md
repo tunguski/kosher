@@ -25,3 +25,7 @@ Base application for creating GitLab event listener.
    If you configure project as described here, you should be able to
    see result at http://localhost:10081/tunguski/kosher/master/index.html
 
+## Developing Kosher style
+
+If you want to work on your site's style, please read [Kosher-base-style README](https://github.com/tunguski/kosher-base-style)
+for more information.

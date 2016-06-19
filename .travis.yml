@@ -6,4 +6,4 @@ after_success: mvn cobertura:cobertura coveralls:report
 jdk:
   - oraclejdk8
 rvm:
-  - 2.1.x
+  - 2.2
