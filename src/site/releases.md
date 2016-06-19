@@ -1,7 +1,7 @@
 # Releases
 
-<milestones-list>
-  <issues-list columns="id,title,labels">
+<milestones>
+  <issues columns="id,title,labels">
     <source src="tunguski/kosher" milestone="milestone">
-  </issues-list>
-</milestones-list>
+  </issues>
+</milestones>
