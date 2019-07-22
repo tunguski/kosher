@@ -7,5 +7,4 @@ install:
 script: mvn package
 after_success: mvn cobertura:cobertura coveralls:report
 jdk:
-  - openjdk8
   - openjdk11
