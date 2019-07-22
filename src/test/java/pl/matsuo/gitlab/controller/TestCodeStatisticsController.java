@@ -58,7 +58,7 @@ public class TestCodeStatisticsController extends AbstractControllerRequestTest 
           System.out.println("/s/tunguski/kosher/master: " + cleanRef);
           performAndCheckStatus(get("/s/" + cleanRef).header("Accept", "*/*"),
               // fixme - should be ok
-              status().isNotAcceptable(), html -> {
+              status().isInternalServerError(), html -> {
             System.out.println(cleanRef + ": " + html);
 
 //            BuildInfo buildInfo = objectMapper.readValue(html, BuildInfo.class);
