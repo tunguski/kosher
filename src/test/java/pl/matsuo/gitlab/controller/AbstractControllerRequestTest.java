@@ -1,5 +1,9 @@
 package pl.matsuo.gitlab.controller;
 
+import static org.springframework.http.MediaType.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -19,36 +23,26 @@ import pl.matsuo.gitlab.conf.TestConfig;
 import pl.matsuo.gitlab.function.ThrowingExceptionsConsumer;
 import pl.matsuo.gitlab.service.execute.ExecutionServiceImpl;
 
-import static org.springframework.http.MediaType.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
-
-
-/**
- * Created by tunguski on 19.12.13.
- */
+/** Created by tunguski on 19.12.13. */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { TestConfig.class, ExecutionServiceImpl.class })
+@ContextConfiguration(classes = {TestConfig.class, ExecutionServiceImpl.class})
 public abstract class AbstractControllerRequestTest extends AbstractSampleProjectTest {
 
-
-  @Autowired
-  protected WebApplicationContext wac;
+  @Autowired protected WebApplicationContext wac;
   protected MockMvc mockMvc;
-  @Autowired
-  protected ObjectMapper objectMapper;
+  @Autowired protected ObjectMapper objectMapper;
 
-
-  protected MockHttpServletRequestBuilder post(String url, Object content) throws JsonProcessingException {
-    return MockMvcRequestBuilders.post(url).content(objectMapper.writeValueAsString(content)).contentType(APPLICATION_JSON);
+  protected MockHttpServletRequestBuilder post(String url, Object content)
+      throws JsonProcessingException {
+    return MockMvcRequestBuilders.post(url)
+        .content(objectMapper.writeValueAsString(content))
+        .contentType(APPLICATION_JSON);
   }
-
 
   protected MockHttpServletRequestBuilder post(String url) throws JsonProcessingException {
     return MockMvcRequestBuilders.post(url);
   }
-
 
   @Before
   public void setup() {
@@ -56,14 +50,17 @@ public abstract class AbstractControllerRequestTest extends AbstractSampleProjec
     mockMvc = webAppContextSetup(wac).build();
   }
 
-
-  protected void performAndCheck(MockHttpServletRequestBuilder request, ThrowingExceptionsConsumer<String>... checks) throws Exception {
+  protected void performAndCheck(
+      MockHttpServletRequestBuilder request, ThrowingExceptionsConsumer<String>... checks)
+      throws Exception {
     performAndCheckStatus(request, status().isOk(), checks);
   }
 
-
-  protected void performAndCheckStatus(MockHttpServletRequestBuilder request, ResultMatcher status,
-                                       ThrowingExceptionsConsumer<String>... checks) throws Exception {
+  protected void performAndCheckStatus(
+      MockHttpServletRequestBuilder request,
+      ResultMatcher status,
+      ThrowingExceptionsConsumer<String>... checks)
+      throws Exception {
     ResultActions result = mockMvc.perform(request);
     result.andExpect(status);
     String html = result.andReturn().getResponse().getContentAsString();

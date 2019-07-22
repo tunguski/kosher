@@ -1,5 +1,11 @@
 package pl.matsuo.gitlab.service.build;
 
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Optional;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,32 +19,15 @@ import pl.matsuo.gitlab.service.db.Database;
 import pl.matsuo.gitlab.service.execute.ExecutionService;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Optional;
-
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
-
-/**
- * Created by marek on 04.07.15.
- */
+/** Created by marek on 04.07.15. */
 @RunWith(MockitoJUnitRunner.class)
 public class TestBuildServiceImpl {
 
-
-  @Mock
-  Database database;
-  @Mock
-  GitRepositoryService gitRepositoryService;
-  @Mock
-  PartialBuilder partialBuilder;
-  @Mock
-  ExecutionService executionService;
-  @InjectMocks
-  BuildServiceImpl buildService = new BuildServiceImpl();
-
+  @Mock Database database;
+  @Mock GitRepositoryService gitRepositoryService;
+  @Mock PartialBuilder partialBuilder;
+  @Mock ExecutionService executionService;
+  @InjectMocks BuildServiceImpl buildService = new BuildServiceImpl();
 
   @Before
   public void beforeTest() {
@@ -47,15 +36,16 @@ public class TestBuildServiceImpl {
     buildService.partialBuilders = new ArrayList<>();
     buildService.partialBuilders.add(partialBuilder);
 
-
-    doAnswer(invocation -> {
-      ((Runnable) invocation.getArguments()[0]).run();
-      return null;
-    }).when(executionService).run(any(Runnable.class));
+    doAnswer(
+            invocation -> {
+              ((Runnable) invocation.getArguments()[0]).run();
+              return null;
+            })
+        .when(executionService)
+        .run(any(Runnable.class));
 
     when(partialBuilder.shouldExecute(any(PushEvent.class), any(File.class))).thenReturn(true);
   }
-
 
   @Test
   public void testPushEvent() throws Exception {
@@ -64,19 +54,20 @@ public class TestBuildServiceImpl {
     pushEvent.setRef("refs/heads/master");
     pushEvent.setAfter("78af4d73667e3ef4bbb06e82270e0015a1f251ea");
 
-    when(gitRepositoryService.getKosher(any(PushEvent.class))).thenReturn(Optional.of(File.createTempFile(".kosher", "")));
+    when(gitRepositoryService.getKosher(any(PushEvent.class)))
+        .thenReturn(Optional.of(File.createTempFile(".kosher", "")));
 
     pushEvent.getRepository().setUrl("git@github.com:tunguski/kosher.git");
     buildService.pushEvent(pushEvent);
 
     verify(partialBuilder).execute(any(PushEvent.class), any(File.class));
 
-    when(gitRepositoryService.getKosher(any(PushEvent.class))).thenReturn(Optional.of(File.createTempFile(".kosher", "")));
+    when(gitRepositoryService.getKosher(any(PushEvent.class)))
+        .thenReturn(Optional.of(File.createTempFile(".kosher", "")));
 
     pushEvent.getRepository().setUrl("https://github.com/tunguski/kosher.git");
     buildService.pushEvent(pushEvent);
   }
-
 
   @Test
   public void testBuildStatus() throws Exception {
@@ -86,7 +77,8 @@ public class TestBuildServiceImpl {
     pushEvent.setAfter("78af4d73667e3ef4bbb06e82270e0015a1f251ea");
     pushEvent.getRepository().setUrl("git@github.com:tunguski/kosher.git");
 
-    when(gitRepositoryService.getKosher(any(PushEvent.class))).thenReturn(Optional.of(File.createTempFile(".kosher", "")));
+    when(gitRepositoryService.getKosher(any(PushEvent.class)))
+        .thenReturn(Optional.of(File.createTempFile(".kosher", "")));
 
     String idBuild = buildService.pushEvent(pushEvent);
 
@@ -100,4 +92,3 @@ public class TestBuildServiceImpl {
     assertEquals(idBuild, buildInfo.getId());
   }
 }
-

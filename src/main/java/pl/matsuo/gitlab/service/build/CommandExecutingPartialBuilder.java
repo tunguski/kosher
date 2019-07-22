@@ -1,19 +1,13 @@
 package pl.matsuo.gitlab.service.build;
 
+import static org.apache.commons.io.FileUtils.*;
+import static pl.matsuo.gitlab.function.FunctionalUtil.*;
+import static pl.matsuo.gitlab.util.PushEventUtil.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.io.FileUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import pl.matsuo.gitlab.function.FunctionalUtil;
-import pl.matsuo.gitlab.hook.PartialBuildInfo;
-import pl.matsuo.gitlab.hook.PushEvent;
-import pl.matsuo.gitlab.service.db.Database;
-import pl.matsuo.gitlab.util.TriFunction;
-
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -21,27 +15,24 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
+import org.springframework.beans.factory.annotation.Autowired;
+import pl.matsuo.gitlab.hook.PartialBuildInfo;
+import pl.matsuo.gitlab.hook.PushEvent;
+import pl.matsuo.gitlab.service.db.Database;
+import pl.matsuo.gitlab.util.TriFunction;
 
-import static org.apache.commons.io.FileUtils.*;
-import static pl.matsuo.gitlab.function.FunctionalUtil.*;
-import static pl.matsuo.gitlab.util.PushEventUtil.*;
-
-
-/**
- * Created by marek on 05.07.15.
- */
+/** Created by marek on 05.07.15. */
 public abstract class CommandExecutingPartialBuilder extends PartialBuilder {
 
+  @Autowired ObjectMapper objectMapper;
+  @Autowired Database db;
 
-  @Autowired
-  ObjectMapper objectMapper;
-  @Autowired
-  Database db;
-
-
-  public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, String source, String destination,
-                                                             Function<String, String[]> executionCommands,
-                                                             BiConsumer<PartialBuildInfo, File> afterExecution) {
+  public CompletableFuture<PartialBuildInfo> internalExecute(
+      PushEvent pushEvent,
+      String source,
+      String destination,
+      Function<String, String[]> executionCommands,
+      BiConsumer<PartialBuildInfo, File> afterExecution) {
     PartialBuildInfo partialBuildInfo = new PartialBuildInfo();
     partialBuildInfo.setName(getName());
 
@@ -51,16 +42,22 @@ public abstract class CommandExecutingPartialBuilder extends PartialBuilder {
     File generationBase = new File(projectBase, destination);
     if (!generationBase.mkdirs()) {
       // FileUtils is better at creating directories than JRE
-      runtimeEx(() -> forceMkdir(generationBase), e -> {
-        e.printStackTrace();
-        throw new RuntimeException("Cannot create site base directory: " + generationBase.getAbsolutePath());
-      });
+      runtimeEx(
+          () -> forceMkdir(generationBase),
+          e -> {
+            e.printStackTrace();
+            throw new RuntimeException(
+                "Cannot create site base directory: " + generationBase.getAbsolutePath());
+          });
     }
 
     // fixme: execute build
     String[] command = executionCommands.apply(generationBase.getAbsolutePath());
-    System.out.println("Executing command: " + Arrays.toString(command) + " in directory: "
-        + new File(projectBase, source).getAbsolutePath());
+    System.out.println(
+        "Executing command: "
+            + Arrays.toString(command)
+            + " in directory: "
+            + new File(projectBase, source).getAbsolutePath());
     ProcessBuilder pb = new ProcessBuilder(command);
     pb.environment().put("ci-build", "true");
     pb.directory(new File(projectBase, source));
@@ -113,23 +110,21 @@ public abstract class CommandExecutingPartialBuilder extends PartialBuilder {
     return future;
   }
 
-
-  public BiConsumer<PartialBuildInfo, File> executeWithReport(PushEvent pushEvent,
-                                                              String reportName,
-                                                              TriFunction<PartialBuildInfo, File, String, ?> exec) {
+  public BiConsumer<PartialBuildInfo, File> executeWithReport(
+      PushEvent pushEvent, String reportName, TriFunction<PartialBuildInfo, File, String, ?> exec) {
     return (partialBuildInfo, generationBase) -> {
       File reportFile = new File(generationBase, reportName);
       if (reportFile.exists()) {
-        runtimeEx(() -> {
-          String reportBody = readFileToString(reportFile);
-          String idReport = commit(pushEvent, getName(), "file");
-          Object report = exec.apply(partialBuildInfo, generationBase, reportBody);
-          database.put(idReport, objectMapper.writeValueAsString(report));
-        });
+        runtimeEx(
+            () -> {
+              String reportBody = readFileToString(reportFile);
+              String idReport = commit(pushEvent, getName(), "file");
+              Object report = exec.apply(partialBuildInfo, generationBase, reportBody);
+              database.put(idReport, objectMapper.writeValueAsString(report));
+            });
       } else {
         throw new RuntimeException("Could not find " + reportName + " file");
       }
     };
   }
 }
-

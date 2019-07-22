@@ -1,15 +1,13 @@
 package pl.matsuo.gitlab.function;
 
-import org.junit.Test;
-
-import java.util.NoSuchElementException;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import static org.junit.Assert.*;
 import static pl.matsuo.gitlab.function.Optional.*;
 
-public class TestOptional {
+import java.util.NoSuchElementException;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.junit.Test;
 
+public class TestOptional {
 
   @Test(expected = NoSuchElementException.class)
   public void testEmpty() throws Exception {
@@ -17,13 +15,11 @@ public class TestOptional {
     empty().get();
   }
 
-
   @Test
   public void testOf() throws Exception {
     assertTrue(of(1).isPresent());
     assertEquals("x", of("x").get());
   }
-
 
   @Test
   public void testOfNullable() throws Exception {
@@ -84,12 +80,10 @@ public class TestOptional {
     ofNullable(null).orElseThrow(() -> new RuntimeException());
   }
 
-
   @Test
   public void testOrElseThrow2() throws Exception {
     assertEquals("x", of("x").orElseThrow(() -> new RuntimeException()));
   }
-
 
   @Test
   public void testOr() throws Exception {
@@ -107,7 +101,6 @@ public class TestOptional {
   public void testOrThrow() throws Exception {
     ofNullable(null).orThrow(() -> new RuntimeException());
   }
-
 
   @Test
   public void testOrThrow2() throws Exception {

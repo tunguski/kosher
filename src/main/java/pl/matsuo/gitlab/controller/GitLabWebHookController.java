@@ -1,5 +1,7 @@
 package pl.matsuo.gitlab.controller;
 
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,31 +13,20 @@ import pl.matsuo.gitlab.exception.ResourceNotFoundException;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.BuildService;
 
-import static org.springframework.web.bind.annotation.RequestMethod.*;
-
-
-/**
- * Created by marek on 04.07.15.
- */
+/** Created by marek on 04.07.15. */
 @Controller
 @RequestMapping("/hooks")
 public class GitLabWebHookController {
 
-
-  @Autowired
-  BuildService buildService;
-
+  @Autowired BuildService buildService;
 
   @RequestMapping(method = POST)
-  public @ResponseBody
-  String pushEvent(@RequestBody PushEvent pushEvent) {
+  public @ResponseBody String pushEvent(@RequestBody PushEvent pushEvent) {
     return buildService.pushEvent(pushEvent);
   }
 
-
   @RequestMapping(value = "buildStatus/{idBuild}", method = GET)
-  public @ResponseBody
-  BuildInfo buildStatus(@PathVariable("idBuild") String idBuild) {
+  public @ResponseBody BuildInfo buildStatus(@PathVariable("idBuild") String idBuild) {
     BuildInfo buildInfo = buildService.buildStatus(idBuild);
 
     if (buildInfo == null) {
@@ -45,4 +36,3 @@ public class GitLabWebHookController {
     return buildInfo;
   }
 }
-

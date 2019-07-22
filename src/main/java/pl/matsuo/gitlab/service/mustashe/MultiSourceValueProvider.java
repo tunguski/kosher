@@ -1,7 +1,8 @@
 package pl.matsuo.gitlab.service.mustashe;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static java.util.Arrays.*;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,25 +11,18 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
-import static java.util.Arrays.*;
-
-/**
- * Created by marek on 05.09.15.
- */
+/** Created by marek on 05.09.15. */
 public class MultiSourceValueProvider {
 
   private final List<JsonNode> sources;
 
-
-  public MultiSourceValueProvider(JsonNode ... sources) {
+  public MultiSourceValueProvider(JsonNode... sources) {
     this.sources = new ArrayList<>(asList(sources));
   }
-
 
   public MultiSourceValueProvider(List<JsonNode> sources) {
     this.sources = new ArrayList<>(sources);
   }
-
 
   public <F> F get(Function<JsonNode, F> getter) {
     for (JsonNode source : sources) {
@@ -41,12 +35,10 @@ public class MultiSourceValueProvider {
     return null;
   }
 
-
   public MultiSourceValueProvider add(JsonNode source) {
     sources.add(0, source);
     return this;
   }
-
 
   public Map<String, Object> asMap() {
     return new Map<String, Object>() {
@@ -157,4 +149,3 @@ public class MultiSourceValueProvider {
     };
   }
 }
-

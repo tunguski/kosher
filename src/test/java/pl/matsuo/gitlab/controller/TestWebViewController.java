@@ -1,5 +1,9 @@
 package pl.matsuo.gitlab.controller;
 
+import static org.junit.Assert.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -12,25 +16,17 @@ import pl.matsuo.gitlab.service.db.MapDbDatabase;
 import pl.matsuo.gitlab.service.git.GitRepositoryServiceImpl;
 import pl.matsuo.gitlab.service.mustashe.GenerateContentServiceImpl;
 
-import static org.junit.Assert.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-
-/**
- * Created by marek on 04.07.15.
- */
-@ContextConfiguration(classes = { BuildServiceImpl.class, MapDbDatabase.class, GitRepositoryServiceImpl.class,
-                                  JekyllPartialBuilder.class, YamlFileConverterProvider.class, WebViewController.class,
-                                  GenerateContentServiceImpl.class})
+/** Created by marek on 04.07.15. */
+@ContextConfiguration(
+    classes = {
+      BuildServiceImpl.class, MapDbDatabase.class, GitRepositoryServiceImpl.class,
+      JekyllPartialBuilder.class, YamlFileConverterProvider.class, WebViewController.class,
+      GenerateContentServiceImpl.class
+    })
 public class TestWebViewController extends AbstractControllerRequestTest {
 
-
-  @Autowired
-  BuildServiceImpl buildService;
-  @Autowired
-  WebViewController controller;
-
+  @Autowired BuildServiceImpl buildService;
+  @Autowired WebViewController controller;
 
   @Test
   public void testGetRequest() throws Exception {
@@ -44,14 +40,21 @@ public class TestWebViewController extends AbstractControllerRequestTest {
 
     buildService.pushEvent(pushEvent);
 
-    performAndCheckStatus(get("/tunguski/kosher/master/index.html"), status().isOk(),
+    performAndCheckStatus(
+        get("/tunguski/kosher/master/index.html"),
+        status().isOk(),
         html -> System.out.println("----\n" + html + "\n----"),
         html -> assertTrue(html.contains("<h2>What is Kosher?</h2>")));
 
-    performAndCheckStatus(get("/tunguski/kosher/master/markdown.html"), status().isOk(),
+    performAndCheckStatus(
+        get("/tunguski/kosher/master/markdown.html"),
+        status().isOk(),
         html -> System.out.println("----\n" + html + "\n----"),
         // link relativeness
-        html -> assertTrue(html.contains("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/main.css\">")),
+        html ->
+            assertTrue(
+                html.contains(
+                    "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/main.css\">")),
         // link relativeness
         html -> assertTrue(html.contains("window.base_mustache = './';")),
         // lists and bold
@@ -61,18 +64,20 @@ public class TestWebViewController extends AbstractControllerRequestTest {
         // conditional parts
         html -> assertTrue(html.contains("<div class=\"col-sm-12 col-md-4 col-lg-4 page-menu\">")),
         // conditional parts
-        html -> assertTrue(html.contains("<div class=\"col-sm-12 col-md-8 col-lg-8 project-description\"")),
+        html ->
+            assertTrue(
+                html.contains("<div class=\"col-sm-12 col-md-8 col-lg-8 project-description\"")),
         // tables
         html -> assertTrue(html.contains("<th>col3</th>")),
         // minus sign in table
         html -> assertTrue(html.contains("<td>- </td>")),
         // links
-        html -> assertTrue(html.contains("<a href=\"tunguski.github.io\">Some link</a>"))
-    );
+        html -> assertTrue(html.contains("<a href=\"tunguski.github.io\">Some link</a>")));
 
-    performAndCheckStatus(get("/tunguski/kosher/master/branch_master.html"), status().isOk(),
+    performAndCheckStatus(
+        get("/tunguski/kosher/master/branch_master.html"),
+        status().isOk(),
         html -> System.out.println("----\n" + html + "\n----"),
         html -> assertTrue(html.contains("tunguski - kosher - master")));
   }
 }
-

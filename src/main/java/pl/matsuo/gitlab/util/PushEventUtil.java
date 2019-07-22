@@ -1,19 +1,14 @@
 package pl.matsuo.gitlab.util;
 
-
-import pl.matsuo.gitlab.hook.PushEvent;
-import pl.matsuo.gitlab.hook.Repository;
+import static java.util.Arrays.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import pl.matsuo.gitlab.hook.PushEvent;
+import pl.matsuo.gitlab.hook.Repository;
 
-import static java.util.Arrays.*;
-
-/**
- * Created by marek on 04.07.15.
- */
+/** Created by marek on 04.07.15. */
 public class PushEventUtil {
-
 
   public static String getUser(PushEvent pushEvent) {
     Repository repository = pushEvent.getRepository();
@@ -27,7 +22,6 @@ public class PushEventUtil {
     }
   }
 
-
   public static String getRepository(PushEvent pushEvent) {
     Repository repository = pushEvent.getRepository();
     String url = repository.getUrl();
@@ -40,32 +34,32 @@ public class PushEventUtil {
     }
   }
 
-
   public static String getRef(PushEvent pushEvent) {
     String[] ref = pushEvent.getRef().split("/");
     return ref[ref.length - 1];
   }
 
-
-  public static String subPath(String ... parts) {
+  public static String subPath(String... parts) {
     return String.join("/", asList(parts));
   }
 
-
-  public static String subPath(PushEvent pushEvent, String ... parts) {
-    List<String> merged = new ArrayList<>(asList(getUser(pushEvent), getRepository(pushEvent), getRef(pushEvent)));
+  public static String subPath(PushEvent pushEvent, String... parts) {
+    List<String> merged =
+        new ArrayList<>(asList(getUser(pushEvent), getRepository(pushEvent), getRef(pushEvent)));
     merged.addAll(asList(parts));
 
     return String.join("/", merged);
   }
 
-
-  public static String commit(PushEvent pushEvent, String ... parts) {
-    List<String> merged = new ArrayList<>(
-        asList(getUser(pushEvent), getRepository(pushEvent), pushEvent.getAfter().substring(0, 7)));
+  public static String commit(PushEvent pushEvent, String... parts) {
+    List<String> merged =
+        new ArrayList<>(
+            asList(
+                getUser(pushEvent),
+                getRepository(pushEvent),
+                pushEvent.getAfter().substring(0, 7)));
     merged.addAll(asList(parts));
 
     return String.join("/", merged);
   }
 }
-

@@ -10,26 +10,22 @@ import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-
-/**
- * Created by marek on 17.07.15.
- */
+/** Created by marek on 17.07.15. */
 @Configuration
 @EnableAsync
 public class AppConfig implements AsyncConfigurer {
 
-
   @Bean
   public static PropertyPlaceholderConfigurer propConfig() {
     System.out.println("PropertyPlaceholderConfigurer configured!");
-    PropertyPlaceholderConfigurer ppc =  new PropertyPlaceholderConfigurer();
+    PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
     ppc.setLocation(new ClassPathResource("/app.properties"));
 
     return ppc;
   }
 
-
-  @Override @Bean
+  @Override
+  @Bean
   public TaskExecutor getAsyncExecutor() {
     ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
     executor.setCorePoolSize(7);
@@ -40,10 +36,8 @@ public class AppConfig implements AsyncConfigurer {
     return executor;
   }
 
-
   @Override
   public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
     return null;
   }
 }
-

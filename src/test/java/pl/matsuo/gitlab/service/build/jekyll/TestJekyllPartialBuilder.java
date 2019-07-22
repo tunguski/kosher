@@ -1,5 +1,9 @@
 package pl.matsuo.gitlab.service.build.jekyll;
 
+import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.IOException;
 import org.junit.Test;
 import org.mapdb.Fun;
 import org.springframework.test.context.ContextConfiguration;
@@ -7,18 +11,9 @@ import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.service.build.AbstractPartialBuildTest;
 
-import java.io.File;
-import java.io.IOException;
-
-import static org.junit.Assert.*;
-
-
-/**
- * Created by marek on 04.07.15.
- */
-@ContextConfiguration(classes = { JekyllPartialBuilder.class })
+/** Created by marek on 04.07.15. */
+@ContextConfiguration(classes = {JekyllPartialBuilder.class})
 public class TestJekyllPartialBuilder extends AbstractPartialBuildTest {
-
 
   @Test
   public void testInternalExecute() throws Exception {
@@ -33,7 +28,6 @@ public class TestJekyllPartialBuilder extends AbstractPartialBuildTest {
     assertEquals("ok", buildInfo.getPartialStatuses().get("jekyll").getStatus());
   }
 
-
   @Test
   public void testExecIO() throws Exception {
     JekyllPartialBuilder builder = new JekyllPartialBuilder();
@@ -42,15 +36,16 @@ public class TestJekyllPartialBuilder extends AbstractPartialBuildTest {
     assertEquals("Pending", buildInfo.getStatus());
   }
 
-
   @Test
   public void testExecIO1() throws Exception {
     JekyllPartialBuilder builder = new JekyllPartialBuilder();
     PartialBuildInfo buildInfo = new PartialBuildInfo();
-    builder.execWithLogException(true, buildInfo, () -> {
-      throw new IOException("Test");
-    });
+    builder.execWithLogException(
+        true,
+        buildInfo,
+        () -> {
+          throw new IOException("Test");
+        });
     assertEquals("Test", buildInfo.getStatus());
   }
 }
-

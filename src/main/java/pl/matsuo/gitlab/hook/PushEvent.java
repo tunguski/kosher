@@ -1,9 +1,4 @@
 package pl.matsuo.gitlab.hook;
 
-
-/**
- * Created by marek on 04.07.15.
- */
-public class PushEvent extends AbstractEvent {
-}
-
+/** Created by marek on 04.07.15. */
+public class PushEvent extends AbstractEvent {}

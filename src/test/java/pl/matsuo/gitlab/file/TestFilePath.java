@@ -1,25 +1,19 @@
 package pl.matsuo.gitlab.file;
 
-import org.apache.commons.io.FileUtils;
-import org.junit.Test;
-import org.mockito.Mockito;
-
-import java.io.File;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import static java.io.File.createTempFile;
 import static java.nio.file.Files.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import static pl.matsuo.gitlab.file.FilePath.*;
 
+import java.io.File;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.apache.commons.io.FileUtils;
+import org.junit.Test;
 
-/**
- * Created by marek on 29.08.15.
- */
+/** Created by marek on 29.08.15. */
 public class TestFilePath {
-
 
   @Test
   public void testFile() throws Exception {
@@ -28,13 +22,11 @@ public class TestFilePath {
     assertEquals(tempFile.getAbsolutePath(), file.toString());
   }
 
-
   @Test
   public void testFile1() throws Exception {
     FilePath file = file("/tmp");
     assertEquals("/tmp", file.toString());
   }
-
 
   @Test
   public void testFile2() throws Exception {
@@ -43,7 +35,6 @@ public class TestFilePath {
     assertEquals(tempDir.getAbsolutePath() + "/testFile", file.toString());
   }
 
-
   @Test
   public void testWith() throws Exception {
     FilePath file = file(createTempFile("temp", ".tmp"));
@@ -51,7 +42,6 @@ public class TestFilePath {
     file.with(path -> executed.set(true));
     assertTrue(executed.get());
   }
-
 
   @Test
   public void testWith1() throws Exception {
@@ -64,7 +54,6 @@ public class TestFilePath {
     assertTrue(executed.get());
   }
 
-
   @Test
   public void testWithout() throws Exception {
     File tempDir = createTempDirectory("test").toFile();
@@ -74,7 +63,6 @@ public class TestFilePath {
     file.without(path -> executed.set(true));
     assertTrue(executed.get());
   }
-
 
   @Test
   public void testWithout1() throws Exception {
@@ -86,7 +74,6 @@ public class TestFilePath {
     assertTrue(executed.get());
   }
 
-
   @Test
   public void testContent() throws Exception {
     File tempDir = createTempDirectory("test").toFile();
@@ -96,14 +83,17 @@ public class TestFilePath {
 
     FilePath file = file(tempDir);
     AtomicBoolean executed = new AtomicBoolean(false);
-    file.with("testFile", path -> path.content(content -> {
-      executed.set(true);
-      assertEquals("data", content);
-    }));
+    file.with(
+        "testFile",
+        path ->
+            path.content(
+                content -> {
+                  executed.set(true);
+                  assertEquals("data", content);
+                }));
 
     assertTrue(executed.get());
   }
-
 
   @Test
   public void testConfigureContent() throws Exception {
@@ -118,15 +108,20 @@ public class TestFilePath {
     when(provider.converter(Integer.class)).thenReturn(converter);
 
     AtomicBoolean executed = new AtomicBoolean(false);
-    file(tempDir).configure(provider).with(
-        "testFile", path -> path.content(Integer.class, content -> {
-          executed.set(true);
-          assertEquals((Integer) 111, content);
-        }));
+    file(tempDir)
+        .configure(provider)
+        .with(
+            "testFile",
+            path ->
+                path.content(
+                    Integer.class,
+                    content -> {
+                      executed.set(true);
+                      assertEquals((Integer) 111, content);
+                    }));
 
     assertTrue(executed.get());
   }
-
 
   @Test
   public void testAppend() throws Exception {
@@ -139,14 +134,16 @@ public class TestFilePath {
     file.append("data");
 
     AtomicBoolean executed = new AtomicBoolean(false);
-    file.with(path -> path.content(content -> {
-      executed.set(true);
-      assertEquals("data\ndata", content);
-    }));
+    file.with(
+        path ->
+            path.content(
+                content -> {
+                  executed.set(true);
+                  assertEquals("data\ndata", content);
+                }));
 
     assertTrue(executed.get());
   }
-
 
   @Test
   public void testAppendln() throws Exception {
@@ -159,14 +156,16 @@ public class TestFilePath {
     file.appendln("data");
 
     AtomicBoolean executed = new AtomicBoolean(false);
-    file.with(path -> path.content(content -> {
-      executed.set(true);
-      assertEquals("data\ndata\n", content);
-    }));
+    file.with(
+        path ->
+            path.content(
+                content -> {
+                  executed.set(true);
+                  assertEquals("data\ndata\n", content);
+                }));
 
     assertTrue(executed.get());
   }
-
 
   @Test
   public void testOverwrite() throws Exception {
@@ -179,12 +178,14 @@ public class TestFilePath {
     file.overwrite("data");
 
     AtomicBoolean executed = new AtomicBoolean(false);
-    file.with(path -> path.content(content -> {
-      executed.set(true);
-      assertEquals("data", content);
-    }));
+    file.with(
+        path ->
+            path.content(
+                content -> {
+                  executed.set(true);
+                  assertEquals("data", content);
+                }));
 
     assertTrue(executed.get());
   }
 }
-

@@ -1,22 +1,17 @@
 package pl.matsuo.gitlab.service.build.cobertura;
 
+import static org.junit.Assert.*;
+
+import java.io.File;
 import org.junit.Test;
 import org.mapdb.Fun;
 import org.springframework.test.context.ContextConfiguration;
 import pl.matsuo.gitlab.data.BuildInfo;
 import pl.matsuo.gitlab.service.build.AbstractPartialBuildTest;
 
-import java.io.File;
-
-import static org.junit.Assert.*;
-
-
-/**
- * Created by marek on 05.07.15.
- */
-@ContextConfiguration(classes = { CoberturaPartialBuilder.class })
+/** Created by marek on 05.07.15. */
+@ContextConfiguration(classes = {CoberturaPartialBuilder.class})
 public abstract class TestCoberturaPartialBuilder extends AbstractPartialBuildTest {
-
 
   @Test
   public void testInternalExecute() throws Exception {
@@ -28,4 +23,3 @@ public abstract class TestCoberturaPartialBuilder extends AbstractPartialBuildTe
     assertEquals("ok", buildInfo.getPartialStatuses().get("cobertura").getStatus());
   }
 }
-

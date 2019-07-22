@@ -1,5 +1,6 @@
 package pl.matsuo.gitlab.service.build;
 
+import java.io.File;
 import org.junit.runner.RunWith;
 import org.mapdb.Fun;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,26 +17,22 @@ import pl.matsuo.gitlab.service.execute.ExecutionServiceImpl;
 import pl.matsuo.gitlab.service.git.GitRepositoryService;
 import pl.matsuo.gitlab.service.git.GitRepositoryServiceImpl;
 
-import java.io.File;
-
-
-/**
- * Created by marek on 05.07.15.
- */
+/** Created by marek on 05.07.15. */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { TestConfig.class, MapDbDatabase.class, ExecutionServiceImpl.class,
-                                  BuildServiceImpl.class, GitRepositoryServiceImpl.class})
+@ContextConfiguration(
+    classes = {
+      TestConfig.class,
+      MapDbDatabase.class,
+      ExecutionServiceImpl.class,
+      BuildServiceImpl.class,
+      GitRepositoryServiceImpl.class
+    })
 public abstract class AbstractPartialBuildTest extends AbstractSampleProjectTest {
 
-
-  @Autowired
-  protected BuildService buildService;
-  @Autowired
-  protected GitRepositoryService gitRepositoryService;
-  @Autowired
-  protected Database db;
-
+  @Autowired protected BuildService buildService;
+  @Autowired protected GitRepositoryService gitRepositoryService;
+  @Autowired protected Database db;
 
   protected Fun.Tuple2<String, File> checkoutProject() {
     PushEvent pushEvent = new PushEvent();
@@ -52,4 +49,3 @@ public abstract class AbstractPartialBuildTest extends AbstractSampleProjectTest
     return new Fun.Tuple2(idBuild, repository);
   }
 }
-

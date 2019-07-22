@@ -1,9 +1,6 @@
 package pl.matsuo.gitlab.service.git;
 
-import org.eclipse.jgit.api.Git;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import pl.matsuo.gitlab.hook.PushEvent;
+import static pl.matsuo.gitlab.util.PushEventUtil.*;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,45 +8,40 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Optional;
+import org.eclipse.jgit.api.Git;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import pl.matsuo.gitlab.hook.PushEvent;
 
-import static pl.matsuo.gitlab.util.PushEventUtil.*;
-
-
-/**
- * Created by marek on 04.07.15.
- */
+/** Created by marek on 04.07.15. */
 @Service
 public class GitRepositoryServiceImpl implements GitRepositoryService {
 
-
   @Value("${repositoryBase}")
   String repositoryBase;
+
   @Value("${gitlabRepositoryBase}")
   String gitlabRepositoryBase;
-
 
   protected File getRepositoryFile(String userName, String projectName, String refName) {
     return new File(repositoryBase, userName + "/" + projectName + "/" + refName);
   }
 
-
   public Optional<File> getKosher(PushEvent pushEvent) {
     return getKosher(getUser(pushEvent), getRepository(pushEvent), getRef(pushEvent));
   }
 
-
   public Optional<File> getKosher(String userName, String projectName, String refName) {
-    File file = new File(repositoryBase, userName + "/" + projectName + "/" + refName + "/.kosher.yml");
+    File file =
+        new File(repositoryBase, userName + "/" + projectName + "/" + refName + "/.kosher.yml");
     System.out.println("getKosher: " + file.getAbsolutePath() + " exists: " + file.exists());
     return file.exists() ? Optional.of(file) : Optional.<File>empty();
   }
-
 
   @Override
   public File repository(PushEvent pushEvent) {
     return getRepositoryFile(getUser(pushEvent), getRepository(pushEvent), getRef(pushEvent));
   }
-
 
   @Override
   public Git checkout(PushEvent pushEvent) {
@@ -67,10 +59,12 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
 
     System.out.println("checkout path: " + path);
 
-    return checkout(getUser(pushEvent), getRepository(pushEvent), getRef(pushEvent),
+    return checkout(
+        getUser(pushEvent),
+        getRepository(pushEvent),
+        getRef(pushEvent),
         new File(gitlabRepositoryBase, path).getAbsoluteFile().toString());
   }
-
 
   @Override
   public Git checkout(String userName, String projectName, String refName, String uri) {
@@ -81,11 +75,7 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
       if (!cloneFile.exists()) {
         System.out.println("Cloning: " + uri);
 
-        git = Git.cloneRepository()
-            .setBranch(refName)
-            .setURI(uri)
-            .setDirectory(cloneFile)
-            .call();
+        git = Git.cloneRepository().setBranch(refName).setURI(uri).setDirectory(cloneFile).call();
       } else {
         System.out.println("Checkout: " + uri);
 
@@ -104,12 +94,17 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
       System.out.println("Could not clone using jgit. Attempt to clone via script.");
 
       try {
-        ProcessBuilder ps = new ProcessBuilder(
-            "sudo" , "/home/kosher/clone-repository.sh", cloneFile.getAbsolutePath(), uri, refName);
+        ProcessBuilder ps =
+            new ProcessBuilder(
+                "sudo",
+                "/home/kosher/clone-repository.sh",
+                cloneFile.getAbsolutePath(),
+                uri,
+                refName);
 
-        //From the DOC:  Initially, this property is false, meaning that the
-        //standard output and error output of a subprocess are sent to two
-        //separate streams
+        // From the DOC:  Initially, this property is false, meaning that the
+        // standard output and error output of a subprocess are sent to two
+        // separate streams
         ps.redirectErrorStream(true);
 
         Process pr = ps.start();
@@ -131,4 +126,3 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
     }
   }
 }
-

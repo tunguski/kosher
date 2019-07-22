@@ -1,13 +1,11 @@
 package pl.matsuo.gitlab.conf;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
-import static org.junit.Assert.*;
-
-/**
- * Created by marek on 13.09.15.
- */
+/** Created by marek on 13.09.15. */
 public class TestMvcConfig {
 
   @Test

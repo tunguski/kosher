@@ -1,25 +1,18 @@
 package pl.matsuo.gitlab.file;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-
-/**
- * Created by marek on 29.08.15.
- */
+/** Created by marek on 29.08.15. */
 public class TestYamlFileConverter {
-
 
   YamlFileConverterProvider converter = new YamlFileConverterProvider();
 
-
   private String projectText = "name: \"Something\"";
   private InputStream projectStream = new ByteArrayInputStream("name: \"Something\"".getBytes());
-
 
   public static class Project {
     String name;
@@ -29,18 +22,15 @@ public class TestYamlFileConverter {
     }
   }
 
-
   @Test
   public void testRead() throws Exception {
     assertEquals("Something", converter.read(projectText, Project.class).getName());
   }
 
-
   @Test
   public void testRead1() throws Exception {
     assertEquals("Something", converter.read(projectStream, Project.class).getName());
   }
-
 
   @Test
   public void testConverter() throws Exception {
@@ -50,4 +40,3 @@ public class TestYamlFileConverter {
     assertEquals("Something", converter.convert(projectStream).getName());
   }
 }
-

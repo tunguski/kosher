@@ -1,27 +1,24 @@
 package pl.matsuo.gitlab.service.build.cobertura;
 
+import java.io.File;
+import java.util.concurrent.CompletableFuture;
 import pl.matsuo.gitlab.hook.PartialBuildInfo;
 import pl.matsuo.gitlab.hook.PushEvent;
 import pl.matsuo.gitlab.service.build.CommandExecutingPartialBuilder;
 
-import java.io.File;
-import java.util.concurrent.CompletableFuture;
-
-
-/**
- * Created by marek on 05.07.15.
- */
-//@Service
+/** Created by marek on 05.07.15. */
+// @Service
 public class CoberturaPartialBuilder extends CommandExecutingPartialBuilder {
-
 
   @Override
   public CompletableFuture<PartialBuildInfo> internalExecute(PushEvent pushEvent, File properties) {
-    return internalExecute(pushEvent, ".", "target",
-        destination -> new String[] { "mvn", "cobertura:cobertura", "-DskipTests" },
+    return internalExecute(
+        pushEvent,
+        ".",
+        "target",
+        destination -> new String[] {"mvn", "cobertura:cobertura", "-DskipTests"},
         (partialBuildInfo, generationBase) -> {});
   }
-
 
   @Override
   public boolean shouldExecute(PushEvent pushEvent, File properties) {
@@ -30,4 +27,3 @@ public class CoberturaPartialBuilder extends CommandExecutingPartialBuilder {
     return exists;
   }
 }
-

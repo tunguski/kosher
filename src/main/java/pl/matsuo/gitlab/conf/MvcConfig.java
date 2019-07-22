@@ -1,6 +1,10 @@
 package pl.matsuo.gitlab.conf;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
+import static com.fasterxml.jackson.databind.DeserializationFeature.*;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -9,16 +13,9 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import pl.matsuo.gitlab.annotation.WebConfiguration;
 
-import java.util.List;
-
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
-import static com.fasterxml.jackson.databind.DeserializationFeature.*;
-
-
 @WebConfiguration
 @Configuration
 public class MvcConfig extends WebMvcConfigurationSupport {
-
 
   @Override
   public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
@@ -26,12 +23,10 @@ public class MvcConfig extends WebMvcConfigurationSupport {
     addDefaultHttpMessageConverters(converters);
   }
 
-
   @Bean
   public ObjectMapper objectMapper(MappingJackson2HttpMessageConverter converter) {
     return converter.getObjectMapper();
   }
-
 
   @Bean
   public MappingJackson2HttpMessageConverter converter() {
@@ -44,10 +39,8 @@ public class MvcConfig extends WebMvcConfigurationSupport {
     return converter;
   }
 
-
   @Bean
   public CommonsMultipartResolver multipartResolver() {
     return new CommonsMultipartResolver();
   }
 }
-

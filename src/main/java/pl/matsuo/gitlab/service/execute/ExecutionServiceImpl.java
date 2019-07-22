@@ -4,17 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
 
-
-/**
- * Created by marek on 04.09.15.
- */
+/** Created by marek on 04.09.15. */
 @Service
 public class ExecutionServiceImpl implements ExecutionService {
 
-
   @Autowired(required = false)
   TaskExecutor taskExecutor;
-
 
   @Override
   public void run(Runnable runnable) {
@@ -26,4 +21,3 @@ public class ExecutionServiceImpl implements ExecutionService {
     }
   }
 }
-

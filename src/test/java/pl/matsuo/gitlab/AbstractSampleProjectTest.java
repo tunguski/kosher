@@ -1,22 +1,16 @@
 package pl.matsuo.gitlab;
 
+import java.io.File;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Value;
 
-import java.io.File;
-
-
-/**
- * Created by marek on 11.08.15.
- */
+/** Created by marek on 11.08.15. */
 public abstract class AbstractSampleProjectTest {
-
 
   @Value("${gitlabRepositoryBase}")
   String gitlabRepositoryBase;
-
 
   @Before
   public void setup() {
@@ -42,4 +36,3 @@ public abstract class AbstractSampleProjectTest {
     }
   }
 }
-
