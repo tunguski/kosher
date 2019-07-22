@@ -98,7 +98,7 @@ public class GitlabProxyController {
   }
 
   // HTTP GET request
-  private String sendGet(String url) {
+  public String sendGet(String url) {
     try {
       URL obj = new URL(url);
       HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -108,7 +108,7 @@ public class GitlabProxyController {
 
       // set user agent
       con.setRequestProperty("User-Agent", "kosher/1.0");
-      con.setRequestProperty("PRIVATE-TOKEN", gitlabPrivateToken);
+      setToken(con);
 
       // FIXME: response codes from controller based on this response code
       int responseCode = con.getResponseCode();
@@ -127,5 +127,9 @@ public class GitlabProxyController {
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
+  }
+
+  protected void setToken(HttpURLConnection con) {
+    con.setRequestProperty("PRIVATE-TOKEN", gitlabPrivateToken);
   }
 }
