@@ -87,42 +87,46 @@ public class GitRepositoryServiceImpl implements GitRepositoryService {
       return git;
     } catch (Exception e) {
       e.printStackTrace();
-      System.out.println("user: " + userName);
-      System.out.println("project: " + projectName);
-      System.out.println("ref: " + refName);
-      System.out.println("uri: " + uri);
-      System.out.println("Could not clone using jgit. Attempt to clone via script.");
-
-      try {
-        ProcessBuilder ps =
-            new ProcessBuilder(
-                "sudo",
-                "/home/kosher/clone-repository.sh",
-                cloneFile.getAbsolutePath(),
-                uri,
-                refName);
-
-        // From the DOC:  Initially, this property is false, meaning that the
-        // standard output and error output of a subprocess are sent to two
-        // separate streams
-        ps.redirectErrorStream(true);
-
-        Process pr = ps.start();
-
-        BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-        String line;
-        while ((line = in.readLine()) != null) {
-          System.out.println(line);
-        }
-        pr.waitFor();
-        System.out.println("ok!");
-
-        in.close();
-
-        return Git.open(cloneFile);
-      } catch (Exception e1) {
-        throw new RuntimeException(e1);
-      }
+      return onJavaGitCloneFail(userName, projectName, refName, uri, cloneFile);
     }
+  }
+
+  protected Git onJavaGitCloneFail(
+      String userName, String projectName, String refName, String uri, File cloneFile) {
+    System.out.println("user: " + userName);
+    System.out.println("project: " + projectName);
+    System.out.println("ref: " + refName);
+    System.out.println("uri: " + uri);
+    System.out.println("Could not clone using jgit. Attempt to clone via script.");
+
+    try {
+      ProcessBuilder ps = executeCloneProcess(refName, uri, cloneFile);
+
+      // From the DOC:  Initially, this property is false, meaning that the
+      // standard output and error output of a subprocess are sent to two
+      // separate streams
+      ps.redirectErrorStream(true);
+
+      Process pr = ps.start();
+
+      BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+      String line;
+      while ((line = in.readLine()) != null) {
+        System.out.println(line);
+      }
+      pr.waitFor();
+      System.out.println("ok!");
+
+      in.close();
+
+      return Git.open(cloneFile);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  protected ProcessBuilder executeCloneProcess(String refName, String uri, File cloneFile) {
+    return new ProcessBuilder(
+        "sudo", "/home/kosher/clone-repository.sh", cloneFile.getAbsolutePath(), uri, refName);
   }
 }

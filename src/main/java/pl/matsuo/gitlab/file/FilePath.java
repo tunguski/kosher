@@ -1,6 +1,5 @@
 package pl.matsuo.gitlab.file;
 
-
 import static org.apache.commons.io.FileUtils.*;
 import static pl.matsuo.gitlab.file.FileConverterProviderUtil.*;
 import static pl.matsuo.gitlab.function.FunctionalUtil.*;

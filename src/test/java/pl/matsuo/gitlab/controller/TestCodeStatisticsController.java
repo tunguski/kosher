@@ -65,12 +65,12 @@ public class TestCodeStatisticsController extends AbstractControllerRequestTest 
               html -> {
                 System.out.println(cleanRef + ": " + html);
 
-                //            BuildInfo buildInfo = objectMapper.readValue(html, BuildInfo.class);
+                // BuildInfo buildInfo = objectMapper.readValue(html, BuildInfo.class);
                 //
-                //            assertTrue(buildInfo.getPartialStatuses().containsKey("checkstyle"));
-                //            assertTrue(buildInfo.getPartialStatuses().containsKey("pmd"));
-                //            assertTrue(buildInfo.getPartialStatuses().containsKey("javancss"));
-                //            assertTrue(buildInfo.getPartialStatuses().containsKey("findbugs"));
+                // assertTrue(buildInfo.getPartialStatuses().containsKey("checkstyle"));
+                // assertTrue(buildInfo.getPartialStatuses().containsKey("pmd"));
+                // assertTrue(buildInfo.getPartialStatuses().containsKey("javancss"));
+                // assertTrue(buildInfo.getPartialStatuses().containsKey("findbugs"));
               });
         });
   }
